@@ -89,6 +89,11 @@ To override these defaults, you need to provide custom configuration.
 ## Spring Security Architecture
 
 Understanding the internal architecture is crucial for effective customization of Spring Security. Let's explore the key components and their interactions.
+## Spring Security Architecture
+![Spring Security Architecture](./spring-security-architecture.png)
+
+## Spring Security with keycloak Architecture
+![Spring Security Keycloak Architecture](./spring-security-keycloak.png)
 
 ### Security Filters Chain
 
