@@ -1,6 +1,65 @@
 # Java Learning Platform
 
-A comprehensive learning platform for Java-related technologies, including core Java, Spring Boot, Kubernetes, microservices, and design patterns.
+A comprehensive documentation platform for Java developers covering core concepts to advanced microservices architecture.
+
+## Overview
+
+The Java Learning Platform is a static documentation site built with MkDocs and hosted on GitHub Pages. It provides comprehensive guides and tutorials on:
+
+- Java Core
+- Spring Boot
+- Microservices
+- Kubernetes
+- Design Patterns
+
+## Deployment
+
+The documentation is automatically deployed to GitHub Pages using GitHub Actions. Here's how to work with this project:
+
+### Prerequisites
+
+- Python 3.8+
+- pip
+- Git
+
+### Local Development
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/java-learning.git
+   cd java-learning
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Run the local development server:
+   ```bash
+   mkdocs serve
+   ```
+
+4. Open your browser and navigate to `http://127.0.0.1:8000/`
+
+### Deployment Process
+
+The documentation is automatically deployed to GitHub Pages when changes are pushed to the main branch. The deployment process is handled by GitHub Actions as configured in `.github/workflows/deploy.yml`.
+
+To manually trigger a deployment:
+
+1. Go to the GitHub repository
+2. Navigate to Actions
+3. Select the "Deploy Documentation" workflow
+4. Click "Run workflow"
+
+### Custom Domain (Optional)
+
+To set up a custom domain:
+
+1. Update the CNAME in the GitHub workflow file
+2. Configure your DNS settings as per the deployment guide
+3. Enable HTTPS in the GitHub Pages settings
 
 ## Project Structure
 
@@ -93,15 +152,15 @@ java-learning/
 
 ## Contributing
 
-Feel free to contribute to this learning platform by:
-1. Submitting issues for content improvements
-2. Creating pull requests with new content
-3. Suggesting new topics to cover
-4. Providing feedback on existing content
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute to this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Feedback
+
+We value your feedback! Please submit any comments or suggestions through our [feedback form](https://yourusername.github.io/java-learning/feedback/) or by creating an issue in this repository.
 
 ## Acknowledgments
 

@@ -1,0 +1,136 @@
+site_name: Java Learning Platform
+site_description: 'A comprehensive resource for Java developers covering core concepts to advanced microservices architecture'
+site_author: 'Your Organization'
+site_url: 'https://yourusername.github.io/java-learning'
+
+# Repository
+repo_name: 'yourusername/java-learning'
+repo_url: 'https://github.com/yourusername/java-learning'
+edit_uri: 'edit/main/docs/'
+
+# Copyright
+copyright: 'Copyright &copy; 2023 Your Organization'
+
+# Theme
+theme:
+  name: material
+  language: en
+  palette:
+    primary: 'indigo'
+    accent: 'blue'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.highlight
+
+# Customization
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: 'https://github.com/yourusername'
+    - icon: fontawesome/brands/linkedin
+      link: 'https://linkedin.com/in/yourusername'
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+# Plugins
+plugins:
+  - search:
+      lang: en
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+      min_search_length: 3
+      prebuild_index: true
+      indexing: 'full'
+  - macros
+
+# Navigation
+nav:
+  - Home: index.md
+  - Java Core:
+      - 'java/basic-concepts.md'
+      - 'java/oop.md'
+      - 'java/collections.md'
+      - 'java/exceptions.md'
+      - 'java/multithreading.md'
+      - 'java/file-io.md'
+      - 'java/lambda-streams.md'
+      - 'java/modules.md'
+  - Spring Boot:
+      - 'spring-boot/spring-boot-core-concepts.md'
+      - 'spring-boot/spring-boot-starter.md'
+      - 'spring-boot/spring-boot-rest-api.md'
+      - 'spring-boot/spring-boot-data-access.md'
+      - 'spring-boot/spring-boot-security.md'
+      - 'spring-boot/spring-boot-testing.md'
+      - 'spring-boot/spring-boot-actuator.md'
+      - 'spring-boot/spring-boot-deployment.md'
+      - 'spring-boot/spring-boot-aop.md'
+      - 'spring-boot/spring-boot-configuration.md'
+      - 'spring-boot/spring-data-jpa.md'
+      - 'spring-boot/spring-data-mongo.md'
+      - 'spring-boot/spring-kafka-integration.md'
+      - 'spring-boot/spring-ai.md'
+      - 'spring-boot/spring-boot-best-practices.md'
+  - Microservices:
+      - 'microservices/microservices-basics.md'
+      - 'microservices/microservices-communication.md'
+      - 'microservices/microservices-discovery.md'
+      - 'microservices/microservices-resilience.md'
+      - 'microservices/microservices-api-gateway.md'
+      - 'microservices/microservices-security.md'
+      - 'microservices/microservices-monitoring.md'
+      - 'microservices/microservices-deployment.md'
+      - 'microservices/microservices-testing.md'
+      - 'microservices/microservices-best-practices.md'
+      - 'microservices/saga-pattern.md'
+      - 'microservices/cqrs-pattern.md'
+      - 'microservices/platform-architecture.md'
+  - Kubernetes:
+      - 'kubernetes/kubernetes-basics.md'
+      - 'kubernetes/kubernetes-deployments.md'
+      - 'kubernetes/kubernetes-storage.md'
+      - 'kubernetes/kubernetes-scaling.md'
+      - 'kubernetes/kubernetes-monitoring.md'
+      - 'kubernetes/kubernetes-security.md'
+      - 'kubernetes/kubernetes-networking.md'
+      - 'kubernetes/kubernetes-troubleshooting.md'
+      - 'kubernetes/kubernetes-best-practices.md'
+  - Design Patterns:
+      - 'design-patterns/creational-patterns.md'
+      - 'design-patterns/structural-patterns.md'
+      - 'design-patterns/behavioral-patterns.md'
+      - 'design-patterns/integration-patterns.md'
+      - 'design-patterns/cloud-patterns.md'
+  - About:
+      - 'Feedback': 'feedback.md'
+      - 'Contributing': 'CONTRIBUTING.md'
+      - 'License': 'LICENSE.md' 
