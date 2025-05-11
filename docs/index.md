@@ -5,19 +5,24 @@ Welcome to the Java Learning Platform - a comprehensive resource for Java develo
 ## Table of Contents
 
 ### Java Core
-- [Basic Concepts and Syntax](java/basic-concepts.md)
-- [Object-Oriented Programming](java/oop.md)
-- [Collections Framework](java/collections.md)
-- [Exception Handling](java/exceptions.md)
-- [Multithreading](java/multithreading.md)
-- [File I/O](java/file-io.md)
-- [Lambda Expressions and Streams](java/lambda-streams.md)
-- [Java Modules](java/modules.md)
+- [Basic Concepts](java/basic-concepts.md)
+- [Basics](java/java-basics.md)
+- [Object-Oriented Programming](java/java-oop.md)
+- [Collections Framework](java/java-collections.md)
+- [Exceptions](java/java-exceptions.md)
+- [Exception Handling](java/java-exception-handling.md)
+- [Multithreading](java/java-multithreading.md)
+- [Concurrency](java/java-concurrency.md)
+- [File I/O](java/java-io.md)
+- [Lambda Expressions and Streams](java/java-streams-lambdas.md)
+- [Generics](java/java-generics.md)
+- [Memory Management](java/java-memory-management.md)
+- [Testing](java/java-testing.md)
 
 ### Spring Boot
 - [Core Concepts](spring-boot/spring-boot-core-concepts.md)
-- [Dependency Injection](spring-boot/spring-boot-starter.md)
-- [Web Applications](spring-boot/spring-boot-rest-api.md)
+- [Starter](spring-boot/spring-boot-starter.md)
+- [REST API](spring-boot/spring-boot-rest-api.md)
 - [Data Access](spring-boot/spring-boot-data-access.md)
 - [Security](spring-boot/spring-boot-security.md)
 - [Testing](spring-boot/spring-boot-testing.md)
@@ -27,12 +32,12 @@ Welcome to the Java Learning Platform - a comprehensive resource for Java develo
 - [Configuration](spring-boot/spring-boot-configuration.md)
 - [Spring Data JPA](spring-boot/spring-data-jpa.md)
 - [Spring Data MongoDB](spring-boot/spring-data-mongo.md)
-- [Spring Kafka Integration](spring-boot/spring-kafka-integration.md)
+- [Kafka Integration](spring-boot/spring-kafka-integration.md)
 - [Spring AI](spring-boot/spring-ai.md)
 - [Best Practices](spring-boot/spring-boot-best-practices.md)
 
 ### Microservices
-- [Basic Concepts and Architecture](microservices/microservices-basics.md)
+- [Basics](microservices/microservices-basics.md)
 - [Communication Patterns](microservices/microservices-communication.md)
 - [Service Discovery](microservices/microservices-discovery.md)
 - [Resilience Patterns](microservices/microservices-resilience.md)
@@ -47,22 +52,29 @@ Welcome to the Java Learning Platform - a comprehensive resource for Java develo
 - [Platform Architecture](microservices/platform-architecture.md)
 
 ### Kubernetes
-- [Basic Concepts and Architecture](kubernetes/kubernetes-basics.md)
-- [Deployment and Services](kubernetes/kubernetes-deployments.md)
-- [Storage Management](kubernetes/kubernetes-storage.md)
-- [Scaling and Autoscaling](kubernetes/kubernetes-scaling.md)
-- [Monitoring and Logging](kubernetes/kubernetes-monitoring.md)
-- [Security and RBAC](kubernetes/kubernetes-security.md)
-- [Networking and Ingress](kubernetes/kubernetes-networking.md)
+- [Basics](kubernetes/kubernetes-basics.md)
+- [Deployment](kubernetes/kubernetes-deployment.md)
+- [Services](kubernetes/kubernetes-services.md)
+- [Config & Secrets](kubernetes/kubernetes-config-secrets.md)
+- [Storage](kubernetes/kubernetes-storage.md)
+- [Scaling](kubernetes/kubernetes-scaling.md)
+- [Monitoring](kubernetes/kubernetes-monitoring.md)
+- [Security](kubernetes/kubernetes-security.md)
+- [Networking](kubernetes/kubernetes-networking.md)
 - [Troubleshooting](kubernetes/kubernetes-troubleshooting.md)
 - [Best Practices](kubernetes/kubernetes-best-practices.md)
 
 ### Design Patterns
-- [Creational Patterns](design-patterns/creational-patterns.md)
-- [Structural Patterns](design-patterns/structural-patterns.md)
-- [Behavioral Patterns](design-patterns/behavioral-patterns.md)
-- [Integration Patterns](design-patterns/integration-patterns.md)
-- [Cloud Patterns](design-patterns/cloud-patterns.md)
+- [Principles](design-patterns/design-patterns-principles.md)
+- [Best Practices](design-patterns/design-patterns-best-practices.md)
+- [J2EE Patterns](design-patterns/design-patterns-j2ee.md)
+- [Behavioral Patterns](design-patterns/design-patterns-behavioral.md)
+- [Structural Patterns](design-patterns/design-patterns-structural.md)
+- [Creational Patterns](design-patterns/design-patterns-creational.md)
+
+### Reference
+- [Deployment Guide](deployment-guide.md)
+- [Search Implementation](search-implementation.md)
 
 ## How to Use This Platform
 
@@ -80,7 +92,7 @@ For those new to Java or wanting a comprehensive education, we recommend followi
 Experienced developers can use this platform as a reference by directly accessing specific topics of interest.
 
 ### Practical Application
-Each section includes practical examples and exercises to reinforce learning. Code samples can be found in the [examples](examples/) directory.
+Each section includes practical examples and exercises to reinforce learning.
 
 ## Search Documentation
 
@@ -92,12 +104,12 @@ We welcome contributions to improve this learning platform. See our [contributio
 
 ## Deployment
 
-This documentation is deployed using GitHub Pages and can be accessed at [https://yourorganization.github.io/java-learning/](https://yourorganization.github.io/java-learning/).
+This documentation is deployed using GitHub Pages. For details on the deployment process, see our [deployment guide](deployment-guide.md).
 
 ## Feedback
 
-Your feedback is valuable to us! Please submit your comments and suggestions through our [feedback form](https://forms.example.com/feedback) or open an issue in our [GitHub repository](https://github.com/yourorganization/java-learning/issues).
+Your feedback is valuable to us! Please submit your comments and suggestions through our [feedback form](feedback.md) or open an issue in our GitHub repository.
 
 ## License
 
-This learning platform is licensed under the [MIT License](LICENSE). 
+This learning platform is licensed under the [MIT License](LICENSE.md). 
