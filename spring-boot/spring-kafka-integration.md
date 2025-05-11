@@ -2,6 +2,7 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
+- [Kafka Core Concepts](#kafka-core-concepts)
 - [Setup and Dependencies](#setup-and-dependencies)
 - [Kafka Configuration in Spring Boot](#kafka-configuration-in-spring-boot)
 - [Creating a Producer](#creating-a-producer)
@@ -21,6 +22,138 @@
 Apache Kafka is a distributed streaming platform that enables building real-time data pipelines and streaming applications. Spring Boot provides excellent integration with Kafka through the `spring-kafka` library, making it easy to configure producers, consumers, and other Kafka-related components.
 
 This guide focuses on Spring Boot 3.x integration with Kafka, covering the basics to advanced features with practical examples.
+
+## Kafka Core Concepts
+
+Before diving into Spring Boot integration, let's understand the core concepts of Apache Kafka:
+
+### Topics and Partitions
+
+- **Topic**: A named stream of records. Similar to a table in a database but without constraints.
+- **Partition**: Each topic is divided into partitions. Partitions allow Kafka to scale horizontally and provide parallelism.
+- **Partition Ordering**: Messages within a partition are ordered, but there's no guarantee of ordering across partitions.
+- **Partition Key**: Determines which partition a message goes to. Messages with the same key always go to the same partition.
+
+```
+                      ┌─────────────┐
+                      │   Topic A   │
+                      └─────────────┘
+                            │
+         ┌─────────────┬────┼────┬─────────────┐
+         ▼             ▼             ▼
+┌─────────────┐ ┌─────────────┐ ┌─────────────┐
+│ Partition 0 │ │ Partition 1 │ │ Partition 2 │
+└─────────────┘ └─────────────┘ └─────────────┘
+```
+
+### Producers and Consumers
+
+- **Producer**: Application that publishes records to Kafka topics.
+- **Consumer**: Application that subscribes to topics and processes the records.
+- **Publish-Subscribe Pattern**: Multiple consumers can read from the same topic.
+
+```
+┌───────────┐     ┌─────────────┐     ┌───────────┐
+│ Producer  │────▶│   Topic     │────▶│ Consumer  │
+└───────────┘     └─────────────┘     └───────────┘
+                        │
+                        │             ┌───────────┐
+                        └────────────▶│ Consumer  │
+                                      └───────────┘
+```
+
+### Brokers and Clusters
+
+- **Broker**: A single Kafka server that stores data and serves client requests.
+- **Cluster**: Multiple brokers working together for scalability and fault tolerance.
+- **Controller**: One broker in the cluster acts as the controller, responsible for administrative operations.
+
+```
+┌───────────────────────────────────────────┐
+│               Kafka Cluster               │
+│                                           │
+│  ┌─────────┐   ┌─────────┐   ┌─────────┐  │
+│  │ Broker 0│   │ Broker 1│   │ Broker 2│  │
+│  └─────────┘   └─────────┘   └─────────┘  │
+│                                           │
+└───────────────────────────────────────────┘
+```
+
+### Consumer Groups
+
+- **Consumer Group**: A set of consumers that cooperate to consume a set of topics.
+- **Load Balancing**: Each partition is consumed by only one consumer within a group.
+- **Scalability**: Adding more consumers to a group allows processing more partitions in parallel.
+
+```
+┌───────────────────────────────────┐
+│        Consumer Group A           │
+│                                   │
+│  ┌──────────┐  ┌──────────┐       │
+│  │Consumer 1│  │Consumer 2│       │
+│  └──────────┘  └──────────┘       │
+└───────┬────────────┬──────────────┘
+        │            │
+        ▼            ▼
+┌──────────────┐ ┌──────────────┐
+│ Partition 0  │ │ Partition 1  │
+└──────────────┘ └──────────────┘
+```
+
+### Offset Management
+
+- **Offset**: A sequential ID given to messages in a partition.
+- **Consumer Offset**: The position of a consumer in a partition.
+- **Commit Offset**: Consumers periodically commit their position to resume from where they left off.
+
+```
+┌─────────────────────────────────────────┐
+│              Partition                  │
+│                                         │
+│  ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐│
+│  │  0  │ │  1  │ │  2  │ │  3  │ │  4  ││
+│  └─────┘ └─────┘ └─────┘ └─────┘ └─────┘│
+└─────────────────────────────────────────┘
+                      ▲
+                      │
+                ┌───────────┐
+                │Consumer   │
+                │Offset: 2  │
+                └───────────┘
+```
+
+### Message Delivery Semantics
+
+- **At Most Once**: Messages may be lost but never redelivered.
+- **At Least Once**: Messages are never lost but may be redelivered.
+- **Exactly Once**: Each message is delivered exactly once (achieved with transactions).
+
+### Replication and Fault Tolerance
+
+- **Replication Factor**: Number of copies of data across the cluster.
+- **Leader**: Each partition has one leader broker handling all reads and writes.
+- **Follower**: Replicas that replicate data from the leader.
+- **In-Sync Replica (ISR)**: Followers that are up-to-date with the leader.
+
+```
+┌─────────────────────────────────────────────────────┐
+│                   Topic Partition                   │
+│                                                     │
+│  ┌─────────┐   ┌─────────┐   ┌─────────┐           │
+│  │ Leader  │   │Follower │   │Follower │           │
+│  │(Broker 0)│──▶│(Broker 1)│──▶│(Broker 2)│           │
+│  └─────────┘   └─────────┘   └─────────┘           │
+│                                                     │
+└─────────────────────────────────────────────────────┘
+```
+
+### Log Compaction
+
+- **Log Compaction**: Ensures Kafka retains at least the last known value for each key.
+- **Compacted Topics**: Special topics that maintain a clean, compacted version of the data.
+- **Use Case**: Perfect for event sourcing and maintaining the latest state.
+
+These core concepts form the foundation of Kafka's architecture. Understanding them is crucial before diving into Spring Boot's integration with Kafka.
 
 ## Setup and Dependencies
 
