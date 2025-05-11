@@ -92,11 +92,11 @@ We welcome contributions to improve this learning platform. See our [contributio
 
 ## Deployment
 
-This documentation is deployed using GitHub Pages and can be accessed at [https://yourorganization.github.io/java-learning/](https://yourorganization.github.io/java-learning/).
+This documentation is deployed using GitHub Pages and can be accessed at [https://mshemeel.github.io/java-learning/](https://mshemeel.github.io/java-learning/).
 
 ## Feedback
 
-Your feedback is valuable to us! Please submit your comments and suggestions through our [feedback form](https://forms.example.com/feedback) or open an issue in our [GitHub repository](https://github.com/yourorganization/java-learning/issues).
+Your feedback is valuable to us! Please submit your comments and suggestions through our [feedback form](https://forms.example.com/feedback) or open an issue in our [GitHub repository](https://github.com/mshemeel/java-learning/issues).
 
 ## License
 

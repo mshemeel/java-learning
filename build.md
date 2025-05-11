@@ -53,7 +53,7 @@ The Java Learning Platform is built as a static documentation site with the foll
 2. **Setup Instructions**:
    ```bash
    # Clone repository
-   git clone https://github.com/yourorganization/java-learning.git
+   git clone https://github.com/mshemeel/java-learning.git
    cd java-learning
    
    # Create virtual environment

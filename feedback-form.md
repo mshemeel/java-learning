@@ -66,7 +66,7 @@ Enable direct feedback through GitHub issues:
 
 **Implementation**:
 ```html
-<a href="https://github.com/yourorganization/java-learning/issues/new?title=Feedback%20on%20[PAGE_TITLE]&body=Page:%20[PAGE_URL]%0A%0AYour%20feedback:%20" class="github-issue-link">
+<a href="https://github.com/mshemeel/java-learning/issues/new?title=Feedback%20on%20[PAGE_TITLE]&body=Page:%20[PAGE_URL]%0A%0AYour%20feedback:%20" class="github-issue-link">
   <i class="fa fa-github"></i> Report an issue with this page
 </a>
 ```
