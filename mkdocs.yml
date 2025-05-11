@@ -1,15 +1,15 @@
 site_name: Java Learning Platform
 site_description: 'A comprehensive resource for Java developers covering core concepts to advanced microservices architecture'
-site_author: 'Your Organization'
-site_url: 'https://yourusername.github.io/java-learning'
+site_author: 'Muhammed Shemeel'
+site_url: 'https://mshemeel.github.io/java-learning'
 
 # Repository
-repo_name: 'yourusername/java-learning'
-repo_url: 'https://github.com/yourusername/java-learning'
+repo_name: 'mshemeel/java-learning'
+repo_url: 'https://github.com/mshemeel/java-learning'
 edit_uri: 'edit/main/docs/'
 
 # Copyright
-copyright: 'Copyright &copy; 2023 Your Organization'
+copyright: 'Copyright &copy; 2025 Muhammed Shemeel'
 
 # Theme
 theme:
@@ -38,9 +38,9 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: 'https://github.com/yourusername'
+      link: 'https://github.com/mshemeel'
     - icon: fontawesome/brands/linkedin
-      link: 'https://linkedin.com/in/yourusername'
+      link: 'https://linkedin.com/in/mshemeel'
 
 # Extensions
 markdown_extensions:

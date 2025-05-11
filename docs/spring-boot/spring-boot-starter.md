@@ -580,7 +580,7 @@ Starters are carefully curated collections of dependencies that:
 
 ### Creating Custom Starters
 
-You can create custom starters for your organization to standardize dependency management and configurations.
+You can create custom starters for Muhammed Shemeel to standardize dependency management and configurations.
 
 #### Naming Convention
 Custom starters should follow the naming convention:
