@@ -1,0 +1,3461 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A comprehensive resource for Java developers covering core concepts to advanced microservices architecture">
+      
+      
+        <meta name="author" content="Your Organization">
+      
+      
+        <link rel="canonical" href="https://yourusername.github.io/java-learning/design-patterns/design-patterns-best-practices/">
+      
+      
+        <link rel="prev" href="../design-patterns-principles/">
+      
+      
+        <link rel="next" href="../design-patterns-j2ee/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>Best Practices - Java Learning Platform</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#design-patterns-best-practices" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Java Learning Platform" class="md-header__button md-logo" aria-label="Java Learning Platform" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Learning Platform
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Best Practices
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yourusername/java-learning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yourusername/java-learning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../java/basic-concepts/" class="md-tabs__link">
+          
+  
+    
+  
+  Java Core
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../spring-boot/spring-boot-core-concepts/" class="md-tabs__link">
+          
+  
+    
+  
+  Spring Boot
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../microservices/microservices-basics/" class="md-tabs__link">
+          
+  
+    
+  
+  Microservices
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../kubernetes/kubernetes-basics/" class="md-tabs__link">
+          
+  
+    
+  
+  Kubernetes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../design-patterns-principles/" class="md-tabs__link">
+          
+  
+    
+  
+  Design Patterns
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../deployment-guide/" class="md-tabs__link">
+          
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../feedback/" class="md-tabs__link">
+          
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Java Learning Platform" class="md-nav__button md-logo" aria-label="Java Learning Platform" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Java Learning Platform
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yourusername/java-learning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yourusername/java-learning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Java Core
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java Core
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/basic-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-oop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-collections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exceptions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-multithreading/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multithreading
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-streams-lambdas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams & Lambdas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Spring Boot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Spring Boot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-boot-core-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-boot-starter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Starter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-boot-rest-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    REST API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-boot-data-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Access
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-boot-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-boot-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-boot-actuator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actuator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-boot-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-boot-aop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AOP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-boot-configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-data-jpa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Data JPA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-data-mongo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Data MongoDB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-kafka-integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring-boot/spring-boot-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Microservices
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Microservices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-communication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Communication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-discovery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Service Discovery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-resilience/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resilience
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-api-gateway/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Gateway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/saga-pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Saga Pattern
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/cqrs-pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CQRS Pattern
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/platform-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Platform Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-config-secrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config & Secrets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-scaling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scaling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Design Patterns
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Design Patterns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-patterns-principles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    Learning Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    Table of Contents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pattern-selection-guidelines" class="md-nav__link">
+    Pattern Selection Guidelines
+  </a>
+  
+    <nav class="md-nav" aria-label="Pattern Selection Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understand-the-problem-first" class="md-nav__link">
+    Understand the Problem First
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selection-criteria" class="md-nav__link">
+    Selection Criteria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-selection-mistakes" class="md-nav__link">
+    Common Selection Mistakes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-best-practices" class="md-nav__link">
+    Implementation Best Practices
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#follow-solid-principles" class="md-nav__link">
+    Follow SOLID Principles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-awareness" class="md-nav__link">
+    Context Awareness
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-conventions" class="md-nav__link">
+    Naming Conventions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-examples-dos-and-donts" class="md-nav__link">
+    Implementation Examples - Do's and Don'ts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combining-design-patterns" class="md-nav__link">
+    Combining Design Patterns
+  </a>
+  
+    <nav class="md-nav" aria-label="Combining Design Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mvc-observer" class="md-nav__link">
+    MVC + Observer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factory-method-strategy" class="md-nav__link">
+    Factory Method + Strategy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decorator-composite" class="md-nav__link">
+    Decorator + Composite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-effective-combinations" class="md-nav__link">
+    Additional Effective Combinations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refactoring-to-patterns" class="md-nav__link">
+    Refactoring to Patterns
+  </a>
+  
+    <nav class="md-nav" aria-label="Refactoring to Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recognizing-pattern-opportunities" class="md-nav__link">
+    Recognizing Pattern Opportunities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refactoring-steps" class="md-nav__link">
+    Refactoring Steps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-refactoring-to-strategy-pattern" class="md-nav__link">
+    Example: Refactoring to Strategy Pattern
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-pattern-implementations" class="md-nav__link">
+    Testing Pattern Implementations
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Pattern Implementations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-driven-development" class="md-nav__link">
+    Test-Driven Development
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-strategies-by-pattern-type" class="md-nav__link">
+    Testing Strategies by Pattern Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mocking-and-isolation" class="md-nav__link">
+    Mocking and Isolation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    Performance Considerations
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-performance-impact" class="md-nav__link">
+    Pattern Performance Impact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization-guidelines" class="md-nav__link">
+    Optimization Guidelines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-performance-issues" class="md-nav__link">
+    Common Performance Issues
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-guidelines" class="md-nav__link">
+    Documentation Guidelines
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-documentation" class="md-nav__link">
+    Pattern Documentation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-documentation" class="md-nav__link">
+    Example Documentation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modern-alternatives" class="md-nav__link">
+    Modern Alternatives
+  </a>
+  
+    <nav class="md-nav" aria-label="Modern Alternatives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functional-approaches" class="md-nav__link">
+    Functional Approaches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reactive-programming" class="md-nav__link">
+    Reactive Programming
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-injection-frameworks" class="md-nav__link">
+    Dependency Injection Frameworks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anti-patterns-to-avoid" class="md-nav__link">
+    Anti-Patterns to Avoid
+  </a>
+  
+    <nav class="md-nav" aria-label="Anti-Patterns to Avoid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-design-anti-patterns" class="md-nav__link">
+    Common Design Anti-patterns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-specific-anti-patterns" class="md-nav__link">
+    Pattern-Specific Anti-patterns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evolving-patterns" class="md-nav__link">
+    Evolving Patterns
+  </a>
+  
+    <nav class="md-nav" aria-label="Evolving Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adapting-classic-patterns" class="md-nav__link">
+    Adapting Classic Patterns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emerging-patterns" class="md-nav__link">
+    Emerging Patterns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staying-current" class="md-nav__link">
+    Staying Current
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-patterns-j2ee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    J2EE Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-patterns-behavioral/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Behavioral Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-patterns-structural/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Structural Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-patterns-creational/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creational Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../search-implementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Search Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            About
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LICENSE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    Learning Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    Table of Contents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pattern-selection-guidelines" class="md-nav__link">
+    Pattern Selection Guidelines
+  </a>
+  
+    <nav class="md-nav" aria-label="Pattern Selection Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understand-the-problem-first" class="md-nav__link">
+    Understand the Problem First
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selection-criteria" class="md-nav__link">
+    Selection Criteria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-selection-mistakes" class="md-nav__link">
+    Common Selection Mistakes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-best-practices" class="md-nav__link">
+    Implementation Best Practices
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#follow-solid-principles" class="md-nav__link">
+    Follow SOLID Principles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-awareness" class="md-nav__link">
+    Context Awareness
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-conventions" class="md-nav__link">
+    Naming Conventions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-examples-dos-and-donts" class="md-nav__link">
+    Implementation Examples - Do's and Don'ts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combining-design-patterns" class="md-nav__link">
+    Combining Design Patterns
+  </a>
+  
+    <nav class="md-nav" aria-label="Combining Design Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mvc-observer" class="md-nav__link">
+    MVC + Observer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factory-method-strategy" class="md-nav__link">
+    Factory Method + Strategy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decorator-composite" class="md-nav__link">
+    Decorator + Composite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-effective-combinations" class="md-nav__link">
+    Additional Effective Combinations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refactoring-to-patterns" class="md-nav__link">
+    Refactoring to Patterns
+  </a>
+  
+    <nav class="md-nav" aria-label="Refactoring to Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recognizing-pattern-opportunities" class="md-nav__link">
+    Recognizing Pattern Opportunities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refactoring-steps" class="md-nav__link">
+    Refactoring Steps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-refactoring-to-strategy-pattern" class="md-nav__link">
+    Example: Refactoring to Strategy Pattern
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-pattern-implementations" class="md-nav__link">
+    Testing Pattern Implementations
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Pattern Implementations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-driven-development" class="md-nav__link">
+    Test-Driven Development
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-strategies-by-pattern-type" class="md-nav__link">
+    Testing Strategies by Pattern Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mocking-and-isolation" class="md-nav__link">
+    Mocking and Isolation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    Performance Considerations
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-performance-impact" class="md-nav__link">
+    Pattern Performance Impact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization-guidelines" class="md-nav__link">
+    Optimization Guidelines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-performance-issues" class="md-nav__link">
+    Common Performance Issues
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-guidelines" class="md-nav__link">
+    Documentation Guidelines
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-documentation" class="md-nav__link">
+    Pattern Documentation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-documentation" class="md-nav__link">
+    Example Documentation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modern-alternatives" class="md-nav__link">
+    Modern Alternatives
+  </a>
+  
+    <nav class="md-nav" aria-label="Modern Alternatives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functional-approaches" class="md-nav__link">
+    Functional Approaches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reactive-programming" class="md-nav__link">
+    Reactive Programming
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-injection-frameworks" class="md-nav__link">
+    Dependency Injection Frameworks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anti-patterns-to-avoid" class="md-nav__link">
+    Anti-Patterns to Avoid
+  </a>
+  
+    <nav class="md-nav" aria-label="Anti-Patterns to Avoid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-design-anti-patterns" class="md-nav__link">
+    Common Design Anti-patterns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-specific-anti-patterns" class="md-nav__link">
+    Pattern-Specific Anti-patterns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evolving-patterns" class="md-nav__link">
+    Evolving Patterns
+  </a>
+  
+    <nav class="md-nav" aria-label="Evolving Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adapting-classic-patterns" class="md-nav__link">
+    Adapting Classic Patterns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emerging-patterns" class="md-nav__link">
+    Emerging Patterns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staying-current" class="md-nav__link">
+    Staying Current
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="design-patterns-best-practices">Design Patterns Best Practices<a class="headerlink" href="#design-patterns-best-practices" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This guide covers essential best practices for effectively implementing design patterns in Java applications. It provides guidance on pattern selection, implementation considerations, common pitfalls to avoid, and recommendations for combining patterns to solve complex problems.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Understanding of core design patterns (Creational, Structural, Behavioral, J2EE)</li>
+<li>Experience with Java programming</li>
+<li>Familiarity with SOLID principles</li>
+<li>Basic knowledge of software architecture concepts</li>
+</ul>
+<h2 id="learning-objectives">Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Learn to select the appropriate design patterns for specific problems</li>
+<li>Understand how to implement patterns correctly and efficiently</li>
+<li>Recognize patterns in existing codebases</li>
+<li>Avoid common pitfalls in design pattern implementation</li>
+<li>Apply patterns in combination to solve complex problems</li>
+<li>Keep up with evolving design pattern practices</li>
+</ul>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#pattern-selection-guidelines">Pattern Selection Guidelines</a></li>
+<li><a href="#implementation-best-practices">Implementation Best Practices</a></li>
+<li><a href="#combining-design-patterns">Combining Design Patterns</a></li>
+<li><a href="#refactoring-to-patterns">Refactoring to Patterns</a></li>
+<li><a href="#testing-pattern-implementations">Testing Pattern Implementations</a></li>
+<li><a href="#performance-considerations">Performance Considerations</a></li>
+<li><a href="#documentation-guidelines">Documentation Guidelines</a></li>
+<li><a href="#modern-alternatives">Modern Alternatives</a></li>
+<li><a href="#anti-patterns-to-avoid">Anti-Patterns to Avoid</a></li>
+<li><a href="#evolving-patterns">Evolving Patterns</a></li>
+</ol>
+<h2 id="pattern-selection-guidelines">Pattern Selection Guidelines<a class="headerlink" href="#pattern-selection-guidelines" title="Permanent link">&para;</a></h2>
+<h3 id="understand-the-problem-first">Understand the Problem First<a class="headerlink" href="#understand-the-problem-first" title="Permanent link">&para;</a></h3>
+<p>Before choosing a design pattern, thoroughly understand the problem you're trying to solve:</p>
+<ul>
+<li><strong>Clear Requirements</strong>: Ensure you have a clear understanding of the functional and non-functional requirements.</li>
+<li><strong>Current vs. Future Needs</strong>: Consider both immediate needs and likely future requirements.</li>
+<li><strong>Constraints</strong>: Understand technical constraints, performance requirements, and scalability needs.</li>
+</ul>
+<h3 id="selection-criteria">Selection Criteria<a class="headerlink" href="#selection-criteria" title="Permanent link">&para;</a></h3>
+<p>When selecting a pattern, consider:</p>
+<ol>
+<li><strong>Primary Intent</strong>: Does the pattern's primary purpose align with your problem?</li>
+<li><strong>Applicability</strong>: Do your problem characteristics match the pattern's applicability criteria?</li>
+<li><strong>Consequences</strong>: Are the trade-offs introduced by the pattern acceptable?</li>
+<li><strong>Simplicity</strong>: Is this the simplest solution to your problem?</li>
+<li><strong>Team Familiarity</strong>: Is your team familiar with the pattern or can they quickly learn it?</li>
+</ol>
+<h3 id="common-selection-mistakes">Common Selection Mistakes<a class="headerlink" href="#common-selection-mistakes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pattern Overuse</strong>: Using patterns when simpler solutions would suffice</li>
+<li><strong>Force-fitting</strong>: Trying to make a problem fit a pattern rather than vice versa</li>
+<li><strong>Premature Abstraction</strong>: Applying patterns before understanding the real problem</li>
+<li><strong>Resume-Driven Development</strong>: Using patterns to show off rather than solve problems</li>
+</ul>
+<h2 id="implementation-best-practices">Implementation Best Practices<a class="headerlink" href="#implementation-best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="follow-solid-principles">Follow SOLID Principles<a class="headerlink" href="#follow-solid-principles" title="Permanent link">&para;</a></h3>
+<p>Design patterns should reinforce, not replace, solid engineering principles:</p>
+<ul>
+<li><strong>Single Responsibility</strong>: Each class should have a single reason to change</li>
+<li><strong>Open/Closed</strong>: Open for extension, closed for modification</li>
+<li><strong>Liskov Substitution</strong>: Subtypes must be substitutable for their base types</li>
+<li><strong>Interface Segregation</strong>: Clients shouldn't depend on interfaces they don't use</li>
+<li><strong>Dependency Inversion</strong>: Depend on abstractions, not concretions</li>
+</ul>
+<h3 id="context-awareness">Context Awareness<a class="headerlink" href="#context-awareness" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Adapt to the Codebase</strong>: Implement patterns in a way that fits the existing codebase style</li>
+<li><strong>Consider Language Features</strong>: Use language-specific features to improve pattern implementation</li>
+<li><strong>Framework Integration</strong>: Ensure patterns work well with frameworks in use</li>
+</ul>
+<h3 id="naming-conventions">Naming Conventions<a class="headerlink" href="#naming-conventions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Clear Pattern Indication</strong>: Name classes to indicate the pattern being used (e.g., UserFactory, OrderBuilder)</li>
+<li><strong>Consistent Terminology</strong>: Use consistent naming across the codebase for similar pattern implementations</li>
+<li><strong>Self-Documenting</strong>: Names should reflect roles in the pattern</li>
+</ul>
+<h3 id="implementation-examples-dos-and-donts">Implementation Examples - Do's and Don'ts<a class="headerlink" href="#implementation-examples-dos-and-donts" title="Permanent link">&para;</a></h3>
+<p><strong>Singleton Pattern - Do:</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">Singleton</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">INSTANCE</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doSomething</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Implementation</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Singleton Pattern - Don't:</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BadSingleton</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">BadSingleton</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">BadSingleton</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">BadSingleton</span><span class="w"> </span><span class="nf">getInstance</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">instance</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BadSingleton</span><span class="p">();</span><span class="w"> </span><span class="c1">// Not thread-safe</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="combining-design-patterns">Combining Design Patterns<a class="headerlink" href="#combining-design-patterns" title="Permanent link">&para;</a></h2>
+<p>Design patterns are often more powerful when combined. Common effective combinations include:</p>
+<h3 id="mvc-observer">MVC + Observer<a class="headerlink" href="#mvc-observer" title="Permanent link">&para;</a></h3>
+<p>The Model-View-Controller pattern often uses the Observer pattern to notify Views of Model changes:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Model implements Observable (or uses PropertyChangeSupport)</span>
+<span class="c1">// Views implement Observer</span>
+<span class="c1">// Controller updates Model, which notifies Views</span>
+</code></pre></div>
+<h3 id="factory-method-strategy">Factory Method + Strategy<a class="headerlink" href="#factory-method-strategy" title="Permanent link">&para;</a></h3>
+<p>Use Factory Method to create Strategy implementations:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PaymentProcessorFactory</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">PaymentStrategy</span><span class="w"> </span><span class="nf">createPaymentStrategy</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;credit&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">type</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreditCardPaymentStrategy</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;paypal&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">type</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PayPalPaymentStrategy</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;Unknown payment type&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="decorator-composite">Decorator + Composite<a class="headerlink" href="#decorator-composite" title="Permanent link">&para;</a></h3>
+<p>Use Decorator to add behavior to Composite structures:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Base component interface</span>
+<span class="n">Component</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ConcreteComponent</span><span class="p">();</span>
+<span class="c1">// Add decorators</span>
+<span class="n">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SecurityDecorator</span><span class="p">(</span><span class="n">component</span><span class="p">);</span>
+<span class="n">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LoggingDecorator</span><span class="p">(</span><span class="n">component</span><span class="p">);</span>
+<span class="c1">// Use in composite structure</span>
+<span class="n">CompositeComponent</span><span class="w"> </span><span class="n">composite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CompositeComponent</span><span class="p">();</span>
+<span class="n">composite</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">component</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="additional-effective-combinations">Additional Effective Combinations<a class="headerlink" href="#additional-effective-combinations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Builder + Factory Method</strong>: Factory Method creates Builders for complex objects</li>
+<li><strong>Adapter + Facade</strong>: Facade uses Adapters to integrate different subsystems</li>
+<li><strong>Chain of Responsibility + Command</strong>: Commands travel through a processing chain</li>
+<li><strong>Proxy + Decorator</strong>: Proxy controls access, Decorator adds behavior</li>
+</ul>
+<h2 id="refactoring-to-patterns">Refactoring to Patterns<a class="headerlink" href="#refactoring-to-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="recognizing-pattern-opportunities">Recognizing Pattern Opportunities<a class="headerlink" href="#recognizing-pattern-opportunities" title="Permanent link">&para;</a></h3>
+<p>Look for these code smells that often indicate opportunities for patterns:</p>
+<ul>
+<li><strong>Duplicate Code</strong>: May indicate need for Template Method or Strategy</li>
+<li><strong>Large Switch Statements</strong>: Often replaceable with Strategy or Command</li>
+<li><strong>High Coupling</strong>: May benefit from Observer or Mediator</li>
+<li><strong>Complex Object Creation</strong>: Consider Factory, Builder, or Prototype</li>
+<li><strong>Feature Envy</strong>: May indicate need for moving behavior via Command or Strategy</li>
+</ul>
+<h3 id="refactoring-steps">Refactoring Steps<a class="headerlink" href="#refactoring-steps" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Identify the Problem</strong>: Determine what specific issue needs addressing</li>
+<li><strong>Select Candidate Pattern</strong>: Choose pattern(s) that might solve the problem</li>
+<li><strong>Test Understanding</strong>: Ensure you understand how the pattern addresses the issue</li>
+<li><strong>Create Tests</strong>: Write tests to verify current behavior</li>
+<li><strong>Refactor Incrementally</strong>: Apply the pattern in small, testable steps</li>
+<li><strong>Verify with Tests</strong>: Ensure all tests pass after each step</li>
+<li><strong>Review</strong>: Assess if the pattern solved the original problem</li>
+</ol>
+<h3 id="example-refactoring-to-strategy-pattern">Example: Refactoring to Strategy Pattern<a class="headerlink" href="#example-refactoring-to-strategy-pattern" title="Permanent link">&para;</a></h3>
+<p><strong>Before:</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PaymentProcessor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processPayment</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;credit&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">type</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Credit card processing logic</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Processing credit card payment of $&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;paypal&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">type</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// PayPal processing logic</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Processing PayPal payment of $&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;crypto&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">type</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Cryptocurrency processing logic</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Processing crypto payment of $&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>After:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1">// Strategy interface</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">PaymentStrategy</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Concrete strategies</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CreditCardStrategy</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">PaymentStrategy</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Processing credit card payment of $&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PayPalStrategy</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">PaymentStrategy</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Processing PayPal payment of $&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CryptoStrategy</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">PaymentStrategy</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Processing crypto payment of $&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Context</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PaymentProcessor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">PaymentStrategy</span><span class="w"> </span><span class="n">strategy</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPaymentStrategy</span><span class="p">(</span><span class="n">PaymentStrategy</span><span class="w"> </span><span class="n">strategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strategy</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processPayment</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strategy</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&quot;Payment strategy not set&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">strategy</span><span class="p">.</span><span class="na">process</span><span class="p">(</span><span class="n">amount</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="testing-pattern-implementations">Testing Pattern Implementations<a class="headerlink" href="#testing-pattern-implementations" title="Permanent link">&para;</a></h2>
+<h3 id="test-driven-development">Test-Driven Development<a class="headerlink" href="#test-driven-development" title="Permanent link">&para;</a></h3>
+<p>Apply TDD when implementing patterns:</p>
+<ol>
+<li>Write tests that define expected behavior</li>
+<li>Implement pattern to satisfy tests</li>
+<li>Refactor while keeping tests passing</li>
+</ol>
+<h3 id="testing-strategies-by-pattern-type">Testing Strategies by Pattern Type<a class="headerlink" href="#testing-strategies-by-pattern-type" title="Permanent link">&para;</a></h3>
+<p><strong>Creational Patterns</strong>:
+- Test that objects are created with correct initial state
+- Test that singletons maintain a single instance
+- Test that factories create the right type of object</p>
+<p><strong>Structural Patterns</strong>:
+- Test that composed objects work correctly together
+- Test that adapters correctly translate between interfaces
+- Test that proxies correctly control access to objects</p>
+<p><strong>Behavioral Patterns</strong>:
+- Test that the flow of control works as expected
+- Test that objects communicate correctly
+- Test that state changes happen appropriately</p>
+<h3 id="mocking-and-isolation">Mocking and Isolation<a class="headerlink" href="#mocking-and-isolation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use mocks to isolate the pattern being tested</li>
+<li>Test integration with real dependencies in separate tests</li>
+<li>Consider testing frameworks like Mockito for Java</li>
+</ul>
+<h2 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="pattern-performance-impact">Pattern Performance Impact<a class="headerlink" href="#pattern-performance-impact" title="Permanent link">&para;</a></h3>
+<p>Design patterns can impact performance in various ways:</p>
+<ul>
+<li><strong>Indirection Cost</strong>: Patterns often add layers of indirection</li>
+<li><strong>Object Creation</strong>: Some patterns increase the number of objects created</li>
+<li><strong>Method Calls</strong>: Some patterns increase the number of method calls</li>
+<li><strong>Memory Usage</strong>: Some patterns increase memory consumption</li>
+</ul>
+<h3 id="optimization-guidelines">Optimization Guidelines<a class="headerlink" href="#optimization-guidelines" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Measure First</strong>: Use profiling to identify actual bottlenecks</li>
+<li><strong>Optimize Hot Spots</strong>: Focus optimization on frequently used code paths</li>
+<li><strong>Consider Alternatives</strong>: Use simpler patterns when performance is critical</li>
+<li><strong>Caching</strong>: Add caching to expensive pattern operations</li>
+<li><strong>Lazy Initialization</strong>: Initialize components only when needed</li>
+</ul>
+<h3 id="common-performance-issues">Common Performance Issues<a class="headerlink" href="#common-performance-issues" title="Permanent link">&para;</a></h3>
+<p><strong>Factory Method vs. Direct Creation</strong>:
+- Factory Method adds method call overhead
+- Factory Method allows for optimization through caching or object pooling</p>
+<p><strong>Proxy Overhead</strong>:
+- Dynamic proxies (like in Spring) can be slower than direct calls
+- Consider static proxies for performance-critical code</p>
+<p><strong>Observer Pattern</strong>:
+- Large numbers of observers can cause notification bottlenecks
+- Consider batch notifications or update throttling</p>
+<h2 id="documentation-guidelines">Documentation Guidelines<a class="headerlink" href="#documentation-guidelines" title="Permanent link">&para;</a></h2>
+<h3 id="pattern-documentation">Pattern Documentation<a class="headerlink" href="#pattern-documentation" title="Permanent link">&para;</a></h3>
+<p>When documenting pattern usage in code:</p>
+<ol>
+<li><strong>Identify the Pattern</strong>: Clearly state which pattern is being used</li>
+<li><strong>Explain Intent</strong>: Document why the pattern was chosen</li>
+<li><strong>Describe Structure</strong>: Outline how classes participate in the pattern</li>
+<li><strong>Highlight Variations</strong>: Note any customizations or variations</li>
+<li><strong>List Alternatives</strong>: Mention alternatives considered and why they were rejected</li>
+</ol>
+<h3 id="example-documentation">Example Documentation<a class="headerlink" href="#example-documentation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * OrderProcessor uses the Strategy pattern to support different processing algorithms.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Intent: Allow the processing algorithm to vary independently from clients that use it.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Structure:</span>
+<span class="cm"> * - OrderProcessor: Context class that uses a processing strategy</span>
+<span class="cm"> * - OrderProcessingStrategy: Strategy interface</span>
+<span class="cm"> * - BatchOrderStrategy, RealTimeOrderStrategy: Concrete strategies</span>
+<span class="cm"> * </span>
+<span class="cm"> * This implementation allows for easy addition of new processing strategies</span>
+<span class="cm"> * without modifying the OrderProcessor class.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Alternative considered: Template Method pattern, rejected because we needed</span>
+<span class="cm"> * to switch strategies at runtime.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderProcessor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Implementation</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="modern-alternatives">Modern Alternatives<a class="headerlink" href="#modern-alternatives" title="Permanent link">&para;</a></h2>
+<h3 id="functional-approaches">Functional Approaches<a class="headerlink" href="#functional-approaches" title="Permanent link">&para;</a></h3>
+<p>Modern Java's functional features can replace some traditional patterns:</p>
+<p><strong>Strategy Pattern with Lambdas</strong>:
+<div class="highlight"><pre><span></span><code><span class="c1">// Traditional</span>
+<span class="kd">interface</span> <span class="nc">Validator</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">input</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">EmailValidator</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Validator</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="na">matches</span><span class="p">(</span><span class="s">&quot;^[A-Za-z0-9+_.-]+@(.+)$&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Functional</span>
+<span class="n">Function</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Boolean</span><span class="o">&gt;</span><span class="w"> </span><span class="n">emailValidator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<span class="w">    </span><span class="n">input</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="na">matches</span><span class="p">(</span><span class="s">&quot;^[A-Za-z0-9+_.-]+@(.+)$&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Command Pattern with Method References</strong>:
+<div class="highlight"><pre><span></span><code><span class="c1">// Traditional</span>
+<span class="kd">interface</span> <span class="nc">Command</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">SaveCommand</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Document</span><span class="w"> </span><span class="n">doc</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">SaveCommand</span><span class="p">(</span><span class="n">Document</span><span class="w"> </span><span class="n">doc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doc</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">doc</span><span class="p">.</span><span class="na">save</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Functional</span>
+<span class="n">Document</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Document</span><span class="p">();</span>
+<span class="n">Runnable</span><span class="w"> </span><span class="n">saveCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doc</span><span class="p">::</span><span class="n">save</span><span class="p">;</span>
+</code></pre></div></p>
+<h3 id="reactive-programming">Reactive Programming<a class="headerlink" href="#reactive-programming" title="Permanent link">&para;</a></h3>
+<p>Reactive programming can replace some traditional patterns:</p>
+<ul>
+<li><strong>Observer Pattern</strong> → <strong>Reactive Streams</strong> (RxJava, Project Reactor)</li>
+<li><strong>Iterator Pattern</strong> → <strong>Observable/Flowable Sequences</strong></li>
+<li><strong>Chain of Responsibility</strong> → <strong>Operators Chain</strong></li>
+</ul>
+<h3 id="dependency-injection-frameworks">Dependency Injection Frameworks<a class="headerlink" href="#dependency-injection-frameworks" title="Permanent link">&para;</a></h3>
+<p>Modern DI frameworks reduce the need for certain patterns:</p>
+<ul>
+<li><strong>Factory Pattern</strong> → <strong>Container-managed instantiation</strong></li>
+<li><strong>Singleton Pattern</strong> → <strong>Scoped beans</strong></li>
+<li><strong>Service Locator</strong> → <strong>Injection points</strong></li>
+</ul>
+<h2 id="anti-patterns-to-avoid">Anti-Patterns to Avoid<a class="headerlink" href="#anti-patterns-to-avoid" title="Permanent link">&para;</a></h2>
+<h3 id="common-design-anti-patterns">Common Design Anti-patterns<a class="headerlink" href="#common-design-anti-patterns" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>God Object</strong>: Class that knows or does too much</li>
+<li><strong>Golden Hammer</strong>: Overusing a familiar pattern for every problem</li>
+<li><strong>Object Orgy</strong>: Insufficient encapsulation and excessive object coupling</li>
+<li><strong>Spaghetti Code</strong>: Tangled, unstructured code with unclear flow</li>
+<li><strong>Premature Optimization</strong>: Optimizing before profiling real bottlenecks</li>
+</ol>
+<h3 id="pattern-specific-anti-patterns">Pattern-Specific Anti-patterns<a class="headerlink" href="#pattern-specific-anti-patterns" title="Permanent link">&para;</a></h3>
+<p><strong>Singleton Abuse</strong>:
+- Using singletons for simple global state
+- Creating too many singletons in an application
+- Using singletons to avoid proper dependency management</p>
+<p><strong>Factory Overuse</strong>:
+- Creating factories for simple object creation
+- Implementing factory hierarchies that are more complex than the objects they create
+- Using abstract factories when simple factories would suffice</p>
+<p><strong>Observer Overload</strong>:
+- Creating circular observer relationships
+- Adding too many observers without consideration for performance
+- Using observers where simple method calls would work</p>
+<h2 id="evolving-patterns">Evolving Patterns<a class="headerlink" href="#evolving-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="adapting-classic-patterns">Adapting Classic Patterns<a class="headerlink" href="#adapting-classic-patterns" title="Permanent link">&para;</a></h3>
+<p>Classic patterns often need adaptation for modern contexts:</p>
+<ul>
+<li><strong>Cloud-Native Environments</strong>: Consider elasticity, resilience, and distributed state</li>
+<li><strong>Microservices Architecture</strong>: Adapt patterns for service boundaries and eventual consistency</li>
+<li><strong>Container-Based Deployment</strong>: Consider immutability and infrastructure-as-code implications</li>
+</ul>
+<h3 id="emerging-patterns">Emerging Patterns<a class="headerlink" href="#emerging-patterns" title="Permanent link">&para;</a></h3>
+<p>New patterns continue to emerge to address modern challenges:</p>
+<ol>
+<li><strong>Circuit Breaker</strong>: Prevent cascade failures in distributed systems</li>
+<li><strong>Saga</strong>: Manage distributed transactions across microservices</li>
+<li><strong>CQRS</strong>: Separate command and query responsibilities</li>
+<li><strong>Event Sourcing</strong>: Store state as a sequence of events</li>
+<li><strong>Sidecar</strong>: Deploy supporting services alongside primary services</li>
+</ol>
+<h3 id="staying-current">Staying Current<a class="headerlink" href="#staying-current" title="Permanent link">&para;</a></h3>
+<p>To stay current with evolving patterns:</p>
+<ul>
+<li><strong>Follow Industry Thought Leaders</strong>: Read blogs and books from pattern experts</li>
+<li><strong>Participate in Communities</strong>: Join discussions in programming communities</li>
+<li><strong>Review Open Source Projects</strong>: Study pattern usage in successful projects</li>
+<li><strong>Practice Continuous Learning</strong>: Regularly update your pattern knowledge</li>
+<li><strong>Apply Critical Thinking</strong>: Evaluate patterns based on their actual benefits </li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 Your Organization
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yourusername" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+    
+  </body>
+</html>

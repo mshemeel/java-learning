@@ -1,0 +1,4091 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A comprehensive resource for Java developers covering core concepts to advanced microservices architecture">
+      
+      
+        <meta name="author" content="Your Organization">
+      
+      
+        <link rel="canonical" href="https://yourusername.github.io/java-learning/spring-boot/spring-boot-best-practices/">
+      
+      
+        <link rel="prev" href="../spring-ai/">
+      
+      
+        <link rel="next" href="../../microservices/microservices-basics/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>Best Practices - Java Learning Platform</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#spring-boot-best-practices" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Java Learning Platform" class="md-header__button md-logo" aria-label="Java Learning Platform" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Learning Platform
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Best Practices
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yourusername/java-learning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yourusername/java-learning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../java/basic-concepts/" class="md-tabs__link">
+          
+  
+    
+  
+  Java Core
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../spring-boot-core-concepts/" class="md-tabs__link">
+          
+  
+    
+  
+  Spring Boot
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../microservices/microservices-basics/" class="md-tabs__link">
+          
+  
+    
+  
+  Microservices
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../kubernetes/kubernetes-basics/" class="md-tabs__link">
+          
+  
+    
+  
+  Kubernetes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../design-patterns/design-patterns-principles/" class="md-tabs__link">
+          
+  
+    
+  
+  Design Patterns
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../deployment-guide/" class="md-tabs__link">
+          
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../feedback/" class="md-tabs__link">
+          
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Java Learning Platform" class="md-nav__button md-logo" aria-label="Java Learning Platform" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Java Learning Platform
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yourusername/java-learning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yourusername/java-learning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Java Core
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java Core
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/basic-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-oop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-collections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exceptions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-multithreading/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multithreading
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-streams-lambdas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams & Lambdas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/java-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Spring Boot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Spring Boot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot-core-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot-starter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Starter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot-rest-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    REST API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot-data-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Access
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot-actuator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actuator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot-aop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AOP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot-configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-data-jpa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Data JPA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-data-mongo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Data MongoDB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-kafka-integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    Learning Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    Table of Contents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure-and-architecture" class="md-nav__link">
+    Project Structure and Architecture
+  </a>
+  
+    <nav class="md-nav" aria-label="Project Structure and Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#package-organization" class="md-nav__link">
+    Package Organization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-proper-layering" class="md-nav__link">
+    Use Proper Layering
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modular-components" class="md-nav__link">
+    Modular Components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-circular-dependencies" class="md-nav__link">
+    Avoid Circular Dependencies
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-best-practices" class="md-nav__link">
+    Coding Best Practices
+  </a>
+  
+    <nav class="md-nav" aria-label="Coding Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-constructor-injection" class="md-nav__link">
+    Use Constructor Injection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-immutable-objects" class="md-nav__link">
+    Use Immutable Objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effective-error-handling" class="md-nav__link">
+    Effective Error Handling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-lombok-judiciously" class="md-nav__link">
+    Use Lombok Judiciously
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#follow-api-design-best-practices" class="md-nav__link">
+    Follow API Design Best Practices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-management" class="md-nav__link">
+    Configuration Management
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#externalize-configuration" class="md-nav__link">
+    Externalize Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-configuration-properties-classes" class="md-nav__link">
+    Use Configuration Properties Classes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-specific-profiles" class="md-nav__link">
+    Environment-Specific Profiles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secret-management" class="md-nav__link">
+    Secret Management
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-best-practices" class="md-nav__link">
+    Security Best Practices
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implement-proper-authentication-authorization" class="md-nav__link">
+    Implement Proper Authentication &amp; Authorization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protect-against-common-vulnerabilities" class="md-nav__link">
+    Protect Against Common Vulnerabilities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-https" class="md-nav__link">
+    Use HTTPS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-security-headers" class="md-nav__link">
+    Implement Security Headers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-validation" class="md-nav__link">
+    Input Validation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-access-and-data-management" class="md-nav__link">
+    Database Access and Data Management
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Access and Data Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-jpa-repositories-correctly" class="md-nav__link">
+    Use JPA Repositories Correctly
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-migrations" class="md-nav__link">
+    Database Migrations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-transactions-appropriately" class="md-nav__link">
+    Use Transactions Appropriately
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-pooling" class="md-nav__link">
+    Connection Pooling
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    Performance Optimization
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implement-caching" class="md-nav__link">
+    Implement Caching
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-async-processing" class="md-nav__link">
+    Use Async Processing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagination-and-efficient-querying" class="md-nav__link">
+    Pagination and Efficient Querying
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimize-jpa" class="md-nav__link">
+    Optimize JPA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-strategies" class="md-nav__link">
+    Testing Strategies
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    Unit Testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-testing" class="md-nav__link">
+    Integration Testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-slices" class="md-nav__link">
+    Test Slices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-considerations" class="md-nav__link">
+    Deployment Considerations
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-profiles-for-different-environments" class="md-nav__link">
+    Use Profiles for Different Environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-health-checks" class="md-nav__link">
+    Implement Health Checks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-actuator-for-production" class="md-nav__link">
+    Configure Actuator for Production
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-graceful-shutdown" class="md-nav__link">
+    Implement Graceful Shutdown
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-maintenance" class="md-nav__link">
+    Monitoring and Maintenance
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring and Maintenance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-comprehensive-logging" class="md-nav__link">
+    Configure Comprehensive Logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-metrics-collection" class="md-nav__link">
+    Implement Metrics Collection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-circuit-breakers" class="md-nav__link">
+    Implement Circuit Breakers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls-to-avoid" class="md-nav__link">
+    Common Pitfalls to Avoid
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Pitfalls to Avoid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bean-initialization-issues" class="md-nav__link">
+    Bean Initialization Issues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n1-query-problem" class="md-nav__link">
+    N+1 Query Problem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#excessive-memory-usage" class="md-nav__link">
+    Excessive Memory Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-error-handling" class="md-nav__link">
+    Missing Error Handling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-misconfigurations" class="md-nav__link">
+    Security Misconfigurations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further Reading
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Microservices
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Microservices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-communication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Communication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-discovery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Service Discovery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-resilience/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resilience
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-api-gateway/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Gateway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/microservices-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/saga-pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Saga Pattern
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/cqrs-pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CQRS Pattern
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/platform-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Platform Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-config-secrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config & Secrets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-scaling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scaling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/kubernetes-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Design Patterns
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Design Patterns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design-patterns/design-patterns-principles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design-patterns/design-patterns-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design-patterns/design-patterns-j2ee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    J2EE Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design-patterns/design-patterns-behavioral/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Behavioral Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design-patterns/design-patterns-structural/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Structural Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design-patterns/design-patterns-creational/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creational Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployment-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../search-implementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Search Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            About
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LICENSE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    Learning Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    Table of Contents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure-and-architecture" class="md-nav__link">
+    Project Structure and Architecture
+  </a>
+  
+    <nav class="md-nav" aria-label="Project Structure and Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#package-organization" class="md-nav__link">
+    Package Organization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-proper-layering" class="md-nav__link">
+    Use Proper Layering
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modular-components" class="md-nav__link">
+    Modular Components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-circular-dependencies" class="md-nav__link">
+    Avoid Circular Dependencies
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-best-practices" class="md-nav__link">
+    Coding Best Practices
+  </a>
+  
+    <nav class="md-nav" aria-label="Coding Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-constructor-injection" class="md-nav__link">
+    Use Constructor Injection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-immutable-objects" class="md-nav__link">
+    Use Immutable Objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effective-error-handling" class="md-nav__link">
+    Effective Error Handling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-lombok-judiciously" class="md-nav__link">
+    Use Lombok Judiciously
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#follow-api-design-best-practices" class="md-nav__link">
+    Follow API Design Best Practices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-management" class="md-nav__link">
+    Configuration Management
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#externalize-configuration" class="md-nav__link">
+    Externalize Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-configuration-properties-classes" class="md-nav__link">
+    Use Configuration Properties Classes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-specific-profiles" class="md-nav__link">
+    Environment-Specific Profiles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secret-management" class="md-nav__link">
+    Secret Management
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-best-practices" class="md-nav__link">
+    Security Best Practices
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implement-proper-authentication-authorization" class="md-nav__link">
+    Implement Proper Authentication &amp; Authorization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protect-against-common-vulnerabilities" class="md-nav__link">
+    Protect Against Common Vulnerabilities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-https" class="md-nav__link">
+    Use HTTPS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-security-headers" class="md-nav__link">
+    Implement Security Headers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-validation" class="md-nav__link">
+    Input Validation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-access-and-data-management" class="md-nav__link">
+    Database Access and Data Management
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Access and Data Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-jpa-repositories-correctly" class="md-nav__link">
+    Use JPA Repositories Correctly
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-migrations" class="md-nav__link">
+    Database Migrations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-transactions-appropriately" class="md-nav__link">
+    Use Transactions Appropriately
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-pooling" class="md-nav__link">
+    Connection Pooling
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    Performance Optimization
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implement-caching" class="md-nav__link">
+    Implement Caching
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-async-processing" class="md-nav__link">
+    Use Async Processing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagination-and-efficient-querying" class="md-nav__link">
+    Pagination and Efficient Querying
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimize-jpa" class="md-nav__link">
+    Optimize JPA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-strategies" class="md-nav__link">
+    Testing Strategies
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    Unit Testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-testing" class="md-nav__link">
+    Integration Testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-slices" class="md-nav__link">
+    Test Slices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-considerations" class="md-nav__link">
+    Deployment Considerations
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-profiles-for-different-environments" class="md-nav__link">
+    Use Profiles for Different Environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-health-checks" class="md-nav__link">
+    Implement Health Checks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-actuator-for-production" class="md-nav__link">
+    Configure Actuator for Production
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-graceful-shutdown" class="md-nav__link">
+    Implement Graceful Shutdown
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-maintenance" class="md-nav__link">
+    Monitoring and Maintenance
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring and Maintenance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-comprehensive-logging" class="md-nav__link">
+    Configure Comprehensive Logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-metrics-collection" class="md-nav__link">
+    Implement Metrics Collection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-circuit-breakers" class="md-nav__link">
+    Implement Circuit Breakers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls-to-avoid" class="md-nav__link">
+    Common Pitfalls to Avoid
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Pitfalls to Avoid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bean-initialization-issues" class="md-nav__link">
+    Bean Initialization Issues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n1-query-problem" class="md-nav__link">
+    N+1 Query Problem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#excessive-memory-usage" class="md-nav__link">
+    Excessive Memory Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-error-handling" class="md-nav__link">
+    Missing Error Handling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-misconfigurations" class="md-nav__link">
+    Security Misconfigurations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further Reading
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="spring-boot-best-practices">Spring Boot Best Practices<a class="headerlink" href="#spring-boot-best-practices" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This guide compiles essential best practices for Spring Boot application development. It covers project architecture, security considerations, performance optimization, testing strategies, and deployment techniques. Following these practices will help you build robust, maintainable, and efficient Spring Boot applications.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Basic knowledge of Spring Boot</li>
+<li>Understanding of Java development principles</li>
+<li>Familiarity with software development best practices</li>
+<li>Experience building Spring Boot applications</li>
+</ul>
+<h2 id="learning-objectives">Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Implement proper application architecture</li>
+<li>Apply effective coding standards and patterns</li>
+<li>Secure Spring Boot applications properly</li>
+<li>Optimize application performance</li>
+<li>Write effective tests for Spring Boot applications</li>
+<li>Deploy applications following best practices</li>
+<li>Monitor and maintain applications in production</li>
+</ul>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#project-structure-and-architecture">Project Structure and Architecture</a></li>
+<li><a href="#coding-best-practices">Coding Best Practices</a></li>
+<li><a href="#configuration-management">Configuration Management</a></li>
+<li><a href="#security-best-practices">Security Best Practices</a></li>
+<li><a href="#database-access-and-data-management">Database Access and Data Management</a></li>
+<li><a href="#performance-optimization">Performance Optimization</a></li>
+<li><a href="#testing-strategies">Testing Strategies</a></li>
+<li><a href="#deployment-considerations">Deployment Considerations</a></li>
+<li><a href="#monitoring-and-maintenance">Monitoring and Maintenance</a></li>
+<li><a href="#common-pitfalls-to-avoid">Common Pitfalls to Avoid</a></li>
+</ol>
+<h2 id="project-structure-and-architecture">Project Structure and Architecture<a class="headerlink" href="#project-structure-and-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="package-organization">Package Organization<a class="headerlink" href="#package-organization" title="Permanent link">&para;</a></h3>
+<p>Structure your application using a domain-driven or feature-based approach rather than a technical layered approach:</p>
+<div class="highlight"><pre><span></span><code>com.example.myapp/
+├── config/             # Global configuration
+├── common/             # Shared utilities and components
+├── security/           # Security configuration
+└── feature/            # Feature-specific packages
+    ├── user/           # User-related functionality
+    │   ├── controller/
+    │   ├── service/
+    │   ├── repository/
+    │   └── model/
+    └── product/        # Product-related functionality
+        ├── controller/
+        ├── service/
+        ├── repository/
+        └── model/
+</code></pre></div>
+<h3 id="use-proper-layering">Use Proper Layering<a class="headerlink" href="#use-proper-layering" title="Permanent link">&para;</a></h3>
+<p>Follow a clear separation of concerns with proper layering:</p>
+<ul>
+<li><strong>Controller Layer</strong>: Handles HTTP requests and responses</li>
+<li><strong>Service Layer</strong>: Contains business logic</li>
+<li><strong>Repository Layer</strong>: Manages data access</li>
+<li><strong>Model Layer</strong>: Defines entities and DTOs</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nd">@RestController</span>
+<span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&quot;/api/users&quot;</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">UserService</span><span class="w"> </span><span class="n">userService</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">UserController</span><span class="p">(</span><span class="n">UserService</span><span class="w"> </span><span class="n">userService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">userService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userService</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/{id}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">UserDTO</span><span class="w"> </span><span class="nf">getUser</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">userService</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Service</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">UserRepository</span><span class="w"> </span><span class="n">userRepository</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">UserMapper</span><span class="w"> </span><span class="n">userMapper</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Business logic methods</span>
+<span class="p">}</span>
+
+<span class="nd">@Repository</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">UserRepository</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">JpaRepository</span><span class="o">&lt;</span><span class="n">User</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Data access methods</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="modular-components">Modular Components<a class="headerlink" href="#modular-components" title="Permanent link">&para;</a></h3>
+<p>Design with modularity in mind:</p>
+<ul>
+<li>Keep components focused on single responsibilities</li>
+<li>Use interfaces for abstractions</li>
+<li>Implement dependency injection</li>
+<li>Create reusable modules</li>
+</ul>
+<h3 id="avoid-circular-dependencies">Avoid Circular Dependencies<a class="headerlink" href="#avoid-circular-dependencies" title="Permanent link">&para;</a></h3>
+<p>Prevent circular dependencies to maintain clean architecture:</p>
+<ul>
+<li>Ensure one-way dependencies between layers</li>
+<li>Use interfaces and dependency inversion</li>
+<li>Reorganize components if necessary</li>
+</ul>
+<h2 id="coding-best-practices">Coding Best Practices<a class="headerlink" href="#coding-best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="use-constructor-injection">Use Constructor Injection<a class="headerlink" href="#use-constructor-injection" title="Permanent link">&para;</a></h3>
+<p>Prefer constructor injection over field injection:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Good practice</span>
+<span class="nd">@Service</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProductService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ProductRepository</span><span class="w"> </span><span class="n">productRepository</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PriceCalculator</span><span class="w"> </span><span class="n">priceCalculator</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">ProductService</span><span class="p">(</span><span class="n">ProductRepository</span><span class="w"> </span><span class="n">productRepository</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                          </span><span class="n">PriceCalculator</span><span class="w"> </span><span class="n">priceCalculator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">productRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productRepository</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">priceCalculator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">priceCalculator</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Avoid</span>
+<span class="nd">@Service</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProductService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Autowired</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ProductRepository</span><span class="w"> </span><span class="n">productRepository</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Autowired</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">PriceCalculator</span><span class="w"> </span><span class="n">priceCalculator</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="use-immutable-objects">Use Immutable Objects<a class="headerlink" href="#use-immutable-objects" title="Permanent link">&para;</a></h3>
+<p>Create immutable DTOs and value objects:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserDTO</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">UserDTO</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">email</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Only getters, no setters</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="nf">getId</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getEmail</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">email</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="effective-error-handling">Effective Error Handling<a class="headerlink" href="#effective-error-handling" title="Permanent link">&para;</a></h3>
+<p>Implement consistent exception handling:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@ControllerAdvice</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GlobalExceptionHandler</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Logger</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LoggerFactory</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="n">GlobalExceptionHandler</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nd">@ExceptionHandler</span><span class="p">(</span><span class="n">ResourceNotFoundException</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">ErrorResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">handleResourceNotFound</span><span class="p">(</span><span class="n">ResourceNotFoundException</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="na">error</span><span class="p">(</span><span class="s">&quot;Resource not found: {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ex</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ErrorResponse</span><span class="p">(</span><span class="s">&quot;NOT_FOUND&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ex</span><span class="p">.</span><span class="na">getMessage</span><span class="p">()),</span><span class="w"> </span>
+<span class="w">                                    </span><span class="n">HttpStatus</span><span class="p">.</span><span class="na">NOT_FOUND</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@ExceptionHandler</span><span class="p">(</span><span class="n">Exception</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">ErrorResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">handleGenericException</span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="na">error</span><span class="p">(</span><span class="s">&quot;Unexpected error&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ex</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ErrorResponse</span><span class="p">(</span><span class="s">&quot;INTERNAL_ERROR&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                                                     </span><span class="s">&quot;An unexpected error occurred&quot;</span><span class="p">),</span><span class="w"> </span>
+<span class="w">                                    </span><span class="n">HttpStatus</span><span class="p">.</span><span class="na">INTERNAL_SERVER_ERROR</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="use-lombok-judiciously">Use Lombok Judiciously<a class="headerlink" href="#use-lombok-judiciously" title="Permanent link">&para;</a></h3>
+<p>Lombok can reduce boilerplate but use it carefully:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Data</span><span class="w">               </span><span class="c1">// Provides getters, setters, equals, hashCode, toString</span>
+<span class="nd">@NoArgsConstructor</span><span class="w">  </span><span class="c1">// Default constructor</span>
+<span class="nd">@AllArgsConstructor</span><span class="w"> </span><span class="c1">// Constructor with all attributes</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Product</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">BigDecimal</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="follow-api-design-best-practices">Follow API Design Best Practices<a class="headerlink" href="#follow-api-design-best-practices" title="Permanent link">&para;</a></h3>
+<p>Create RESTful APIs that follow conventions:</p>
+<ul>
+<li>Use appropriate HTTP methods (GET, POST, PUT, DELETE)</li>
+<li>Return proper status codes</li>
+<li>Use consistent URL patterns</li>
+<li>Version your APIs (via URL or headers)</li>
+<li>Provide comprehensive documentation with Swagger/OpenAPI</li>
+</ul>
+<h2 id="configuration-management">Configuration Management<a class="headerlink" href="#configuration-management" title="Permanent link">&para;</a></h2>
+<h3 id="externalize-configuration">Externalize Configuration<a class="headerlink" href="#externalize-configuration" title="Permanent link">&para;</a></h3>
+<p>Keep configuration external to your application:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># application.properties</span>
+<span class="na">spring.datasource.url</span><span class="o">=</span><span class="s">${DB_URL}</span>
+<span class="na">spring.datasource.username</span><span class="o">=</span><span class="s">${DB_USERNAME}</span>
+<span class="na">spring.datasource.password</span><span class="o">=</span><span class="s">${DB_PASSWORD}</span>
+</code></pre></div>
+<h3 id="use-configuration-properties-classes">Use Configuration Properties Classes<a class="headerlink" href="#use-configuration-properties-classes" title="Permanent link">&para;</a></h3>
+<p>Create typed configuration classes:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@ConfigurationProperties</span><span class="p">(</span><span class="n">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;app.service&quot;</span><span class="p">)</span>
+<span class="nd">@Validated</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ServiceProperties</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@NotNull</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">apiUrl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Min</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@Max</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Getters and setters</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="environment-specific-profiles">Environment-Specific Profiles<a class="headerlink" href="#environment-specific-profiles" title="Permanent link">&para;</a></h3>
+<p>Configure environment-specific settings with profiles:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># application-dev.yml</span>
+<span class="nt">logging</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">level</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+
+<span class="c1"># application-prod.yml</span>
+<span class="nt">logging</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">level</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WARN</span>
+</code></pre></div>
+<p>Activate with:
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>app.jar<span class="w"> </span>--spring.profiles.active<span class="o">=</span>prod
+</code></pre></div></p>
+<h3 id="secret-management">Secret Management<a class="headerlink" href="#secret-management" title="Permanent link">&para;</a></h3>
+<p>Never hardcode secrets:</p>
+<ul>
+<li>Use environment variables</li>
+<li>Use a secrets vault</li>
+<li>Use encrypted properties with jasypt</li>
+</ul>
+<h2 id="security-best-practices">Security Best Practices<a class="headerlink" href="#security-best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="implement-proper-authentication-authorization">Implement Proper Authentication &amp; Authorization<a class="headerlink" href="#implement-proper-authentication-authorization" title="Permanent link">&para;</a></h3>
+<p>Configure Spring Security correctly:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span>
+<span class="nd">@EnableWebSecurity</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SecurityConfig</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Bean</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">SecurityFilterChain</span><span class="w"> </span><span class="nf">filterChain</span><span class="p">(</span><span class="n">HttpSecurity</span><span class="w"> </span><span class="n">http</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">http</span>
+<span class="w">            </span><span class="p">.</span><span class="na">authorizeHttpRequests</span><span class="p">(</span><span class="n">authorize</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">authorize</span>
+<span class="w">                </span><span class="p">.</span><span class="na">requestMatchers</span><span class="p">(</span><span class="s">&quot;/api/public/**&quot;</span><span class="p">).</span><span class="na">permitAll</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">requestMatchers</span><span class="p">(</span><span class="s">&quot;/api/admin/**&quot;</span><span class="p">).</span><span class="na">hasRole</span><span class="p">(</span><span class="s">&quot;ADMIN&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">anyRequest</span><span class="p">().</span><span class="na">authenticated</span><span class="p">()</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">formLogin</span><span class="p">(</span><span class="n">withDefaults</span><span class="p">())</span>
+<span class="w">            </span><span class="p">.</span><span class="na">csrf</span><span class="p">().</span><span class="na">disable</span><span class="p">();</span><span class="w"> </span><span class="c1">// Only disable for REST APIs with proper considerations</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">http</span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="protect-against-common-vulnerabilities">Protect Against Common Vulnerabilities<a class="headerlink" href="#protect-against-common-vulnerabilities" title="Permanent link">&para;</a></h3>
+<p>Implement protections against:</p>
+<ul>
+<li>SQL Injection: Use parameterized queries</li>
+<li>XSS: Ensure proper output encoding</li>
+<li>CSRF: Enable CSRF protection</li>
+<li>Authentication bypass: Implement secure authentication</li>
+</ul>
+<h3 id="use-https">Use HTTPS<a class="headerlink" href="#use-https" title="Permanent link">&para;</a></h3>
+<p>Configure SSL in production:</p>
+<div class="highlight"><pre><span></span><code><span class="na">server.ssl.key-store</span><span class="o">=</span><span class="s">classpath:keystore.p12</span>
+<span class="na">server.ssl.key-store-password</span><span class="o">=</span><span class="s">${KEYSTORE_PASSWORD}</span>
+<span class="na">server.ssl.key-store-type</span><span class="o">=</span><span class="s">PKCS12</span>
+<span class="na">server.ssl.key-alias</span><span class="o">=</span><span class="s">tomcat</span>
+<span class="na">server.port</span><span class="o">=</span><span class="s">8443</span>
+</code></pre></div>
+<h3 id="implement-security-headers">Implement Security Headers<a class="headerlink" href="#implement-security-headers" title="Permanent link">&para;</a></h3>
+<p>Add security headers:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">WebSecurityConfig</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Bean</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">WebSecurityCustomizer</span><span class="w"> </span><span class="nf">webSecurityCustomizer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">web</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">web</span><span class="p">.</span><span class="na">httpFirewall</span><span class="p">(</span><span class="n">allowUrlEncodedSlashHttpFirewall</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Bean</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">HttpFirewall</span><span class="w"> </span><span class="nf">allowUrlEncodedSlashHttpFirewall</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">StrictHttpFirewall</span><span class="w"> </span><span class="n">firewall</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StrictHttpFirewall</span><span class="p">();</span>
+<span class="w">        </span><span class="n">firewall</span><span class="p">.</span><span class="na">setAllowUrlEncodedSlash</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">firewall</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Bean</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">SecurityFilterChain</span><span class="w"> </span><span class="nf">filterChain</span><span class="p">(</span><span class="n">HttpSecurity</span><span class="w"> </span><span class="n">http</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">http</span>
+<span class="w">            </span><span class="p">.</span><span class="na">headers</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">contentSecurityPolicy</span><span class="p">(</span><span class="s">&quot;script-src &#39;self&#39;&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">frameOptions</span><span class="p">().</span><span class="na">deny</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">xssProtection</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">and</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">httpStrictTransportSecurity</span><span class="p">()</span>
+<span class="w">                    </span><span class="p">.</span><span class="na">includeSubDomains</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">.</span><span class="na">maxAgeInSeconds</span><span class="p">(</span><span class="mi">31536000</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">http</span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="input-validation">Input Validation<a class="headerlink" href="#input-validation" title="Permanent link">&para;</a></h3>
+<p>Validate all user inputs:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/users&quot;</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">UserDTO</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createUser</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">UserRequest</span><span class="w"> </span><span class="n">userRequest</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Process validated input</span>
+<span class="p">}</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserRequest</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@NotBlank</span>
+<span class="w">    </span><span class="nd">@Size</span><span class="p">(</span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@NotBlank</span>
+<span class="w">    </span><span class="nd">@Email</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@NotBlank</span>
+<span class="w">    </span><span class="nd">@Pattern</span><span class="p">(</span><span class="n">regexp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Getters and setters</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="database-access-and-data-management">Database Access and Data Management<a class="headerlink" href="#database-access-and-data-management" title="Permanent link">&para;</a></h2>
+<h3 id="use-jpa-repositories-correctly">Use JPA Repositories Correctly<a class="headerlink" href="#use-jpa-repositories-correctly" title="Permanent link">&para;</a></h3>
+<p>Follow best practices for Spring Data JPA:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Repository</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">ProductRepository</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">JpaRepository</span><span class="o">&lt;</span><span class="n">Product</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findByCategory</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">category</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nd">@Query</span><span class="p">(</span><span class="s">&quot;SELECT p FROM Product p WHERE p.price &lt; :maxPrice AND p.active = true&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findActiveBelowPrice</span><span class="p">(</span><span class="nd">@Param</span><span class="p">(</span><span class="s">&quot;maxPrice&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">BigDecimal</span><span class="w"> </span><span class="n">maxPrice</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nd">@Modifying</span>
+<span class="w">    </span><span class="nd">@Query</span><span class="p">(</span><span class="s">&quot;UPDATE Product p SET p.active = false WHERE p.id = :id&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">deactivate</span><span class="p">(</span><span class="nd">@Param</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="database-migrations">Database Migrations<a class="headerlink" href="#database-migrations" title="Permanent link">&para;</a></h3>
+<p>Use a database migration tool:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+<span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.flywaydb<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>flyway-core<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<p>Structure migration scripts:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- V1__Initial_schema.sql</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">BIGINT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">username</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="p">);</span>
+
+<span class="c1">-- V2__Add_user_details.sql</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">created_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="use-transactions-appropriately">Use Transactions Appropriately<a class="headerlink" href="#use-transactions-appropriately" title="Permanent link">&para;</a></h3>
+<p>Implement transaction management:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Service</span>
+<span class="nd">@Transactional</span><span class="p">(</span><span class="n">readOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderService</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PaymentService</span><span class="w"> </span><span class="n">paymentService</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">OrderService</span><span class="p">(</span><span class="n">OrderRepository</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">,</span><span class="w"> </span><span class="n">PaymentService</span><span class="w"> </span><span class="n">paymentService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">orderRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">paymentService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paymentService</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Transactional</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Order</span><span class="w"> </span><span class="nf">placeOrder</span><span class="p">(</span><span class="n">OrderRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Create order</span>
+<span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// Set order details</span>
+<span class="w">        </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">order</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Process payment</span>
+<span class="w">        </span><span class="n">paymentService</span><span class="p">.</span><span class="na">processPayment</span><span class="p">(</span><span class="n">order</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">order</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="connection-pooling">Connection Pooling<a class="headerlink" href="#connection-pooling" title="Permanent link">&para;</a></h3>
+<p>Configure connection pooling properly:</p>
+<div class="highlight"><pre><span></span><code><span class="na">spring.datasource.hikari.maximum-pool-size</span><span class="o">=</span><span class="s">10</span>
+<span class="na">spring.datasource.hikari.minimum-idle</span><span class="o">=</span><span class="s">5</span>
+<span class="na">spring.datasource.hikari.idle-timeout</span><span class="o">=</span><span class="s">30000</span>
+<span class="na">spring.datasource.hikari.connection-timeout</span><span class="o">=</span><span class="s">20000</span>
+</code></pre></div>
+<h2 id="performance-optimization">Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="implement-caching">Implement Caching<a class="headerlink" href="#implement-caching" title="Permanent link">&para;</a></h3>
+<p>Use Spring's caching abstraction:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span>
+<span class="nd">@EnableCaching</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CachingConfig</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Bean</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">CacheManager</span><span class="w"> </span><span class="nf">cacheManager</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">SimpleCacheManager</span><span class="w"> </span><span class="n">cacheManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleCacheManager</span><span class="p">();</span>
+<span class="w">        </span><span class="n">cacheManager</span><span class="p">.</span><span class="na">setCaches</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">ConcurrentMapCache</span><span class="p">(</span><span class="s">&quot;products&quot;</span><span class="p">),</span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">ConcurrentMapCache</span><span class="p">(</span><span class="s">&quot;categories&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">));</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cacheManager</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Service</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProductService</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Cacheable</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;products&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;#id&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="nf">getProduct</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// This will be cached</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">productRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="na">orElseThrow</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@CacheEvict</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;products&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;#product.id&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">updateProduct</span><span class="p">(</span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">productRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">product</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@CacheEvict</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;products&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">allEntries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">clearCache</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Clears the entire cache</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="use-async-processing">Use Async Processing<a class="headerlink" href="#use-async-processing" title="Permanent link">&para;</a></h3>
+<p>Implement asynchronous processing for long-running tasks:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span>
+<span class="nd">@EnableAsync</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AsyncConfig</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Bean</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;taskExecutor&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Executor</span><span class="w"> </span><span class="nf">taskExecutor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ThreadPoolTaskExecutor</span><span class="w"> </span><span class="n">executor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolTaskExecutor</span><span class="p">();</span>
+<span class="w">        </span><span class="n">executor</span><span class="p">.</span><span class="na">setCorePoolSize</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="w">        </span><span class="n">executor</span><span class="p">.</span><span class="na">setMaxPoolSize</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">        </span><span class="n">executor</span><span class="p">.</span><span class="na">setQueueCapacity</span><span class="p">(</span><span class="mi">25</span><span class="p">);</span>
+<span class="w">        </span><span class="n">executor</span><span class="p">.</span><span class="na">setThreadNamePrefix</span><span class="p">(</span><span class="s">&quot;AsyncTask-&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Service</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EmailService</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Async</span><span class="p">(</span><span class="s">&quot;taskExecutor&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">CompletableFuture</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">sendEmail</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">subject</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">content</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Send email asynchronously</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">CompletableFuture</span><span class="p">.</span><span class="na">completedFuture</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="pagination-and-efficient-querying">Pagination and Efficient Querying<a class="headerlink" href="#pagination-and-efficient-querying" title="Permanent link">&para;</a></h3>
+<p>Implement pagination for large result sets:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/products&quot;</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">Page</span><span class="o">&lt;</span><span class="n">ProductDTO</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getProducts</span><span class="p">(</span>
+<span class="w">        </span><span class="nd">@RequestParam</span><span class="p">(</span><span class="n">defaultValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">page</span><span class="p">,</span>
+<span class="w">        </span><span class="nd">@RequestParam</span><span class="p">(</span><span class="n">defaultValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;20&quot;</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">,</span>
+<span class="w">        </span><span class="nd">@RequestParam</span><span class="p">(</span><span class="n">defaultValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;id&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">sortBy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="n">Pageable</span><span class="w"> </span><span class="n">pageable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PageRequest</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">page</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">Sort</span><span class="p">.</span><span class="na">by</span><span class="p">(</span><span class="n">sortBy</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">productRepository</span><span class="p">.</span><span class="na">findAll</span><span class="p">(</span><span class="n">pageable</span><span class="p">).</span><span class="na">map</span><span class="p">(</span><span class="n">productMapper</span><span class="p">::</span><span class="n">toDto</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Use projection for partial data retrieval:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">ProductSummary</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Long</span><span class="w"> </span><span class="nf">getId</span><span class="p">();</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">();</span>
+<span class="w">    </span><span class="n">BigDecimal</span><span class="w"> </span><span class="nf">getPrice</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nd">@Repository</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">ProductRepository</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">JpaRepository</span><span class="o">&lt;</span><span class="n">Product</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">ProductSummary</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findAllBy</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="optimize-jpa">Optimize JPA<a class="headerlink" href="#optimize-jpa" title="Permanent link">&para;</a></h3>
+<p>Tune JPA for performance:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Batch processing</span>
+<span class="na">spring.jpa.properties.hibernate.jdbc.batch_size</span><span class="o">=</span><span class="s">50</span>
+<span class="na">spring.jpa.properties.hibernate.order_inserts</span><span class="o">=</span><span class="s">true</span>
+<span class="na">spring.jpa.properties.hibernate.order_updates</span><span class="o">=</span><span class="s">true</span>
+
+<span class="c1"># Second-level cache</span>
+<span class="na">spring.jpa.properties.hibernate.cache.use_second_level_cache</span><span class="o">=</span><span class="s">true</span>
+<span class="na">spring.jpa.properties.hibernate.cache.region.factory_class</span><span class="o">=</span><span class="s">org.hibernate.cache.jcache.JCacheRegionFactory</span>
+<span class="na">spring.jpa.properties.hibernate.javax.cache.provider</span><span class="o">=</span><span class="s">org.ehcache.jsr107.EhcacheCachingProvider</span>
+</code></pre></div>
+<h2 id="testing-strategies">Testing Strategies<a class="headerlink" href="#testing-strategies" title="Permanent link">&para;</a></h2>
+<h3 id="unit-testing">Unit Testing<a class="headerlink" href="#unit-testing" title="Permanent link">&para;</a></h3>
+<p>Write effective unit tests:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@ExtendWith</span><span class="p">(</span><span class="n">MockitoExtension</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="kd">class</span> <span class="nc">ProductServiceTests</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Mock</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ProductRepository</span><span class="w"> </span><span class="n">productRepository</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@InjectMocks</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ProductService</span><span class="w"> </span><span class="n">productService</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Test</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldReturnProductWhenExists</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Arrange</span>
+<span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="p">(</span><span class="mi">1L</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Test Product&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">BigDecimal</span><span class="p">.</span><span class="na">TEN</span><span class="p">);</span>
+<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">productRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="mi">1L</span><span class="p">)).</span><span class="na">thenReturn</span><span class="p">(</span><span class="n">Optional</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">product</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// Act</span>
+<span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productService</span><span class="p">.</span><span class="na">getProduct</span><span class="p">(</span><span class="mi">1L</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Assert</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">result</span><span class="p">).</span><span class="na">isNotNull</span><span class="p">();</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">getName</span><span class="p">()).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="s">&quot;Test Product&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">verify</span><span class="p">(</span><span class="n">productRepository</span><span class="p">).</span><span class="na">findById</span><span class="p">(</span><span class="mi">1L</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Test</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldThrowExceptionWhenProductNotFound</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Arrange</span>
+<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">productRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">anyLong</span><span class="p">())).</span><span class="na">thenReturn</span><span class="p">(</span><span class="n">Optional</span><span class="p">.</span><span class="na">empty</span><span class="p">());</span>
+
+<span class="w">        </span><span class="c1">// Act &amp; Assert</span>
+<span class="w">        </span><span class="n">assertThatThrownBy</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">productService</span><span class="p">.</span><span class="na">getProduct</span><span class="p">(</span><span class="mi">1L</span><span class="p">))</span>
+<span class="w">                </span><span class="p">.</span><span class="na">isInstanceOf</span><span class="p">(</span><span class="n">NotFoundException</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="integration-testing">Integration Testing<a class="headerlink" href="#integration-testing" title="Permanent link">&para;</a></h3>
+<p>Implement integration tests:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@SpringBootTest</span>
+<span class="nd">@TestPropertySource</span><span class="p">(</span><span class="n">properties</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;spring.datasource.url=jdbc:h2:mem:testdb&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;spring.jpa.hibernate.ddl-auto=create-drop&quot;</span>
+<span class="p">})</span>
+<span class="kd">class</span> <span class="nc">ProductIntegrationTests</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Autowired</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ProductRepository</span><span class="w"> </span><span class="n">productRepository</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Autowired</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ProductService</span><span class="w"> </span><span class="n">productService</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Test</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldSaveAndRetrieveProduct</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Arrange</span>
+<span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="p">();</span>
+<span class="w">        </span><span class="n">product</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;Integration Test Product&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">product</span><span class="p">.</span><span class="na">setPrice</span><span class="p">(</span><span class="n">BigDecimal</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="mf">29.99</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// Act</span>
+<span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">product</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">retrieved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productService</span><span class="p">.</span><span class="na">getProduct</span><span class="p">(</span><span class="n">saved</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span>
+
+<span class="w">        </span><span class="c1">// Assert</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">retrieved</span><span class="p">).</span><span class="na">isNotNull</span><span class="p">();</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">retrieved</span><span class="p">.</span><span class="na">getName</span><span class="p">()).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="s">&quot;Integration Test Product&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="test-slices">Test Slices<a class="headerlink" href="#test-slices" title="Permanent link">&para;</a></h3>
+<p>Use test slices for focused testing:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@WebMvcTest</span><span class="p">(</span><span class="n">ProductController</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="kd">class</span> <span class="nc">ProductControllerTests</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Autowired</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">MockMvc</span><span class="w"> </span><span class="n">mockMvc</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@MockBean</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ProductService</span><span class="w"> </span><span class="n">productService</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Test</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldReturnProductWhenExists</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Arrange</span>
+<span class="w">        </span><span class="n">ProductDTO</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProductDTO</span><span class="p">(</span><span class="mi">1L</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Test Product&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">BigDecimal</span><span class="p">.</span><span class="na">TEN</span><span class="p">);</span>
+<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">productService</span><span class="p">.</span><span class="na">getProductDto</span><span class="p">(</span><span class="mi">1L</span><span class="p">)).</span><span class="na">thenReturn</span><span class="p">(</span><span class="n">product</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Act &amp; Assert</span>
+<span class="w">        </span><span class="n">mockMvc</span><span class="p">.</span><span class="na">perform</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;/api/products/1&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">contentType</span><span class="p">(</span><span class="n">MediaType</span><span class="p">.</span><span class="na">APPLICATION_JSON</span><span class="p">))</span>
+<span class="w">                </span><span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">status</span><span class="p">().</span><span class="na">isOk</span><span class="p">())</span>
+<span class="w">                </span><span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">jsonPath</span><span class="p">(</span><span class="s">&quot;$.id&quot;</span><span class="p">).</span><span class="na">value</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="w">                </span><span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">jsonPath</span><span class="p">(</span><span class="s">&quot;$.name&quot;</span><span class="p">).</span><span class="na">value</span><span class="p">(</span><span class="s">&quot;Test Product&quot;</span><span class="p">))</span>
+<span class="w">                </span><span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">jsonPath</span><span class="p">(</span><span class="s">&quot;$.price&quot;</span><span class="p">).</span><span class="na">value</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@DataJpaTest</span>
+<span class="kd">class</span> <span class="nc">ProductRepositoryTests</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Autowired</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ProductRepository</span><span class="w"> </span><span class="n">productRepository</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Test</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldFindProductsByCategory</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Arrange</span>
+<span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">product1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="p">();</span>
+<span class="w">        </span><span class="n">product1</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;Product 1&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">product1</span><span class="p">.</span><span class="na">setCategory</span><span class="p">(</span><span class="s">&quot;Electronics&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">productRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">product1</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">product2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="p">();</span>
+<span class="w">        </span><span class="n">product2</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;Product 2&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">product2</span><span class="p">.</span><span class="na">setCategory</span><span class="p">(</span><span class="s">&quot;Books&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">productRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">product2</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Act</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="w"> </span><span class="n">electronics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productRepository</span><span class="p">.</span><span class="na">findByCategory</span><span class="p">(</span><span class="s">&quot;Electronics&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Assert</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">electronics</span><span class="p">).</span><span class="na">hasSize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">electronics</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="na">getName</span><span class="p">()).</span><span class="na">isEqualTo</span><span class="p">(</span><span class="s">&quot;Product 1&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="deployment-considerations">Deployment Considerations<a class="headerlink" href="#deployment-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="use-profiles-for-different-environments">Use Profiles for Different Environments<a class="headerlink" href="#use-profiles-for-different-environments" title="Permanent link">&para;</a></h3>
+<p>Configure environment-specific settings:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># application-dev.properties</span>
+<span class="na">logging.level.org.springframework</span><span class="o">=</span><span class="s">DEBUG</span>
+<span class="na">spring.datasource.url</span><span class="o">=</span><span class="s">jdbc:h2:mem:devdb</span>
+
+<span class="c1"># application-prod.properties</span>
+<span class="na">logging.level.org.springframework</span><span class="o">=</span><span class="s">WARN</span>
+<span class="na">spring.datasource.url</span><span class="o">=</span><span class="s">${JDBC_DATABASE_URL}</span>
+</code></pre></div>
+<h3 id="implement-health-checks">Implement Health Checks<a class="headerlink" href="#implement-health-checks" title="Permanent link">&para;</a></h3>
+<p>Add comprehensive health checks:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Component</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DatabaseHealthIndicator</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">HealthIndicator</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">DataSource</span><span class="w"> </span><span class="n">dataSource</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">DatabaseHealthIndicator</span><span class="p">(</span><span class="n">DataSource</span><span class="w"> </span><span class="n">dataSource</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">dataSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataSource</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Health</span><span class="w"> </span><span class="nf">health</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">Connection</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataSource</span><span class="p">.</span><span class="na">getConnection</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">PreparedStatement</span><span class="w"> </span><span class="n">ps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p">.</span><span class="na">prepareStatement</span><span class="p">(</span><span class="s">&quot;SELECT 1&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">ps</span><span class="p">.</span><span class="na">executeQuery</span><span class="p">();</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Health</span><span class="p">.</span><span class="na">up</span><span class="p">()</span>
+<span class="w">                    </span><span class="p">.</span><span class="na">withDetail</span><span class="p">(</span><span class="s">&quot;database&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">.</span><span class="na">getMetaData</span><span class="p">().</span><span class="na">getDatabaseProductName</span><span class="p">())</span>
+<span class="w">                    </span><span class="p">.</span><span class="na">withDetail</span><span class="p">(</span><span class="s">&quot;version&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">.</span><span class="na">getMetaData</span><span class="p">().</span><span class="na">getDatabaseProductVersion</span><span class="p">())</span>
+<span class="w">                    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">SQLException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Health</span><span class="p">.</span><span class="na">down</span><span class="p">()</span>
+<span class="w">                    </span><span class="p">.</span><span class="na">withDetail</span><span class="p">(</span><span class="s">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">())</span>
+<span class="w">                    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="configure-actuator-for-production">Configure Actuator for Production<a class="headerlink" href="#configure-actuator-for-production" title="Permanent link">&para;</a></h3>
+<p>Set up Actuator properly:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Enable specific endpoints</span>
+<span class="na">management.endpoints.web.exposure.include</span><span class="o">=</span><span class="s">health,info,metrics,prometheus</span>
+<span class="na">management.endpoint.health.show-details</span><span class="o">=</span><span class="s">when-authorized</span>
+<span class="na">management.health.probes.enabled</span><span class="o">=</span><span class="s">true</span>
+
+<span class="c1"># Enable Kubernetes probes</span>
+<span class="na">management.endpoint.health.group.readiness.include</span><span class="o">=</span><span class="s">readinessState,db</span>
+<span class="na">management.endpoint.health.group.liveness.include</span><span class="o">=</span><span class="s">livenessState</span>
+</code></pre></div>
+<h3 id="implement-graceful-shutdown">Implement Graceful Shutdown<a class="headerlink" href="#implement-graceful-shutdown" title="Permanent link">&para;</a></h3>
+<p>Configure graceful application shutdown:</p>
+<div class="highlight"><pre><span></span><code><span class="na">server.shutdown</span><span class="o">=</span><span class="s">graceful</span>
+<span class="na">spring.lifecycle.timeout-per-shutdown-phase</span><span class="o">=</span><span class="s">20s</span>
+</code></pre></div>
+<h2 id="monitoring-and-maintenance">Monitoring and Maintenance<a class="headerlink" href="#monitoring-and-maintenance" title="Permanent link">&para;</a></h2>
+<h3 id="configure-comprehensive-logging">Configure Comprehensive Logging<a class="headerlink" href="#configure-comprehensive-logging" title="Permanent link">&para;</a></h3>
+<p>Set up appropriate logging:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># File logging</span>
+<span class="na">logging.file.name</span><span class="o">=</span><span class="s">/var/log/myapp.log</span>
+<span class="na">logging.file.max-size</span><span class="o">=</span><span class="s">10MB</span>
+<span class="na">logging.file.max-history</span><span class="o">=</span><span class="s">10</span>
+
+<span class="c1"># Log levels</span>
+<span class="na">logging.level.root</span><span class="o">=</span><span class="s">INFO</span>
+<span class="na">logging.level.org.springframework.web</span><span class="o">=</span><span class="s">WARN</span>
+<span class="na">logging.level.com.example.myapp</span><span class="o">=</span><span class="s">DEBUG</span>
+
+<span class="c1"># JSON format for cloud</span>
+<span class="na">logging.pattern.console</span><span class="o">=</span><span class="s">{&quot;time&quot;:&quot;%d&quot;,&quot;level&quot;:&quot;%p&quot;,&quot;thread&quot;:&quot;%t&quot;,&quot;class&quot;:&quot;%logger{40}&quot;,&quot;message&quot;:&quot;%m&quot;}%n</span>
+</code></pre></div>
+<h3 id="implement-metrics-collection">Implement Metrics Collection<a class="headerlink" href="#implement-metrics-collection" title="Permanent link">&para;</a></h3>
+<p>Add custom metrics:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@RestController</span>
+<span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&quot;/api/products&quot;</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProductController</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ProductService</span><span class="w"> </span><span class="n">productService</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">MeterRegistry</span><span class="w"> </span><span class="n">meterRegistry</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">ProductController</span><span class="p">(</span><span class="n">ProductService</span><span class="w"> </span><span class="n">productService</span><span class="p">,</span><span class="w"> </span><span class="n">MeterRegistry</span><span class="w"> </span><span class="n">meterRegistry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">productService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">productService</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">meterRegistry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">meterRegistry</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/{id}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ProductDTO</span><span class="w"> </span><span class="nf">getProduct</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">meterRegistry</span><span class="p">.</span><span class="na">counter</span><span class="p">(</span><span class="s">&quot;product.access&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">.</span><span class="na">toString</span><span class="p">()).</span><span class="na">increment</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">productService</span><span class="p">.</span><span class="na">getProductDto</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="implement-circuit-breakers">Implement Circuit Breakers<a class="headerlink" href="#implement-circuit-breakers" title="Permanent link">&para;</a></h3>
+<p>Use circuit breakers for external service calls:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Service</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ExternalServiceClient</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">RestTemplate</span><span class="w"> </span><span class="n">restTemplate</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Constructor</span>
+
+<span class="w">    </span><span class="nd">@CircuitBreaker</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;externalService&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fallbackMethod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;getDefaultData&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ApiResponse</span><span class="w"> </span><span class="nf">getData</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">restTemplate</span><span class="p">.</span><span class="na">getForObject</span><span class="p">(</span><span class="s">&quot;/api/data/{id}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ApiResponse</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ApiResponse</span><span class="w"> </span><span class="nf">getDefaultData</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ApiResponse</span><span class="p">(</span><span class="s">&quot;Default data for &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="common-pitfalls-to-avoid">Common Pitfalls to Avoid<a class="headerlink" href="#common-pitfalls-to-avoid" title="Permanent link">&para;</a></h2>
+<h3 id="bean-initialization-issues">Bean Initialization Issues<a class="headerlink" href="#bean-initialization-issues" title="Permanent link">&para;</a></h3>
+<p>Avoid circular dependencies:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Problem</span>
+<span class="nd">@Service</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ServiceA</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Autowired</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ServiceB</span><span class="w"> </span><span class="n">serviceB</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nd">@Service</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ServiceB</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Autowired</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ServiceA</span><span class="w"> </span><span class="n">serviceA</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Solution</span>
+<span class="nd">@Service</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ServiceA</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Autowired</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ServiceB</span><span class="w"> </span><span class="n">serviceB</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nd">@Service</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ServiceB</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Use a different pattern or refactor to eliminate circular dependency</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="n1-query-problem">N+1 Query Problem<a class="headerlink" href="#n1-query-problem" title="Permanent link">&para;</a></h3>
+<p>Avoid the N+1 query anti-pattern:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Problem</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">orders</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// This causes N additional queries</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">getItems</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Solution</span>
+<span class="nd">@Repository</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">OrderRepository</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">JpaRepository</span><span class="o">&lt;</span><span class="n">Order</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Query</span><span class="p">(</span><span class="s">&quot;SELECT o FROM Order o LEFT JOIN FETCH o.items&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findAllWithItems</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderRepository</span><span class="p">.</span><span class="na">findAllWithItems</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="excessive-memory-usage">Excessive Memory Usage<a class="headerlink" href="#excessive-memory-usage" title="Permanent link">&para;</a></h3>
+<p>Avoid loading large datasets into memory:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Problem</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">allUsers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userRepository</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span><span class="w"> </span><span class="c1">// Might load millions of records</span>
+
+<span class="c1">// Solution</span>
+<span class="n">Pageable</span><span class="w"> </span><span class="n">pageable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PageRequest</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="n">Page</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">userPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userRepository</span><span class="p">.</span><span class="na">findAll</span><span class="p">(</span><span class="n">pageable</span><span class="p">);</span>
+
+<span class="c1">// Process first page</span>
+<span class="n">processUsers</span><span class="p">(</span><span class="n">userPage</span><span class="p">.</span><span class="na">getContent</span><span class="p">());</span>
+
+<span class="c1">// Process subsequent pages if needed</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">userPage</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pageable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userPage</span><span class="p">.</span><span class="na">nextPageable</span><span class="p">();</span>
+<span class="w">    </span><span class="n">userPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userRepository</span><span class="p">.</span><span class="na">findAll</span><span class="p">(</span><span class="n">pageable</span><span class="p">);</span>
+<span class="w">    </span><span class="n">processUsers</span><span class="p">(</span><span class="n">userPage</span><span class="p">.</span><span class="na">getContent</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="missing-error-handling">Missing Error Handling<a class="headerlink" href="#missing-error-handling" title="Permanent link">&para;</a></h3>
+<p>Always handle exceptions properly:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Problem</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="nf">getUser</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">userRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"> </span><span class="c1">// NoSuchElementException if not found</span>
+<span class="p">}</span>
+
+<span class="c1">// Solution</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="nf">getUser</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">userRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ResourceNotFoundException</span><span class="p">(</span><span class="s">&quot;User not found: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="security-misconfigurations">Security Misconfigurations<a class="headerlink" href="#security-misconfigurations" title="Permanent link">&para;</a></h3>
+<p>Avoid common security pitfalls:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Problem - disabled CSRF without proper alternative</span>
+<span class="n">http</span><span class="p">.</span><span class="na">csrf</span><span class="p">().</span><span class="na">disable</span><span class="p">();</span>
+
+<span class="c1">// Solution - only disable if you have good reason and implement alternatives</span>
+<span class="n">http</span>
+<span class="w">    </span><span class="p">.</span><span class="na">csrf</span><span class="p">().</span><span class="na">disable</span><span class="p">()</span><span class="w"> </span><span class="c1">// Only if using token-based auth with proper practices</span>
+<span class="w">    </span><span class="p">.</span><span class="na">headers</span><span class="p">(</span><span class="n">headers</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">headers</span>
+<span class="w">        </span><span class="p">.</span><span class="na">contentSecurityPolicy</span><span class="p">(</span><span class="s">&quot;default-src &#39;self&#39;&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">frameOptions</span><span class="p">().</span><span class="na">deny</span><span class="p">()</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">sessionManagement</span><span class="p">(</span><span class="n">session</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">session</span>
+<span class="w">        </span><span class="p">.</span><span class="na">sessionCreationPolicy</span><span class="p">(</span><span class="n">SessionCreationPolicy</span><span class="p">.</span><span class="na">STATELESS</span><span class="p">)</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>This guide covered essential best practices for Spring Boot development:</p>
+<ul>
+<li>Organize your project with a proper architecture</li>
+<li>Follow coding practices that enhance maintainability</li>
+<li>Implement proper configuration management</li>
+<li>Apply security best practices to protect your application</li>
+<li>Optimize database access and data management</li>
+<li>Implement performance optimizations</li>
+<li>Write effective tests using Spring Boot's testing facilities</li>
+<li>Follow deployment best practices</li>
+<li>Implement proper monitoring and maintenance</li>
+<li>Avoid common pitfalls</li>
+</ul>
+<p>Following these practices will help you build robust, maintainable, and efficient Spring Boot applications that are secure and perform well in production.</p>
+<h2 id="further-reading">Further Reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/">Spring Boot Documentation</a></li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/">Spring Framework Documentation</a></li>
+<li><a href="https://docs.spring.io/spring-security/reference/index.html">Spring Security Documentation</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html">Spring Boot Production-Ready Features</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing">Spring Boot Testing Documentation</a></li>
+<li><a href="https://owasp.org/www-project-top-ten/">OWASP Top Ten</a> </li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 Your Organization
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yourusername" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+    
+  </body>
+</html>
