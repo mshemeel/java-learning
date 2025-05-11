@@ -26,7 +26,7 @@ There are several ways you can contribute to the Java Learning Platform:
 1. Fork the repository
 2. Clone your fork locally
    ```bash
-   git clone https://github.com/yourusername/java-learning.git
+   git clone https://github.com/mshemeel/java-learning.git
    cd java-learning
    ```
 3. Install dependencies

@@ -95,7 +95,7 @@ jobs:
 3. Under "Custom domain", enter your domain name
 4. Save the configuration
 5. Update DNS settings at your domain registrar:
-   - Add a CNAME record pointing to `yourusername.github.io`
+   - Add a CNAME record pointing to `mshemeel.github.io`
    - Or, for apex domains, add A records pointing to GitHub's IP addresses:
      ```
      185.199.108.153
@@ -141,7 +141,7 @@ Before deploying, test your documentation locally:
 
 ```bash
 # Clone the repository (if you haven't already)
-git clone https://github.com/yourusername/java-learning.git
+git clone https://github.com/mshemeel/java-learning.git
 cd java-learning
 
 # Install dependencies

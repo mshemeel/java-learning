@@ -61,7 +61,7 @@ Please let us know what we can improve:
 
 You can also provide feedback by opening an issue in our GitHub repository:
 
-<a href="https://github.com/yourusername/java-learning/issues/new" class="github-issue-link">
+<a href="https://github.com/mshemeel/java-learning/issues/new" class="github-issue-link">
   <i class="fa fa-github"></i> Report an issue
 </a>
 

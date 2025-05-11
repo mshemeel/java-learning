@@ -26,7 +26,7 @@ The documentation is automatically deployed to GitHub Pages using GitHub Actions
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/java-learning.git
+   git clone https://github.com/mshemeel/java-learning.git
    cd java-learning
    ```
 
@@ -160,7 +160,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Feedback
 
-We value your feedback! Please submit any comments or suggestions through our [feedback form](https://yourusername.github.io/java-learning/feedback/) or by creating an issue in this repository.
+We value your feedback! Please submit any comments or suggestions through our [feedback form](https://mshemeel.github.io/java-learning/feedback/) or by creating an issue in this repository.
 
 ## Acknowledgments
 
