@@ -1,312 +1,485 @@
-# Kubernetes Production API Flow Architecture
+# Kubernetes API Request Flow Architecture
 
 ## Table of Contents
 - [Overview](#overview)
 - [Architecture Components](#architecture-components)
-- [API Request Flow Diagram](#api-request-flow-diagram)
-- [Detailed Request Flow](#detailed-request-flow)
-- [Certificate Inventory and Management](#certificate-inventory-and-management)
-- [Security Considerations](#security-considerations)
-- [Best Practices](#best-practices)
+- [Request Flow Sequence Diagram](#request-flow-sequence-diagram)
+- [Component Roles and Responsibilities](#component-roles-and-responsibilities)
+- [TLS/SSL Certificate Configurations](#tlsssl-certificate-configurations)
+- [Security and Performance Considerations](#security-and-performance-considerations)
+- [Best Practices and Recommendations](#best-practices-and-recommendations)
 - [References](#references)
 
 ## Overview
 
-This document outlines the complete journey of an API request in a production Kubernetes environment, from the initial client connection to response delivery. It details the security aspects of each component in the flow, with particular emphasis on TLS termination points and certificate management strategies.
+This document outlines the comprehensive journey of an API request in a production Kubernetes environment, from the initial client request to response delivery. The architecture follows industry best practices for security, performance, and reliability, implementing a multi-layered approach to protect and efficiently deliver API services.
 
-The architecture follows a defense-in-depth approach, with multiple layers of security controls from the edge network to the application pods. Each component in the flow plays a specific role in routing, securing, and processing API requests while maintaining performance, scalability, and observability.
+The document details how requests flow through each architectural component, focusing on security aspects, performance considerations, and potential failure points. It provides infrastructure teams and technical architects with an in-depth understanding of the platform's request handling mechanisms.
 
 ## Architecture Components
 
-1. **External Client**: End users or systems making API requests
-2. **Akamai Edge Network**: Provides CDN, WAF, and DDoS protection services
-3. **Cloud Load Balancer**: Entry point to the cloud provider infrastructure
-4. **Kubernetes Ingress Controller**: Manages external access to services in the cluster
-5. **Service Mesh (Istio/Linkerd)**: Provides advanced traffic management and mTLS between services
-6. **Kubernetes Services**: Service discovery and internal load balancing
-7. **Application Pods**: Containers running the actual application code
+The key components in our Kubernetes API request flow architecture include:
 
-## API Request Flow Diagram
+1. **Client Application**: The source of API requests (mobile app, web application, or third-party service)
+2. **Akamai CDN/Edge Protection**: Global content delivery network and edge protection layer
+3. **NGINX Ingress Controller**: Kubernetes entry point for external HTTP/HTTPS traffic
+4. **Kubernetes Ingress Resources**: Kubernetes objects defining routing rules
+5. **Kubernetes Services**: Internal load balancing and service discovery mechanism
+6. **Kubernetes Pods**: Running application containers that process requests
+7. **Service Backends**: Databases, caches, and other backing services
+
+## Request Flow Sequence Diagram
 
 ```mermaid
-graph TD
-    A[External Client] -->|TLS| B[Akamai Edge Network]
-    B -->|TLS| C[Cloud Load Balancer]
-    C -->|TLS| D[Kubernetes Ingress Controller]
-    D -->|mTLS| E[Service Mesh Ingress Gateway]
-    E -->|mTLS| F[Service Mesh Sidecar Proxy]
-    F -->|Plaintext| G[Application Pod]
-    G -->|Plaintext| F1[Service Mesh Sidecar Proxy]
-    F1 -->|mTLS| E1[Service Mesh Ingress Gateway]
-    E1 -->|TLS| D1[Kubernetes Ingress Controller]
-    D1 -->|TLS| C1[Cloud Load Balancer]
-    C1 -->|TLS| B1[Akamai Edge Network]
-    B1 -->|TLS| A1[External Client]
-
-    %% TLS Termination Points
-    subgraph "TLS Termination Points"
-        B
-        C
-        D
-        E
-        F
+sequenceDiagram
+    participant Client
+    participant Akamai as Akamai CDN/Edge
+    participant NGINX as NGINX Ingress Controller
+    participant KIngress as Kubernetes Ingress
+    participant KService as Kubernetes Service
+    participant Pod as Application Pod
+    participant Backend as Backend Services
+    
+    Note over Client,Backend: Request Flow
+    
+    Client->>Akamai: HTTPS Request
+    Note right of Akamai: TLS Termination<br/>WAF Processing<br/>DDoS Protection<br/>Edge Caching Check
+    
+    alt Cached Response Available
+        Akamai-->>Client: Return Cached Response
+    else Cache Miss
+        Akamai->>NGINX: Re-encrypted HTTPS Request
+        Note right of NGINX: TLS Termination<br/>Request Routing<br/>Rate Limiting
+        
+        NGINX->>KIngress: HTTP Request
+        Note right of KIngress: Routing Rule<br/>Application
+        
+        KIngress->>KService: Routed Request
+        Note right of KService: Load Balancing<br/>Service Discovery
+        
+        KService->>Pod: Request to Selected Pod
+        Note right of Pod: Request Processing<br/>Business Logic<br/>Authentication
+        
+        alt External Data Required
+            Pod->>Backend: Backend Service Request
+            Backend-->>Pod: Backend Response
+        end
+        
+        Pod-->>KService: Response
+        KService-->>KIngress: Response
+        KIngress-->>NGINX: Response
+        
+        Note right of NGINX: Response<br/>Processing<br/>Compression
+        
+        NGINX-->>Akamai: HTTPS Response
+        
+        Note right of Akamai: Response Caching<br/>Edge Optimization
+        
+        Akamai-->>Client: HTTPS Response
     end
-
-    %% Certificate Types
-    subgraph "Certificate Types"
-        I1[Public CA Certificates]
-        I2[Private CA Certificates]
-        I3[Service Mesh CA]
-    end
-
-    %% Certificate Relationships
-    I1 -.->|Used by| B
-    I1 -.->|Used by| C
-    I2 -.->|Used by| D
-    I3 -.->|Used by| E
-    I3 -.->|Used by| F
+    
+    Note over Client,Backend: Response Flow Complete
 ```
-![System Diagram](devops-architecture-diagram.png)
+![System Diagram](application-sequence-flow.png)
 
-## Detailed Request Flow
+## Component Roles and Responsibilities
 
-### 1. External Client to Akamai Edge Network
-- **Connection Details**: 
-  - Client initiates HTTPS connection to public API endpoint
-  - TLS 1.3 with modern cipher suites
-- **TLS Termination**: Yes, first termination point
-- **Certificate Used**: 
-  - Public CA-issued wildcard or SAN certificate
-  - Managed by Akamai Certificate Management system
-- **Security Functions**:
-  - DDoS protection
-  - Bot detection
-  - WAF rules applied (OWASP Top 10 protection)
-  - Malicious request filtering
-  - Rate limiting
+### Client Application
+- **Role**: Originates API requests to the platform
+- **Responsibilities**:
+  - Forms properly structured API requests
+  - Handles authentication tokens/credentials
+  - Processes responses
+  - Implements retry logic and circuit breaking
+  - Maintains secure TLS connections
 
-### 2. Akamai to Cloud Load Balancer
-- **Connection Details**:
-  - Re-encrypted TLS connection from Akamai to cloud provider Load Balancer
-  - Restricted by IP allowlisting (only Akamai IPs permitted)
-- **TLS Termination**: Yes, second termination point
-- **Certificate Used**:
-  - Public CA-issued certificate for backend communication
-  - Managed through cloud provider's certificate manager
-- **Security Functions**:
-  - TCP/IP layer protection
-  - Provider-level DDoS mitigation
-  - TLS policy enforcement
+### Akamai CDN/Edge Protection
+- **Role**: Provides edge protection, global distribution, and performance optimization
+- **Responsibilities**:
+  - **DDoS Mitigation**: Protection against volumetric and application-layer attacks
+  - **Web Application Firewall (WAF)**: Blocks common exploitation techniques and attacks
+  - **TLS Termination**: Handles initial client SSL/TLS connections
+  - **Content Caching**: Stores and serves cacheable API responses
+  - **Request Filtering**: Blocks malicious traffic based on signatures and behavior
+  - **Geographic Distribution**: Routes requests to nearest data centers
+  - **Rate Limiting**: Enforces global rate limits to protect backend services
+  - **Bot Detection**: Identifies and manages automated traffic
+  - **Edge Computing**: May execute simple transformations at the edge
 
-### 3. Cloud Load Balancer to Kubernetes Ingress Controller
-- **Connection Details**:
-  - TLS connection from Load Balancer to Kubernetes Ingress (e.g., NGINX, Traefik, Kong)
-  - Connection scoped to Kubernetes cluster network
-- **TLS Termination**: Yes, third termination point
-- **Certificate Used**:
-  - Private CA-issued certificate
-  - Managed through Kubernetes cert-manager
-- **Security Functions**:
-  - HTTP traffic validation
-  - URL path routing
-  - HTTP header manipulation
-  - Authentication gateway (optional)
-  - Rate limiting per service
+### NGINX Ingress Controller
+- **Role**: Acts as the entry point for external traffic into the Kubernetes cluster
+- **Responsibilities**:
+  - **TLS Termination**: Handles HTTPS connections from Akamai
+  - **Request Routing**: Directs traffic to appropriate services based on URL paths
+  - **Load Balancing**: Distributes traffic across multiple service instances
+  - **Rate Limiting**: Provides service-specific rate controls
+  - **SSL/TLS Management**: Manages certificates for secure communication
+  - **Request/Response Manipulation**: Modifies headers, performs redirects
+  - **Authentication**: Optional integration with auth services
+  - **Health Checks**: Monitors backend services
+  - **Metrics Collection**: Captures detailed request metrics
 
-### 4. Ingress Controller to Service Mesh Ingress Gateway
-- **Connection Details**:
-  - mTLS connection to Service Mesh Ingress Gateway (Istio/Linkerd)
-  - Internal Kubernetes network traffic
-- **TLS Termination**: Yes, fourth termination point
-- **Certificate Used**:
-  - Service Mesh CA-issued certificates
-  - Automatically provisioned and rotated by mesh control plane
-- **Security Functions**:
-  - L7 traffic management
-  - Service discovery
-  - Circuit breaking
-  - Canary deployment support
-  - Rich metrics collection
+### Kubernetes Ingress Resources
+- **Role**: Declarative definition of how external HTTP traffic should be routed
+- **Responsibilities**:
+  - **Path-based Routing**: Maps URL paths to specific services
+  - **Host-based Routing**: Routes traffic based on domain names
+  - **TLS Configuration**: Specifies certificate resources for secure connections
+  - **Traffic Splitting**: Can be used for canary deployments
+  - **Rewrite Rules**: Modifies request URLs before forwarding
+  - **Annotation Support**: Provides controller-specific configurations
 
-### 5. Service Mesh Gateway to Service Sidecar
-- **Connection Details**:
-  - mTLS connection from mesh gateway to service sidecar proxy
-  - Kubernetes pod-to-pod encrypted communication
-- **TLS Termination**: Yes, final termination point
-- **Certificate Used**:
-  - Service Mesh CA-issued workload certificates
-  - Unique per pod/service, auto-rotated
-- **Security Functions**:
-  - Workload identity validation
-  - Authorization policy enforcement
-  - Traffic metrics collection
-  - Request tracing
-  - Service-to-service authorization
+### Kubernetes Services
+- **Role**: Provides stable network identity and load balancing for pods
+- **Responsibilities**:
+  - **Service Discovery**: Provides DNS names for sets of pods
+  - **Load Balancing**: Distributes traffic among available pods
+  - **IP Management**: Assigns stable virtual IPs to services
+  - **Port Mapping**: Maps service ports to container ports
+  - **Session Affinity**: Optional support for sticky sessions
+  - **Headless Services**: Allows direct DNS lookup of pod IPs when needed
+  - **External Services**: Can represent external endpoints when needed
 
-### 6. Sidecar Proxy to Application Pod
-- **Connection Details**:
-  - Plain HTTP connection inside the pod's network namespace
-  - Communication between localhost processes
-- **TLS Termination**: N/A (plaintext within pod)
-- **Certificate Used**: None required
-- **Security Functions**:
-  - Application-level authentication
-  - Input validation
-  - Business logic
+### Kubernetes Pods
+- **Role**: Houses application containers that process requests
+- **Responsibilities**:
+  - **Application Execution**: Runs application code in containers
+  - **Request Processing**: Handles business logic for API requests
+  - **Data Validation**: Validates incoming request data
+  - **Authentication/Authorization**: Verifies user permissions
+  - **Backend Integration**: Communicates with databases and other services
+  - **Response Formation**: Generates API responses
+  - **Resource Management**: Works within allocated CPU/memory constraints
+  - **Health Reporting**: Exposes health status to the cluster
 
-### 7. Return Path (Response Flow)
-- The response follows the reverse path with similar security protections
-- Each component adds its respective headers/metadata to the response
-- TLS re-encryption happens at each stage on the return path
+## TLS/SSL Certificate Configurations
 
-## Certificate Inventory and Management
+### Akamai Edge Certificates (Customer-Facing)
+- **Type**: Public CA-issued certificates (DigiCert, Let's Encrypt)
+- **Purpose**: Secures communication between clients and Akamai edge
+- **Configuration**:
+  - **Certificate Type**: Usually wildcard or SAN certificates
+  - **Key Size**: 2048-bit RSA or ECC P-256
+  - **Validity Period**: Typically 1 year
+  - **Management**: Automated through Akamai Certificate Manager
+  - **TLS Version**: TLS 1.2/1.3 only
+  - **Cipher Suites**: Modern, strong cipher suites only
+  - **OCSP Stapling**: Enabled
+  - **HTTP Strict Transport Security (HSTS)**: Enabled
 
-### Public-Facing Certificates (Edge to Load Balancer)
+### Akamai-to-Origin Certificates
+- **Type**: Public or Private CA certificates
+- **Purpose**: Secures communication between Akamai and NGINX Ingress
+- **Configuration**:
+  - **Certificate Type**: Domain-specific certificate
+  - **Validation**: Mutual TLS optional for additional security
+  - **Management**: Automated with monitoring and alerts
+  - **Rotation**: Regularly scheduled rotation (quarterly)
+  - **Key Storage**: Secure key storage with restricted access
+  - **IP Restrictions**: Typically limited to Akamai IP ranges
 
-| Certificate Location | Type | Purpose | Management Approach |
-|----------------------|------|---------|---------------------|
-| Akamai Edge | Public CA (DigiCert/Let's Encrypt) | Client communication | Automated via Akamai Certificate Manager, 1-year validity, auto-renewed at 30 days prior to expiry |
-| Cloud Load Balancer | Public CA | Akamai to Cloud communication | Managed via Cloud Provider's Certificate Manager, 1-year validity, auto-renewed, alert at 45 days |
+### NGINX Ingress Controller Certificates
+- **Type**: Kubernetes-managed certificates via cert-manager
+- **Purpose**: Terminates TLS connections from Akamai and secures traffic
+- **Configuration**:
+  - **Certificate Source**: Let's Encrypt or private CA
+  - **Validation**: Domain validation automated
+  - **Storage**: Kubernetes secrets
+  - **Rotation**: Automated renewal before expiration
+  - **Key Size**: 2048-bit RSA or ECC P-256
+  - **TLS Settings**: Configured via ingress annotations
+  - **Secret References**: Referenced in Ingress resources
 
-### Internal Certificates (Kubernetes Environment)
+### Internal Service Mesh Certificates (Optional)
+- **Type**: Service mesh CA-issued certificates (e.g., Istio, Linkerd)
+- **Purpose**: Enables mTLS between services inside the cluster
+- **Configuration**:
+  - **Certificate Authority**: Self-signed or intermediate CA
+  - **Workload Identity**: Pod-specific certificates
+  - **Certificate Lifetime**: Short-lived (24 hours typical)
+  - **Rotation**: Automatic rotation before expiration
+  - **Key Generation**: Generated on pod startup
+  - **Trust Chain**: Managed by service mesh control plane
 
-| Certificate Location | Type | Purpose | Management Approach |
-|----------------------|------|---------|---------------------|
-| Kubernetes Ingress | Private CA | Cluster Ingress | Managed via cert-manager, 90-day validity, auto-renewed at 30 days prior to expiry |
-| Service Mesh CA | Self-signed | Mesh root authority | Auto-generated by mesh installation, 10-year validity, backed up securely |
-| Service Mesh Workload | Mesh CA signed | mTLS between services | Auto-provisioned per workload, 24-hour validity, automatically rotated |
-| Secret Encryption | KMS-managed | Kubernetes secrets encryption | Cloud KMS integration, automatic rotation policy |
+### Certificate Renewal and Management Processes
 
-### Certificate Rotation Policy
+1. **Monitoring**:
+   - Automated certificate expiration monitoring
+   - Alerting at multiple thresholds (30, 14, 7, 3, 1 days)
+   - Certificate inventory database
 
-- **Public Certificates**: Automatically renewed 30 days before expiration
-- **Private CA Certificates**: Automatically renewed 30 days before expiration
-- **Service Mesh Certificates**: 
-  - Root CA: Manual rotation annually with careful coordination
-  - Workload Certificates: Automatic rotation every 24 hours
-- **Key Management**:
-  - All private keys stored in HSM or cloud provider key management services
-  - Key access audited and logged
+2. **Automation**:
+   - cert-manager for Kubernetes certificates
+   - Akamai certificate automation for edge certificates
+   - API-based renewal processes
 
-## Security Considerations
+3. **Emergency Procedures**:
+   - Certificate revocation protocol
+   - Emergency replacement process
+   - Fallback certificates for critical services
+   - On-call rotation for certificate issues
 
-### Defense in Depth Strategy
+4. **Audit and Compliance**:
+   - Regular certificate inventory audits
+   - Compliance verification (key strength, algorithms)
+   - Certificate transparency monitoring
 
-The architecture implements a defense-in-depth approach with multiple security layers:
+## Security and Performance Considerations
+
+### TLS Termination Points and Re-encryption
+
+1. **Client to Akamai Edge**:
+   - First TLS termination at Akamai edge
+   - Modern TLS protocol and cipher suites
+   - Complete validation of client certificates if used
+
+2. **Akamai to NGINX Ingress**:
+   - Re-encrypted connection with separate certificate
+   - Potential for mutual TLS authentication
+   - IP-restricted access (Akamai edge IP ranges only)
+   - Private network path where possible
+
+3. **Service Mesh Communication (Optional)**:
+   - Automatic mTLS between services
+   - Certificate-based service identity
+   - Encrypted east-west traffic within cluster
+
+### Network Security Controls
 
 1. **Edge Security**:
-   - DDoS protection at internet edge
-   - WAF for application layer attacks
    - IP reputation filtering
-   - Bot mitigation
+   - Bot management
+   - DDoS protection
+   - API rate limiting
+   - Geo-blocking capabilities
+   - Custom WAF rules
 
-2. **Infrastructure Security**:
-   - Network segmentation
-   - Cloud provider security groups
-   - Private connections where possible
+2. **Cluster Network Security**:
+   - Network policies for pod isolation
+   - Ingress/egress restrictions
+   - Service mesh traffic policies
+   - Namespace isolation
+   - Container network security
 
-3. **Kubernetes Security**:
-   - Network policies (deny by default)
-   - Pod security policies
-   - Runtime security monitoring
-   - Resource isolation
-   - Admission controllers
+3. **Pod Security**:
+   - Pod Security Policies/Standards
+   - Read-only file systems
+   - Non-root containers
+   - Dropped capabilities
+   - Resource limits
 
-4. **Application Security**:
-   - Authentication and authorization
-   - Input validation
-   - Output encoding
-   - Security headers
+### Headers and Metadata Transformation
 
-### TLS Policy and Implementation
+1. **Client to Akamai**:
+   - Client headers preserved
+   - Addition of request ID headers
+   - Security headers validation
 
-- **Minimum TLS Version**: TLS 1.2, with preference for TLS 1.3
-- **Cipher Suites**: Modern, strong cipher suites only:
-  - TLS_AES_128_GCM_SHA256
-  - TLS_AES_256_GCM_SHA384
-  - TLS_CHACHA20_POLY1305_SHA256
-- **OCSP Stapling**: Enabled for public certificates
-- **Certificate Transparency**: Monitored for public certificates
-- **Perfect Forward Secrecy**: Required for all TLS connections
+2. **Akamai to Ingress**:
+   - True-Client-IP headers added
+   - Client certificates translated to headers if used
+   - Custom security headers added
 
-### Incident Response Plan for Certificate Issues
+3. **Ingress to Service**:
+   - Request transformation based on annotations
+   - Path rewriting if configured
+   - Additional application headers
 
-1. **Certificate Compromise**: 
-   - Immediate revocation
-   - Emergency rotation procedure
-   - Incident response team notification
-   - Impact assessment
+4. **Service to Pod**:
+   - Kubernetes service information
+   - Load balancer source preservation
+   - Original request metadata
 
-2. **Certificate Expiration**:
-   - Multi-level alerting (30 days, 14 days, 7 days, 3 days, 1 day)
-   - Automated rotation with manual fallback procedure
-   - On-call personnel assignment
+5. **Response Path**:
+   - Response headers added at each layer
+   - CORS headers managed
+   - Security headers enforced
+   - Cache control headers processed
 
-## Best Practices
+### Authentication and Authorization Enforcement
 
-### Certificate Management Best Practices
+1. **Edge Authentication (Akamai)**:
+   - API key validation
+   - OAuth token pre-validation
+   - JWT signature verification
+   - Basic request authentication
 
-1. **Automation**:
-   - Use cert-manager or similar tools for automated certificate lifecycle
-   - Implement monitoring for expiration dates
-   - Test certificate renewal processes regularly
+2. **Ingress Authentication**:
+   - External authentication service integration
+   - API gateway token validation
 
-2. **Security**:
-   - Store private keys in HSM or secure key management systems
+3. **Service-level Authentication**:
+   - Service account tokens
+   - Internal service authentication
+
+4. **Application Authentication**:
+   - Detailed token validation
+   - Authorization policy enforcement
+   - Role-based access control
+   - Multi-tenancy enforcement
+
+### Performance Considerations and Bottlenecks
+
+1. **Edge Performance**:
+   - Global Akamai distribution
+   - Edge caching for appropriate responses
+   - Connection keep-alive
+   - Content compression
+
+2. **Ingress Controller Performance**:
+   - Controller scaling and redundancy
+   - Efficient routing algorithms
+   - Connection pooling
+   - Worker process optimization
+
+3. **Service Routing Performance**:
+   - Efficient service discovery
+   - Optimized iptables rules
+   - Kernel parameter tuning
+   - IPVS mode for kube-proxy
+
+4. **Pod Performance**:
+   - Proper resource allocation
+   - Horizontal scaling capability
+   - Efficient container images
+   - JVM/runtime optimization
+
+### Common Failure Points and Resilience Strategies
+
+1. **Edge Failures**:
+   - Multiple edge regions
+   - Failover configurations
+   - Health-based routing
+   - Origin shields
+
+2. **Ingress Controller Failures**:
+   - Controller redundancy
+   - Anti-affinity scheduling
+   - Failover configurations
+   - Health-based removal
+
+3. **Service Discovery Failures**:
+   - DNS caching strategies
+   - Short TTLs for critical services
+   - Direct endpoint access fallback
+   - Headless services when appropriate
+
+4. **Pod Failures**:
+   - Readiness/liveness probes
+   - Graceful shutdown handling
+   - PodDisruptionBudgets
+   - Topology spread constraints
+   - Horizontal Pod Autoscaling
+
+5. **Backend Service Failures**:
+   - Circuit breaking
+   - Retry budgets
+   - Fallback responses
+   - Cache-based resilience
+
+## Best Practices and Recommendations
+
+### Certificate Management
+
+1. **Automated Lifecycle**:
+   - Use cert-manager for Kubernetes certificates
+   - Implement automated renewal processes
+   - Monitor certificate expiration
+   - Maintain certificate inventory
+
+2. **Security Best Practices**:
+   - Use appropriate key lengths (RSA 2048+, ECC P-256+)
+   - Maintain secure private key storage
    - Implement certificate pinning for critical services
-   - Regular audit of certificate inventory
+   - Regularly rotate certificates
 
-3. **Operational**:
-   - Documented procedures for emergency certificate rotation
-   - Regular testing of certificate renewal processes
-   - Centralized certificate inventory and monitoring
+3. **Operational Recommendations**:
+   - Standardize on preferred CAs
+   - Document emergency certificate procedures
+   - Perform regular rotation drills
+   - Maintain certificate hierarchy diagram
 
-### Kubernetes Security Best Practices
+### Security Hardening
 
-1. **Cluster Hardening**:
-   - Regular cluster upgrades
-   - Secure configuration of Kubernetes components
-   - Restricted network access to API server
-   - Encrypted etcd
+1. **Infrastructure Security**:
+   - Keep Kubernetes version updated
+   - Apply security patches promptly
+   - Implement cluster hardening guidelines
+   - Use private networks where possible
+   - Enforce least privilege principles
 
-2. **Workload Security**:
-   - Immutable containers
-   - Minimal base images
-   - Principle of least privilege
-   - Container image scanning
-   - Runtime security monitoring
+2. **Application Security**:
+   - Implement container security scanning
+   - Use distroless or minimal base images
+   - Perform regular vulnerability scanning
+   - Implement runtime threat detection
 
 3. **Network Security**:
-   - Default deny network policies
-   - Service mesh for service-to-service authentication
-   - Egress filtering
-   - Network segmentation
+   - Default-deny network policies
+   - Implement microsegmentation
+   - Encrypt all traffic (east-west and north-south)
+   - Protect pod-to-pod communication
 
-### API Security Best Practices
+### Performance Optimization
 
-1. **Authentication and Authorization**:
-   - OAuth 2.0/OpenID Connect implementation
-   - JWT token validation
-   - Role-based access control (RBAC)
-   - Short-lived access tokens
+1. **Edge Optimization**:
+   - Configure appropriate caching rules
+   - Implement content compression
+   - Use edge computing for simple transformations
+   - Configure connection pooling
 
-2. **Traffic Management**:
-   - Rate limiting at multiple layers
-   - Circuit breakers for backend protection
-   - Retry budgets
-   - Connection pooling
+2. **Kubernetes Optimization**:
+   - Right-size pod resources
+   - Implement horizontal pod autoscaling
+   - Configure pod disruption budgets
+   - Optimize etcd performance
+   - Use node anti-affinity for critical services
 
-3. **Observability**:
+3. **Application Optimization**:
+   - Optimize container images
+   - Implement efficient API designs
+   - Use appropriate database indexes
+   - Optimize JVM settings for Java applications
+   - Implement response compression
+
+### Monitoring and Observability
+
+1. **Infrastructure Monitoring**:
+   - Kubernetes cluster monitoring
+   - Node and pod metrics
+   - Network traffic analysis
+   - Certificate expiration monitoring
+
+2. **Application Monitoring**:
+   - Request/response metrics
+   - Latency tracking
+   - Error rate monitoring
+   - Dependency health checks
+
+3. **Request Tracing**:
+   - Implement distributed tracing
+   - Maintain request IDs throughout the chain
+   - Trace context propagation
+   - Service dependency mapping
+
+4. **Logging Strategy**:
    - Structured logging
-   - Distributed tracing
-   - Metrics collection
-   - Anomaly detection
+   - Centralized log aggregation
+   - Log level management
+   - Audit logging for security events
+
+5. **Alerting and Dashboards**:
+   - SLO-based alerting
+   - Multi-level alerting strategy
+   - Custom dashboards for different user roles
+   - Automated runbooks for common issues
 
 ## References
 
-- [Kubernetes Documentation - TLS](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls)
-- [Istio Security Architecture](https://istio.io/latest/docs/concepts/security/)
-- [NIST SP 800-204B - Attribute-based Access Control for Microservices](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-204B.pdf)
-- [Cloud Native Security Whitepaper](https://github.com/cncf/tag-security/blob/main/security-whitepaper/CNCF_cloud-native-security-whitepaper-Nov2020.pdf)
-- [OWASP API Security Top 10](https://owasp.org/www-project-api-security/)
-- [Akamai Security Best Practices](https://www.akamai.com/solutions/security) 
+- [Kubernetes Documentation - Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+- [NGINX Ingress Controller Documentation](https://kubernetes.github.io/ingress-nginx/)
+- [Akamai Security Best Practices](https://www.akamai.com/solutions/security)
+- [cert-manager Documentation](https://cert-manager.io/docs/)
+- [CNCF Cloud Native Security Whitepaper](https://github.com/cncf/tag-security/blob/main/security-whitepaper/CNCF_cloud-native-security-whitepaper-Nov2020.pdf)
+- [Kubernetes Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+- [TLS Best Practices](https://cheatsheetseries.owasp.org/cheatsheets/TLS_Cipher_String_Cheat_Sheet.html) 
