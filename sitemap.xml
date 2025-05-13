@@ -131,6 +131,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://mshemeel.github.io/java-learning/java-sample-problems/basic-problems/</loc>
+         <lastmod>2025-05-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/Anagrams/</loc>
          <lastmod>2025-05-13</lastmod>
          <changefreq>daily</changefreq>
