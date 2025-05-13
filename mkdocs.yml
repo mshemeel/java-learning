@@ -72,7 +72,6 @@ plugins:
 nav:
   - Home: index.md
   - Java Core:
-      - 'Basic Concepts': 'java/basic-concepts.md'
       - 'Basics': 'java/java-basics.md'
       - 'OOP': 'java/java-oop.md'
       - 'Collections': 'java/java-collections.md'
@@ -85,9 +84,31 @@ nav:
       - 'Generics': 'java/java-generics.md'
       - 'Memory Management': 'java/java-memory-management.md'
       - 'Testing': 'java/java-testing.md'
-  - 'Java Sample Problems':
-      - 'Arrays and String':
+  - Java Sample Problems:
+      - 'Overview': 'java-sample-problems/index.md'
+      - 'Basic Problems': 'java-sample-problems/basic-problems.md'
+      - 'Arrays and Strings':
+          - 'Two Sum': 'java-sample-problems/arrays-and-strings/TwoSum.md'
+          - 'Three Sum': 'java-sample-problems/arrays-and-strings/ThreeSum.md'
           - 'Anagrams': 'java-sample-problems/arrays-and-strings/Anagrams.md'
+          - 'Binary Search': 'java-sample-problems/arrays-and-strings/BinarySearch.md'
+          - 'String Palindrome': 'java-sample-problems/arrays-and-strings/StringPalindrome.md'
+      - 'Linked List':
+          - 'Linked List Operations': 'java-sample-problems/linked-list/LinkedListOperations.md'
+      - 'Sorting':
+          - 'Sorting Algorithms': 'java-sample-problems/sorting/SortingAlgorithms.md'
+      - 'Trees':
+          - 'Tree Traversal': 'java-sample-problems/trees/TreeTraversal.md'
+      - 'Graphs':
+          - 'Graph Algorithms': 'java-sample-problems/graphs/GraphAlgorithms.md'
+      - 'Dynamic Programming':
+          - 'Dynamic Programming Problems': 'java-sample-problems/dynamic-programming/DynamicProgramming.md'
+      - 'Data Structures': 'java-sample-problems/data-structures.md'
+      - 'Algorithms': 'java-sample-problems/algorithms.md'
+      - 'OOP Problems': 'java-sample-problems/oop-problems.md'
+      - 'Design Patterns': 'java-sample-problems/design-patterns-problems.md'
+      - 'Spring Boot': 'java-sample-problems/spring-boot-problems.md'
+      - 'Microservices': 'java-sample-problems/microservices-problems.md'
   - Spring Boot:
       - 'Core Concepts': 'spring-boot/spring-boot-core-concepts.md'
       - 'Starter': 'spring-boot/spring-boot-starter.md'
