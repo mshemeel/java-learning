@@ -85,6 +85,9 @@ nav:
       - 'Generics': 'java/java-generics.md'
       - 'Memory Management': 'java/java-memory-management.md'
       - 'Testing': 'java/java-testing.md'
+  - 'Java Sample Problems':
+      - 'Arrays and String':
+          - 'Anagrams': 'java-sample-problems/arrays-and-strings/Anagrams.md'
   - Spring Boot:
       - 'Core Concepts': 'spring-boot/spring-boot-core-concepts.md'
       - 'Starter': 'spring-boot/spring-boot-starter.md'
