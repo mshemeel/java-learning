@@ -64,6 +64,7 @@ markdown_extensions:
 
 # Plugins
 plugins:
+  - mermaid2
   - search:
       lang: en
   # - macros  # Disabling macros plugin to fix template errors
@@ -151,6 +152,37 @@ nav:
       - 'Networking': 'kubernetes/kubernetes-networking.md'
       - 'Troubleshooting': 'kubernetes/kubernetes-troubleshooting.md'
       - 'Best Practices': 'kubernetes/kubernetes-best-practices.md'
+  - DevOps:
+      - 'Overview': 'devops/index.md'
+      - 'DevOps Basics': 'devops/devops-basics.md'
+      - 'CI/CD Fundamentals': 'devops/ci-cd-fundamentals.md'
+      - 'Infrastructure as Code': 'devops/infrastructure-as-code.md'
+      - 'Docker Fundamentals': 'devops/docker-fundamentals.md'
+      - 'Monitoring & Logging': 'devops/monitoring-logging.md'
+      - 'DevOps Tools Overview': 'devops/devops-tools-overview.md'
+      - 'Java-Specific DevOps':
+          - 'Java CI/CD Pipelines': 'devops/java-cicd-pipelines.md'
+          - 'Java Containerization': 'devops/java-containerization.md'
+          - 'Java App Monitoring': 'devops/java-app-monitoring.md'
+          - 'Jenkins for Java': 'devops/jenkins-for-java.md'
+          - 'Java Deployment Strategies': 'devops/java-deployment-strategies.md'
+      - 'Advanced Topics':
+          - 'GitOps Practices': 'devops/gitops-practices.md'
+          - 'DevSecOps for Java': 'devops/devsecops-for-java.md'
+          - 'Performance Testing': 'devops/performance-testing-automation.md'
+          - 'Chaos Engineering': 'devops/chaos-engineering.md'
+          - 'DevOps Best Practices': 'devops/devops-best-practices.md'
+      - 'Sample Projects':
+          - 'CI/CD Java Project': 'devops/projects/cicd-java-project.md'
+          - 'Containerizing Spring App': 'devops/projects/containerizing-spring-app.md'
+          - 'Monitoring Java Microservices': 'devops/projects/monitoring-java-microservices.md'
+          - 'IaC for Java Deployment': 'devops/projects/iac-for-java-deployment.md'
+      - 'Interactive Tools':
+          - 'DevOps Workflow Diagrams': 'devops/interactive/devops-workflows.md'
+          - 'CI/CD Pipeline Visualizer': 'devops/interactive/cicd-pipeline-visualizer.md'
+          - 'IaC Templates Repository': 'devops/interactive/iac-templates.md'
+          - 'Monitoring Dashboards': 'devops/interactive/monitoring-dashboards.md'
+          - 'DevOps Maturity Assessment': 'devops/interactive/devops-maturity-assessment.md'
   - Design Patterns:
       - 'Principles': 'design-patterns/design-patterns-principles.md'
       - 'Best Practices': 'design-patterns/design-patterns-best-practices.md'

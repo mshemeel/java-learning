@@ -57,6 +57,18 @@ Welcome to the Java Learning Platform - a comprehensive resource for Java develo
 - [Troubleshooting](kubernetes/kubernetes-troubleshooting.md)
 - [Best Practices](kubernetes/kubernetes-best-practices.md)
 
+### DevOps
+- [Overview](devops/index.md)
+- [DevOps Basics](devops/devops-basics.md)
+- [CI/CD Fundamentals](devops/ci-cd-fundamentals.md)
+- [Infrastructure as Code](devops/infrastructure-as-code.md)
+- [Docker Fundamentals](devops/docker-fundamentals.md)
+- [Monitoring & Logging](devops/monitoring-logging.md)
+- [Java CI/CD Pipelines](devops/java-cicd-pipelines.md)
+- [Java Containerization](devops/java-containerization.md)
+- [Jenkins for Java](devops/jenkins-for-java.md)
+- [DevOps Best Practices](devops/devops-best-practices.md)
+
 ### Design Patterns
 - [Creational Patterns](design-patterns/creational-patterns.md)
 - [Structural Patterns](design-patterns/structural-patterns.md)
@@ -75,6 +87,7 @@ For those new to Java or wanting a comprehensive education, we recommend followi
 3. Design Patterns
 4. Microservices
 5. Kubernetes
+6. DevOps
 
 ### Reference Guide
 Experienced developers can use this platform as a reference by directly accessing specific topics of interest.
