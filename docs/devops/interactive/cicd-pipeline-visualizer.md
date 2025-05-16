@@ -213,42 +213,128 @@ While the embedded tool provides basic functionality, we also offer a more advan
 
 ## JavaScript Implementation
 
-<script>
-// CI/CD Pipeline Visualizer Tool
-document.addEventListener('DOMContentLoaded', function() {
-    // Pipeline template loader
-    document.querySelectorAll('.template-card button').forEach(button => {
-        button.addEventListener('click', function() {
-            const template = this.parentElement.dataset.template;
-            loadTemplate(template);
+<script id="pipeline-visualizer-script">
+// This specific ID helps ensure our script isn't replaced during navigation
+(function() {
+    // Flag to track if we've already initialized on this page
+    let initialized = false;
+    
+    // Function to check if visualizer elements exist and need initialization
+    function checkAndInitialize() {
+        // Check if we're on the correct page by looking for specific elements
+        const hasTemplateCards = document.querySelectorAll('.template-card').length > 0;
+        const hasGenerator = document.getElementById('pipeline-generator-form');
+        const hasAnalyzer = document.getElementById('analyze-pipeline');
+        
+        if ((hasTemplateCards || hasGenerator || hasAnalyzer) && !initialized) {
+            console.log('CI/CD Pipeline Visualizer: Initializing from checkAndInitialize');
+            initializePipelineVisualizer();
+            initialized = true;
+            return true;
+        }
+        return false;
+    }
+    
+    // Main initialization function
+    function initializePipelineVisualizer() {
+        console.log('CI/CD Pipeline Visualizer: Running initialization');
+        
+        // Pipeline template loader
+        document.querySelectorAll('.template-card button').forEach(button => {
+            button.onclick = function() {
+                const template = this.parentElement.dataset.template;
+                loadTemplate(template);
+                return false;
+            };
         });
+        
+        // Custom pipeline generator
+        const generatorForm = document.getElementById('pipeline-generator-form');
+        if (generatorForm) {
+            generatorForm.onsubmit = function(e) {
+                e.preventDefault();
+                generateCustomPipeline();
+                return false;
+            };
+        }
+        
+        // Pipeline analyzer
+        const analyzeBtn = document.getElementById('analyze-pipeline');
+        if (analyzeBtn) {
+            analyzeBtn.onclick = function() {
+                analyzePipeline();
+                return false;
+            };
+        }
+        
+        // Pipeline download
+        const downloadBtn = document.getElementById('download-pipeline');
+        if (downloadBtn) {
+            downloadBtn.onclick = function() {
+                downloadPipelineConfig();
+                return false;
+            };
+        }
+    }
+
+    // Multiple ways to detect navigation/loading
+    
+    // 1. Standard DOM ready event
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        setTimeout(checkAndInitialize, 100);
+    } else {
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(checkAndInitialize, 100);
+        });
+    }
+    
+    // 2. Set up MutationObserver to detect when our elements are added to the DOM
+    const observer = new MutationObserver(function(mutations) {
+        if (checkAndInitialize()) {
+            // If we successfully initialized, no need to keep observing
+            observer.disconnect();
+        }
     });
     
-    // Custom pipeline generator
-    const generatorForm = document.getElementById('pipeline-generator-form');
-    if (generatorForm) {
-        generatorForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            generateCustomPipeline();
+    // Observe the entire document for child modifications
+    observer.observe(document.documentElement, { 
+        childList: true,
+        subtree: true 
+    });
+    
+    // 3. Material for MkDocs specific navigation event
+    if (typeof window.navigation !== 'undefined') {
+        window.navigation.addEventListener('navigate', function() {
+            // Reset initialized flag when navigating
+            initialized = false;
+            setTimeout(checkAndInitialize, 200);
         });
     }
     
-    // Pipeline analyzer
-    const analyzeBtn = document.getElementById('analyze-pipeline');
-    if (analyzeBtn) {
-        analyzeBtn.addEventListener('click', function() {
-            analyzePipeline();
-        });
-    }
+    // 4. More aggressive polling as a fallback
+    setInterval(function() {
+        // If we find any pipeline visualizer elements but we're not initialized, initialize
+        const hasElements = document.querySelectorAll('.template-card, #pipeline-generator-form, #analyze-pipeline').length > 0;
+        if (hasElements && !initialized) {
+            initialized = false; // Force reinitialization
+            checkAndInitialize();
+        }
+    }, 1000);
     
-    // Pipeline download
-    const downloadBtn = document.getElementById('download-pipeline');
-    if (downloadBtn) {
-        downloadBtn.addEventListener('click', function() {
-            downloadPipelineConfig();
-        });
-    }
-});
+    // 5. Hash change event (sometimes used for navigation)
+    window.addEventListener('hashchange', function() {
+        initialized = false;
+        setTimeout(checkAndInitialize, 200);
+    });
+    
+    // 6. History API
+    const originalPushState = history.pushState;
+    history.pushState = function() {
+        originalPushState.apply(this, arguments);
+        initialized = false;
+        setTimeout(checkAndInitialize, 200);
+    };
+})();
 
 // Template data for each pipeline type
 const templateData = {
@@ -623,7 +709,7 @@ ${deploymentTarget === 'kubernetes' ? `  deploy:
  * Generate a visual diagram of the pipeline
  */
 function generateDiagram(yaml) {
-    // This creates a simple visual representation of the pipeline
+    // This creates a visual representation of the pipeline
     const diagramDiv = document.querySelector('#generated-pipeline .pipeline-diagram');
     if (diagramDiv) {
         // Parse the pipeline stages from the YAML

@@ -5,47 +5,137 @@
  * It includes template loading, custom pipeline generation, download capabilities, and pipeline analysis.
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Pipeline template loader
-    document.querySelectorAll('.template-card button').forEach(button => {
-        button.addEventListener('click', function() {
-            const template = this.parentElement.dataset.template;
-            loadTemplate(template);
+// Self-executing function to prevent global scope pollution and ensure SPA compatibility
+(function() {
+    // Flag to track if we've already initialized on this page
+    let initialized = false;
+    
+    // Function to check if visualizer elements exist and need initialization
+    function checkAndInitialize() {
+        // Check if we're on the correct page by looking for specific elements
+        const hasTemplateCards = document.querySelectorAll('.template-card').length > 0;
+        const hasGenerator = document.getElementById('pipeline-generator-form');
+        const hasAnalyzer = document.getElementById('analyze-pipeline');
+        
+        if ((hasTemplateCards || hasGenerator || hasAnalyzer) && !initialized) {
+            console.log('CI/CD Pipeline Visualizer: Initializing from checkAndInitialize');
+            initializePipelineVisualizer();
+            initialized = true;
+            return true;
+        }
+        return false;
+    }
+    
+    // Main initialization function that can be called multiple times
+    function initializePipelineVisualizer() {
+        console.log('CI/CD Pipeline Visualizer: Running initialization');
+        
+        // Pipeline template loader
+        document.querySelectorAll('.template-card button').forEach(button => {
+            button.onclick = function() {
+                const template = this.parentElement.dataset.template;
+                loadTemplate(template);
+                return false;
+            };
         });
-    });
-    
-    // Custom pipeline generator
-    document.getElementById('pipeline-generator-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        generateCustomPipeline();
-    });
-    
-    // Pipeline analyzer
-    document.getElementById('analyze-pipeline').addEventListener('click', function() {
-        analyzePipeline();
-    });
-    
-    // Pipeline download
-    document.getElementById('download-pipeline').addEventListener('click', function() {
-        downloadPipelineConfig();
-    });
-});
+        
+        // Custom pipeline generator
+        const generatorForm = document.getElementById('pipeline-generator-form');
+        if (generatorForm) {
+            generatorForm.onsubmit = function(e) {
+                e.preventDefault();
+                generateCustomPipeline();
+                return false;
+            };
+        }
+        
+        // Pipeline analyzer
+        const analyzeBtn = document.getElementById('analyze-pipeline');
+        if (analyzeBtn) {
+            analyzeBtn.onclick = function() {
+                analyzePipeline();
+                return false;
+            };
+        }
+        
+        // Pipeline download
+        const downloadBtn = document.getElementById('download-pipeline');
+        if (downloadBtn) {
+            downloadBtn.onclick = function() {
+                downloadPipelineConfig();
+                return false;
+            };
+        }
+    }
 
-/**
- * Loads a predefined pipeline template into the editor
- */
-function loadTemplate(templateName) {
-    // Get the Excalidraw iframe
-    const iframe = document.querySelector('.pipeline-visualizer iframe');
+    // Multiple ways to detect navigation/loading
     
-    // For actual template loading, we would:
-    // 1. Load the YAML file
-    // 2. Generate a diagram based on the YAML
-    // 3. Pass it to the Excalidraw iframe
+    // 1. Standard DOM ready event
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        setTimeout(checkAndInitialize, 100);
+    } else {
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(checkAndInitialize, 100);
+        });
+    }
     
-    // Predefined templates as fallback if fetch fails
-    const templateData = {
-        'spring-boot': `name: Spring Boot CI/CD Pipeline
+    // 2. Set up MutationObserver to detect when our elements are added to the DOM
+    const observer = new MutationObserver(function(mutations) {
+        if (checkAndInitialize()) {
+            // If we successfully initialized, no need to keep observing
+            observer.disconnect();
+        }
+    });
+    
+    // Observe the entire document for child modifications
+    observer.observe(document.documentElement, { 
+        childList: true,
+        subtree: true 
+    });
+    
+    // 3. Material for MkDocs specific navigation event
+    if (typeof window.navigation !== 'undefined') {
+        window.navigation.addEventListener('navigate', function() {
+            // Reset initialized flag when navigating
+            initialized = false;
+            setTimeout(checkAndInitialize, 200);
+        });
+    }
+    
+    // 4. More aggressive polling as a fallback
+    setInterval(function() {
+        // If we find any pipeline visualizer elements but we're not initialized, initialize
+        const hasElements = document.querySelectorAll('.template-card, #pipeline-generator-form, #analyze-pipeline').length > 0;
+        if (hasElements && !initialized) {
+            initialized = false; // Force reinitialization
+            checkAndInitialize();
+        }
+    }, 1000);
+    
+    // 5. Hash change event (sometimes used for navigation)
+    window.addEventListener('hashchange', function() {
+        initialized = false;
+        setTimeout(checkAndInitialize, 200);
+    });
+    
+    // 6. History API
+    const originalPushState = history.pushState;
+    history.pushState = function() {
+        originalPushState.apply(this, arguments);
+        initialized = false;
+        setTimeout(checkAndInitialize, 200);
+    };
+
+    /**
+     * Loads a predefined pipeline template into the editor
+     */
+    window.loadTemplate = function(templateName) {
+        // Get the Excalidraw iframe
+        const iframe = document.querySelector('.pipeline-visualizer iframe');
+        
+        // Predefined templates as fallback if fetch fails
+        const templateData = {
+            'spring-boot': `name: Spring Boot CI/CD Pipeline
 
 on:
   push:
@@ -92,8 +182,8 @@ jobs:
       run: |
         docker tag my-spring-app:\${{ github.sha }} username/my-spring-app:latest
         docker push username/my-spring-app:latest`,
-    
-        'microservices': `name: Java Microservices CI/CD Pipeline
+            
+            'microservices': `name: Java Microservices CI/CD Pipeline
 
 on:
   push:
@@ -117,8 +207,8 @@ jobs:
     
     - name: Build with Maven
       run: mvn -B package --file pom.xml`,
-    
-        'android': `name: Android App CI/CD Pipeline
+            
+            'android': `name: Android App CI/CD Pipeline
 
 on:
   push:
@@ -138,8 +228,8 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'`,
-    
-        'enterprise': `name: Enterprise Java CI/CD Pipeline
+            
+            'enterprise': `name: Enterprise Java CI/CD Pipeline
 
 on:
   push:
@@ -161,61 +251,65 @@ jobs:
         path: '.'
         format: 'HTML'
         out: 'reports'`
-    };
-    
-    // Try multiple paths to find the template
-    const paths = [
-        `../assets/pipeline-templates/${templateName}.yml`,
-        `/assets/pipeline-templates/${templateName}.yml`,
-        `../../assets/pipeline-templates/${templateName}.yml`,
-        `/java-learning/docs/assets/pipeline-templates/${templateName}.yml`
-    ];
-    
-    let templateFound = false;
-    let attemptCount = 0;
-    
-    function tryNextPath() {
-        if (attemptCount >= paths.length) {
-            // All attempts failed, use hardcoded template data
-            console.log('Using hardcoded template data as fallback');
-            const yamlContent = templateData[templateName];
-            if (yamlContent) {
-                showTemplateModal(templateName, yamlContent);
-            } else {
-                alert(`Template "${templateName}" not found in predefined templates!`);
+        };
+        
+        // Try multiple paths to find the template
+        const paths = [
+            `../assets/pipeline-templates/${templateName}.yml`,
+            `/assets/pipeline-templates/${templateName}.yml`,
+            `../../assets/pipeline-templates/${templateName}.yml`,
+            `/java-learning/docs/assets/pipeline-templates/${templateName}.yml`
+        ];
+        
+        let templateFound = false;
+        let attemptCount = 0;
+        
+        function tryNextPath() {
+            if (attemptCount >= paths.length) {
+                // All attempts failed, use hardcoded template data
+                console.log('Using hardcoded template data as fallback');
+                const yamlContent = templateData[templateName];
+                if (yamlContent) {
+                    showTemplateModal(templateName, yamlContent);
+                } else {
+                    alert(`Template "${templateName}" not found in predefined templates!`);
+                }
+                return;
             }
-            return;
+            
+            const path = paths[attemptCount];
+            attemptCount++;
+            
+            fetch(path)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    templateFound = true;
+                    return response.text();
+                })
+                .then(yamlContent => {
+                    // Create a modal to display the template
+                    showTemplateModal(templateName, yamlContent);
+                })
+                .catch(error => {
+                    console.error(`Error loading template from ${path}:`, error);
+                    tryNextPath();
+                });
         }
         
-        const path = paths[attemptCount];
-        attemptCount++;
-        
-        fetch(path)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                templateFound = true;
-                return response.text();
-            })
-            .then(yamlContent => {
-                // Create a modal to display the template
-                showTemplateModal(templateName, yamlContent);
-            })
-            .catch(error => {
-                console.error(`Error loading template from ${path}:`, error);
-                tryNextPath();
-            });
-    }
+        // Start trying paths
+        tryNextPath();
+    };
     
-    // Start trying paths
-    tryNextPath();
-}
+    // All other functions remain unchanged but need to be moved inside this scope
+    // and made available globally if needed
 
-/**
- * Displays a modal with the template content and options to use it
- */
-function showTemplateModal(templateName, yamlContent) {
+    // ... continue with existing function implementations but make them available globally
+})();
+
+// Export functions needed by the inline script (remaining implementations stay the same)
+window.showTemplateModal = function(templateName, yamlContent) {
     // Create modal elements
     const modal = document.createElement('div');
     modal.className = 'pipeline-template-modal';
@@ -287,10 +381,7 @@ function showTemplateModal(templateName, yamlContent) {
     addModalStyles();
 }
 
-/**
- * Adds required modal styles if they don't exist
- */
-function addModalStyles() {
+window.addModalStyles = function() {
     if (!document.getElementById('pipeline-modal-styles')) {
         const style = document.createElement('style');
         style.id = 'pipeline-modal-styles';
@@ -356,10 +447,7 @@ function addModalStyles() {
     }
 }
 
-/**
- * Generates a custom pipeline based on the form inputs
- */
-function generateCustomPipeline() {
+window.generateCustomPipeline = function() {
     // Get form values
     const projectType = document.getElementById('project-type').value;
     const buildTool = document.getElementById('build-tool').value;
@@ -400,134 +488,7 @@ function generateCustomPipeline() {
     generateDiagram(yaml);
 }
 
-/**
- * Generates YAML configuration based on user selections
- */
-function generateYaml(projectType, buildTool, tests, deploymentTarget, cicdPlatform) {
-    // Define platform-specific syntax
-    const platformTemplates = {
-        'github-actions': {
-            header: `name: ${projectType} CI/CD Pipeline\n\non:\n  push:\n    branches: [ main, master, develop ]\n  pull_request:\n    branches: [ main, master ]\n\njobs:`,
-            buildJob: `  build:\n    runs-on: ubuntu-latest\n    \n    steps:\n    - uses: actions/checkout@v3`,
-            javaSetup: (buildTool) => {
-                const cacheType = buildTool === 'maven' ? 'maven' : 'gradle';
-                return `    - name: Set up JDK 17\n      uses: actions/setup-java@v3\n      with:\n        java-version: '17'\n        distribution: 'temurin'\n        cache: ${cacheType}`;
-            },
-            buildStep: (buildTool) => {
-                if (buildTool === 'maven') {
-                    return `    - name: Build with Maven\n      run: mvn -B package --file pom.xml`;
-                } else if (buildTool === 'gradle') {
-                    return `    - name: Build with Gradle\n      run: ./gradlew build`;
-                } else {
-                    return `    - name: Build with Ant\n      run: ant build`;
-                }
-            },
-            testSteps: (tests) => {
-                let steps = '';
-                if (tests.unitTests) {
-                    steps += `    - name: Run unit tests\n      run: ${buildTool === 'maven' ? 'mvn test' : './gradlew test'}\n`;
-                }
-                if (tests.integrationTests) {
-                    steps += `    - name: Run integration tests\n      run: ${buildTool === 'maven' ? 'mvn verify -DskipUnitTests' : './gradlew integrationTest'}\n`;
-                }
-                if (tests.e2eTests) {
-                    steps += `    - name: Run end-to-end tests\n      run: ${buildTool === 'maven' ? 'mvn test -Pe2e' : './gradlew e2eTest'}\n`;
-                }
-                if (tests.performanceTests) {
-                    steps += `    - name: Run performance tests\n      run: ${buildTool === 'maven' ? 'mvn gatling:test' : './gradlew performanceTest'}\n`;
-                }
-                return steps;
-            },
-            deploymentSteps: (target) => {
-                if (target === 'kubernetes') {
-                    return `  deploy:\n    needs: build\n    runs-on: ubuntu-latest\n    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'\n    \n    steps:\n    - uses: actions/checkout@v3\n    \n    - name: Set up kubectl\n      uses: azure/setup-kubectl@v3\n      \n    - name: Set Kubernetes context\n      uses: azure/k8s-set-context@v3\n      with:\n        kubeconfig: \${{ secrets.KUBE_CONFIG }}\n        \n    - name: Deploy to Kubernetes\n      run: |\n        kubectl apply -f k8s/deployment.yaml\n        kubectl apply -f k8s/service.yaml`;
-                } else if (target === 'serverless') {
-                    return `  deploy:\n    needs: build\n    runs-on: ubuntu-latest\n    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'\n    \n    steps:\n    - uses: actions/checkout@v3\n    \n    - name: Deploy to AWS Lambda\n      uses: serverless/github-action@v3.1\n      with:\n        args: deploy --stage prod`;
-                } else if (target === 'vm') {
-                    return `  deploy:\n    needs: build\n    runs-on: ubuntu-latest\n    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'\n    \n    steps:\n    - uses: actions/checkout@v3\n    \n    - name: Deploy to VMs\n      uses: appleboy/ssh-action@master\n      with:\n        host: \${{ secrets.HOST }}\n        username: \${{ secrets.USERNAME }}\n        key: \${{ secrets.SSH_KEY }}\n        script: |\n          cd /opt/app\n          ./deploy.sh`;
-                } else if (target === 'paas') {
-                    return `  deploy:\n    needs: build\n    runs-on: ubuntu-latest\n    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'\n    \n    steps:\n    - uses: actions/checkout@v3\n    \n    - name: Deploy to Heroku\n      uses: akhileshns/heroku-deploy@v3.12.14\n      with:\n        heroku_api_key: \${{ secrets.HEROKU_API_KEY }}\n        heroku_app_name: "my-app"\n        heroku_email: \${{ secrets.HEROKU_EMAIL }}`;
-                }
-            }
-        },
-        'jenkins': {
-            // Jenkins pipeline format
-            header: `pipeline {\n  agent any\n\n  stages {`,
-            buildJob: `    stage('Build') {\n      steps {\n        checkout scm`,
-            javaSetup: (buildTool) => {
-                return `        tool 'jdk-17'`;
-            },
-            buildStep: (buildTool) => {
-                if (buildTool === 'maven') {
-                    return `        sh 'mvn -B package --file pom.xml'`;
-                } else if (buildTool === 'gradle') {
-                    return `        sh './gradlew build'`;
-                } else {
-                    return `        sh 'ant build'`;
-                }
-            },
-            testSteps: (tests) => {
-                let steps = '';
-                if (tests.unitTests) {
-                    steps += `    stage('Unit Tests') {\n      steps {\n        ${buildTool === 'maven' ? "sh 'mvn test'" : "sh './gradlew test'"}\n      }\n    }\n`;
-                }
-                if (tests.integrationTests) {
-                    steps += `    stage('Integration Tests') {\n      steps {\n        ${buildTool === 'maven' ? "sh 'mvn verify -DskipUnitTests'" : "sh './gradlew integrationTest'"}\n      }\n    }\n`;
-                }
-                if (tests.e2eTests) {
-                    steps += `    stage('End-to-End Tests') {\n      steps {\n        ${buildTool === 'maven' ? "sh 'mvn test -Pe2e'" : "sh './gradlew e2eTest'"}\n      }\n    }\n`;
-                }
-                if (tests.performanceTests) {
-                    steps += `    stage('Performance Tests') {\n      steps {\n        ${buildTool === 'maven' ? "sh 'mvn gatling:test'" : "sh './gradlew performanceTest'"}\n      }\n    }\n`;
-                }
-                return steps;
-            },
-            deploymentSteps: (target) => {
-                if (target === 'kubernetes') {
-                    return `    stage('Deploy') {\n      when {\n        branch 'main'\n      }\n      steps {\n        sh 'kubectl apply -f k8s/deployment.yaml'\n        sh 'kubectl apply -f k8s/service.yaml'\n      }\n    }`;
-                } else if (target === 'serverless') {
-                    return `    stage('Deploy') {\n      when {\n        branch 'main'\n      }\n      steps {\n        sh 'serverless deploy --stage prod'\n      }\n    }`;
-                } else if (target === 'vm') {
-                    return `    stage('Deploy') {\n      when {\n        branch 'main'\n      }\n      steps {\n        sshagent(['deployment-key']) {\n          sh 'ssh user@host "cd /opt/app && ./deploy.sh"'\n        }\n      }\n    }`;
-                } else if (target === 'paas') {
-                    return `    stage('Deploy') {\n      when {\n        branch 'main'\n      }\n      steps {\n        sh 'heroku container:push web -a my-app'\n        sh 'heroku container:release web -a my-app'\n      }\n    }`;
-                }
-            },
-            footer: `  }\n\n  post {\n    always {\n      junit '**/target/surefire-reports/TEST-*.xml'\n      archiveArtifacts artifacts: 'target/*.jar', fingerprint: true\n    }\n  }\n}`
-        },
-        // Add other platforms like GitLab CI and Azure DevOps
-    };
-    
-    // Get the selected platform template
-    const platformTemplate = platformTemplates[cicdPlatform];
-    
-    // Generate the YAML
-    let yaml = platformTemplate.header + '\n';
-    
-    if (cicdPlatform === 'github-actions') {
-        yaml += platformTemplate.buildJob + '\n';
-        yaml += platformTemplate.javaSetup(buildTool) + '\n';
-        yaml += platformTemplate.buildStep(buildTool) + '\n';
-        yaml += platformTemplate.testSteps({unitTests, integrationTests, e2eTests, performanceTests});
-        yaml += '  ' + '\n'; // End build job
-        yaml += platformTemplate.deploymentSteps(deploymentTarget);
-    } else if (cicdPlatform === 'jenkins') {
-        yaml += platformTemplate.buildJob + '\n';
-        yaml += platformTemplate.javaSetup(buildTool) + '\n';
-        yaml += platformTemplate.buildStep(buildTool) + '\n';
-        yaml += '      }\n    }\n'; // End build stage
-        yaml += platformTemplate.testSteps({unitTests, integrationTests, e2eTests, performanceTests});
-        yaml += platformTemplate.deploymentSteps(deploymentTarget) + '\n';
-        yaml += platformTemplate.footer;
-    }
-    
-    return yaml;
-}
-
-/**
- * Generate a visual diagram of the pipeline
- */
-function generateDiagram(yaml) {
+window.generateDiagram = function(yaml) {
     // This creates a visual representation of the pipeline
     const diagramDiv = document.querySelector('#generated-pipeline .pipeline-diagram');
     if (diagramDiv) {
@@ -715,10 +676,7 @@ function generateDiagram(yaml) {
     }
 }
 
-/**
- * Download the generated pipeline configuration
- */
-function downloadPipelineConfig() {
+window.downloadPipelineConfig = function() {
     const codeElement = document.querySelector('#generated-pipeline .pipeline-code code');
     if (codeElement) {
         const yaml = codeElement.textContent;
@@ -742,10 +700,7 @@ function downloadPipelineConfig() {
     }
 }
 
-/**
- * Utility function to download a YAML file
- */
-function downloadYamlFile(yamlContent, filename) {
+window.downloadYamlFile = function(yamlContent, filename) {
     const blob = new Blob([yamlContent], { type: 'text/yaml' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -757,10 +712,7 @@ function downloadYamlFile(yamlContent, filename) {
     URL.revokeObjectURL(url);
 }
 
-/**
- * Analyze a pipeline configuration for best practices
- */
-function analyzePipeline() {
+window.analyzePipeline = function() {
     // Get the pipeline config from the textarea
     const config = document.getElementById('pipeline-config').value;
     
@@ -838,10 +790,7 @@ function analyzePipeline() {
     addAnalysisStyles();
 }
 
-/**
- * Add styles for the analysis results
- */
-function addAnalysisStyles() {
+window.addAnalysisStyles = function() {
     if (!document.getElementById('analysis-styles')) {
         const style = document.createElement('style');
         style.id = 'analysis-styles';
@@ -956,10 +905,7 @@ function addAnalysisStyles() {
     }
 }
 
-/**
- * Analyze pipeline configuration for best practices and issues
- */
-function performPipelineAnalysis(config) {
+window.performPipelineAnalysis = function(config) {
     // Detect if it's GitHub Actions, Jenkins, GitLab CI, etc.
     let platform = 'unknown';
     if (config.includes('jobs:') && config.includes('runs-on:')) {
