@@ -1,0 +1,122 @@
+name: Java Microservices CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master, develop ]
+    paths:
+      - 'services/**'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [ main, master, develop ]
+    paths:
+      - 'services/**'
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      services: ${{ steps.filter.outputs.changes }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            auth-service: services/auth-service/**
+            user-service: services/user-service/**
+            product-service: services/product-service/**
+            order-service: services/order-service/**
+            gateway: services/gateway/**
+
+  build:
+    needs: detect-changes
+    strategy:
+      matrix:
+        service: ${{ fromJSON(needs.detect-changes.outputs.services) }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      
+      - name: Build and test ${{ matrix.service }}
+        run: |
+          cd services/${{ matrix.service }}
+          mvn clean verify
+      
+      - name: Build Docker image
+        run: |
+          cd services/${{ matrix.service }}
+          docker build -t ${{ matrix.service }}:${{ github.sha }} .
+      
+      - name: Run contract tests
+        if: contains(fromJSON('["user-service", "order-service"]'), matrix.service)
+        run: |
+          cd services/${{ matrix.service }}
+          mvn -P contract-tests verify
+
+  integration-tests:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Docker Compose
+        run: |
+          docker-compose -f docker-compose.test.yml up -d
+      
+      - name: Run integration tests
+        run: |
+          cd integration-tests
+          mvn clean test
+      
+      - name: Tear down test environment
+        run: |
+          docker-compose -f docker-compose.test.yml down
+
+  deploy-dev:
+    needs: integration-tests
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Istio
+        uses: huang195/actions-install-istio@v1.0.0
+        
+      - name: Configure kubectl
+        uses: azure/k8s-set-context@v3
+        with:
+          kubeconfig: ${{ secrets.KUBE_CONFIG_DEV }}
+      
+      - name: Deploy canary version
+        run: |
+          kubectl apply -f k8s/dev/
+          
+      - name: Apply service mesh config
+        run: |
+          istioctl apply -f istio/dev/
+
+  deploy-prod:
+    needs: integration-tests
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Istio
+        uses: huang195/actions-install-istio@v1.0.0
+        
+      - name: Configure kubectl
+        uses: azure/k8s-set-context@v3
+        with:
+          kubeconfig: ${{ secrets.KUBE_CONFIG_PROD }}
+      
+      - name: Deploy with blue-green strategy
+        run: |
+          kubectl apply -f k8s/prod/blue/
+          # Wait for blue deployment to be ready
+          kubectl rollout status deployment/blue
+          # Switch traffic to blue
+          kubectl apply -f k8s/prod/service-blue.yaml 
