@@ -1,220 +1,10 @@
-# CI/CD Pipeline Visualization Tool
+/**
+ * CI/CD Pipeline Visualizer Tool
+ * 
+ * This script provides functionality for the interactive CI/CD Pipeline Visualizer tool.
+ * It includes template loading, custom pipeline generation, download capabilities, and pipeline analysis.
+ */
 
-This interactive tool helps you visualize and design CI/CD pipelines for Java applications.
-
-## Pipeline Visualizer
-
-<div class="pipeline-visualizer">
-    <iframe src="https://excalidraw.com/" width="100%" height="600px" frameborder="0" allow="clipboard-write"></iframe>
-</div>
-
-!!! note "About the Embedded Tool"
-    The embedded Excalidraw tool above allows you to create, save, and share pipeline diagrams. You can also use our pre-made templates below.
-
-## Pre-made Pipeline Templates
-
-Below are several pre-made CI/CD pipeline templates for common Java application scenarios. Click on any template to open it in the editor.
-
-### Spring Boot Application Pipeline
-
-<div class="template-card" data-template="spring-boot">
-    <h3>Spring Boot Pipeline</h3>
-    <p>A complete CI/CD pipeline for Spring Boot applications, including build, test, containerization, and deployment stages.</p>
-    <ul>
-        <li>Maven/Gradle build with caching</li>
-        <li>Unit and integration testing</li>
-        <li>Docker image building</li>
-        <li>Deployment to Kubernetes</li>
-    </ul>
-    <button class="md-button md-button--primary">Open Template</button>
-</div>
-
-### Microservices Pipeline
-
-<div class="template-card" data-template="microservices">
-    <h3>Microservices Pipeline</h3>
-    <p>A CI/CD pipeline designed for Java microservices architecture with service mesh integration.</p>
-    <ul>
-        <li>Parallel service builds</li>
-        <li>Contract testing</li>
-        <li>Canary deployments</li>
-        <li>Service mesh configuration</li>
-    </ul>
-    <button class="md-button md-button--primary">Open Template</button>
-</div>
-
-### Android App Pipeline
-
-<div class="template-card" data-template="android">
-    <h3>Android App Pipeline</h3>
-    <p>CI/CD pipeline for Android applications developed with Java/Kotlin.</p>
-    <ul>
-        <li>Android SDK builds</li>
-        <li>Emulator testing</li>
-        <li>UI testing</li>
-        <li>Play Store delivery</li>
-    </ul>
-    <button class="md-button md-button--primary">Open Template</button>
-</div>
-
-### Enterprise Java Pipeline
-
-<div class="template-card" data-template="enterprise">
-    <h3>Enterprise Java Pipeline</h3>
-    <p>A comprehensive pipeline for enterprise Java applications with advanced security scanning.</p>
-    <ul>
-        <li>Multi-module builds</li>
-        <li>OWASP dependency checks</li>
-        <li>SAST/DAST scanning</li>
-        <li>Compliance verification</li>
-    </ul>
-    <button class="md-button md-button--primary">Open Template</button>
-</div>
-
-## Custom Pipeline Generator
-
-Use our interactive form to generate a custom CI/CD pipeline based on your specific requirements.
-
-<div class="pipeline-generator">
-    <form id="pipeline-generator-form">
-        <div class="form-group">
-            <label for="project-type">Project Type:</label>
-            <select id="project-type">
-                <option value="spring-boot">Spring Boot</option>
-                <option value="microservices">Microservices</option>
-                <option value="jakarta-ee">Jakarta EE</option>
-                <option value="android">Android</option>
-                <option value="desktop">Desktop Java</option>
-            </select>
-        </div>
-        
-        <div class="form-group">
-            <label for="build-tool">Build Tool:</label>
-            <select id="build-tool">
-                <option value="maven">Maven</option>
-                <option value="gradle">Gradle</option>
-                <option value="ant">Ant</option>
-            </select>
-        </div>
-        
-        <div class="form-group">
-            <label>Testing Requirements:</label>
-            <div class="checkbox-group">
-                <input type="checkbox" id="unit-tests" checked>
-                <label for="unit-tests">Unit Tests</label>
-                
-                <input type="checkbox" id="integration-tests" checked>
-                <label for="integration-tests">Integration Tests</label>
-                
-                <input type="checkbox" id="e2e-tests">
-                <label for="e2e-tests">End-to-End Tests</label>
-                
-                <input type="checkbox" id="performance-tests">
-                <label for="performance-tests">Performance Tests</label>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label>Deployment Target:</label>
-            <div class="radio-group">
-                <input type="radio" name="deployment" id="kubernetes" checked>
-                <label for="kubernetes">Kubernetes</label>
-                
-                <input type="radio" name="deployment" id="vm">
-                <label for="vm">Virtual Machines</label>
-                
-                <input type="radio" name="deployment" id="serverless">
-                <label for="serverless">Serverless</label>
-                
-                <input type="radio" name="deployment" id="paas">
-                <label for="paas">PaaS</label>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label>CI/CD Platform:</label>
-            <div class="radio-group">
-                <input type="radio" name="platform" id="github-actions" checked>
-                <label for="github-actions">GitHub Actions</label>
-                
-                <input type="radio" name="platform" id="jenkins">
-                <label for="jenkins">Jenkins</label>
-                
-                <input type="radio" name="platform" id="gitlab-ci">
-                <label for="gitlab-ci">GitLab CI</label>
-                
-                <input type="radio" name="platform" id="azure-devops">
-                <label for="azure-devops">Azure DevOps</label>
-            </div>
-        </div>
-        
-        <button type="submit" class="md-button md-button--primary">Generate Pipeline</button>
-    </form>
-    
-    <div id="generated-pipeline" class="hidden">
-        <h3>Your Custom Pipeline</h3>
-        <div class="pipeline-diagram"></div>
-        <div class="pipeline-code">
-            <pre><code class="yaml"></code></pre>
-        </div>
-        <button id="download-pipeline" class="md-button">Download Pipeline Configuration</button>
-    </div>
-</div>
-
-## Pipeline Analyzer
-
-Already have a CI/CD pipeline configuration? Paste it below to analyze it for best practices and improvement opportunities.
-
-<div class="pipeline-analyzer">
-    <textarea id="pipeline-config" placeholder="Paste your pipeline configuration here (YAML, Jenkinsfile, etc.)"></textarea>
-    <button id="analyze-pipeline" class="md-button md-button--primary">Analyze Pipeline</button>
-    
-    <div id="analysis-results" class="hidden">
-        <h3>Analysis Results</h3>
-        <div class="metrics-summary"></div>
-        <div class="improvement-suggestions"></div>
-        <div class="security-checks"></div>
-    </div>
-</div>
-
-## About This Tool
-
-This CI/CD Pipeline Visualization Tool helps Java developers and DevOps engineers:
-
-1. **Design pipelines** using an intuitive visual interface
-2. **Learn best practices** through pre-made templates
-3. **Generate configuration** for popular CI/CD platforms
-4. **Analyze existing pipelines** for improvements
-
-While the embedded tool provides basic functionality, we also offer a more advanced standalone version that includes:
-
-- Integration with actual CI/CD platforms via API
-- Real-time pipeline execution visualization
-- Historical performance analytics
-- Team collaboration features
-
-[Visit Advanced Tool Site](https://example.com/advanced-cicd-tool){ .md-button .md-button--primary }
-
-## Usage Instructions
-
-### Creating a New Pipeline
-
-1. Use the embedded Excalidraw tool or select a pre-made template
-2. Customize the pipeline stages to match your requirements
-3. Add or remove elements as needed
-4. Export or download your pipeline configuration
-
-### Analyzing Existing Pipelines
-
-1. Paste your pipeline configuration in the analyzer
-2. Click "Analyze Pipeline"
-3. Review the suggestions and metrics
-4. Apply recommended improvements to your configuration
-
-## JavaScript Implementation
-
-<script>
-// CI/CD Pipeline Visualizer Tool
 document.addEventListener('DOMContentLoaded', function() {
     // Pipeline template loader
     document.querySelectorAll('.template-card button').forEach(button => {
@@ -225,34 +15,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Custom pipeline generator
-    const generatorForm = document.getElementById('pipeline-generator-form');
-    if (generatorForm) {
-        generatorForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            generateCustomPipeline();
-        });
-    }
+    document.getElementById('pipeline-generator-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        generateCustomPipeline();
+    });
     
     // Pipeline analyzer
-    const analyzeBtn = document.getElementById('analyze-pipeline');
-    if (analyzeBtn) {
-        analyzeBtn.addEventListener('click', function() {
-            analyzePipeline();
-        });
-    }
+    document.getElementById('analyze-pipeline').addEventListener('click', function() {
+        analyzePipeline();
+    });
     
     // Pipeline download
-    const downloadBtn = document.getElementById('download-pipeline');
-    if (downloadBtn) {
-        downloadBtn.addEventListener('click', function() {
-            downloadPipelineConfig();
-        });
-    }
+    document.getElementById('download-pipeline').addEventListener('click', function() {
+        downloadPipelineConfig();
+    });
 });
 
-// Template data for each pipeline type
-const templateData = {
-    'spring-boot': `name: Spring Boot CI/CD Pipeline
+/**
+ * Loads a predefined pipeline template into the editor
+ */
+function loadTemplate(templateName) {
+    // Get the Excalidraw iframe
+    const iframe = document.querySelector('.pipeline-visualizer iframe');
+    
+    // For actual template loading, we would:
+    // 1. Load the YAML file
+    // 2. Generate a diagram based on the YAML
+    // 3. Pass it to the Excalidraw iframe
+    
+    // Predefined templates as fallback if fetch fails
+    const templateData = {
+        'spring-boot': `name: Spring Boot CI/CD Pipeline
 
 on:
   push:
@@ -300,7 +93,7 @@ jobs:
         docker tag my-spring-app:\${{ github.sha }} username/my-spring-app:latest
         docker push username/my-spring-app:latest`,
     
-    'microservices': `name: Java Microservices CI/CD Pipeline
+        'microservices': `name: Java Microservices CI/CD Pipeline
 
 on:
   push:
@@ -325,7 +118,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml`,
     
-    'android': `name: Android App CI/CD Pipeline
+        'android': `name: Android App CI/CD Pipeline
 
 on:
   push:
@@ -346,7 +139,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'`,
     
-    'enterprise': `name: Enterprise Java CI/CD Pipeline
+        'enterprise': `name: Enterprise Java CI/CD Pipeline
 
 on:
   push:
@@ -368,21 +161,55 @@ jobs:
         path: '.'
         format: 'HTML'
         out: 'reports'`
-};
-
-/**
- * Loads a predefined pipeline template and displays it in a modal
- */
-function loadTemplate(templateName) {
-    // Instead of fetching from a file, use the hardcoded template data
-    const yamlContent = templateData[templateName];
+    };
     
-    if (yamlContent) {
-        // Show the template in a modal
-        showTemplateModal(templateName, yamlContent);
-    } else {
-        alert(`Template "${templateName}" not found!`);
+    // Try multiple paths to find the template
+    const paths = [
+        `../assets/pipeline-templates/${templateName}.yml`,
+        `/assets/pipeline-templates/${templateName}.yml`,
+        `../../assets/pipeline-templates/${templateName}.yml`,
+        `/java-learning/docs/assets/pipeline-templates/${templateName}.yml`
+    ];
+    
+    let templateFound = false;
+    let attemptCount = 0;
+    
+    function tryNextPath() {
+        if (attemptCount >= paths.length) {
+            // All attempts failed, use hardcoded template data
+            console.log('Using hardcoded template data as fallback');
+            const yamlContent = templateData[templateName];
+            if (yamlContent) {
+                showTemplateModal(templateName, yamlContent);
+            } else {
+                alert(`Template "${templateName}" not found in predefined templates!`);
+            }
+            return;
+        }
+        
+        const path = paths[attemptCount];
+        attemptCount++;
+        
+        fetch(path)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                templateFound = true;
+                return response.text();
+            })
+            .then(yamlContent => {
+                // Create a modal to display the template
+                showTemplateModal(templateName, yamlContent);
+            })
+            .catch(error => {
+                console.error(`Error loading template from ${path}:`, error);
+                tryNextPath();
+            });
     }
+    
+    // Start trying paths
+    tryNextPath();
 }
 
 /**
@@ -442,7 +269,6 @@ function showTemplateModal(templateName, yamlContent) {
     downloadBtn.textContent = 'Download Template';
     downloadBtn.onclick = function() {
         downloadYamlFile(yamlContent, `${templateName}-pipeline.yml`);
-        document.body.removeChild(modal);
     };
     
     footer.appendChild(useTemplateBtn);
@@ -457,12 +283,12 @@ function showTemplateModal(templateName, yamlContent) {
     // Add modal to document
     document.body.appendChild(modal);
     
-    // Add modal styles
+    // Add modal styles if needed
     addModalStyles();
 }
 
 /**
- * Adds required modal styles
+ * Adds required modal styles if they don't exist
  */
 function addModalStyles() {
     if (!document.getElementById('pipeline-modal-styles')) {
@@ -525,9 +351,6 @@ function addModalStyles() {
                 justify-content: flex-end;
                 gap: 10px;
             }
-            .hidden {
-                display: none;
-            }
         `;
         document.head.appendChild(style);
     }
@@ -561,69 +384,151 @@ function generateCustomPipeline() {
         }
     });
     
-    // Generate a simple YAML based on selections
-    // In a full implementation, this would be more sophisticated
-    const yaml = `# Generated ${projectType} pipeline for ${cicdPlatform}
-name: ${projectType.charAt(0).toUpperCase() + projectType.slice(1)} CI/CD Pipeline
-
-on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Set up JDK
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: ${buildTool}
-    
-    - name: Build with ${buildTool}
-      run: ${buildTool === 'maven' ? 'mvn -B package --file pom.xml' : (buildTool === 'gradle' ? './gradlew build' : 'ant build')}
-    
-${unitTests ? `    - name: Run unit tests
-      run: ${buildTool === 'maven' ? 'mvn test' : (buildTool === 'gradle' ? './gradlew test' : 'ant test')}\n` : ''}
-${integrationTests ? `    - name: Run integration tests
-      run: ${buildTool === 'maven' ? 'mvn verify -DskipUnitTests' : (buildTool === 'gradle' ? './gradlew integrationTest' : 'ant integration-test')}\n` : ''}
-${e2eTests ? `    - name: Run end-to-end tests
-      run: ${buildTool === 'maven' ? 'mvn test -Pe2e' : (buildTool === 'gradle' ? './gradlew e2eTest' : 'ant e2e-test')}\n` : ''}
-${performanceTests ? `    - name: Run performance tests
-      run: ${buildTool === 'maven' ? 'mvn gatling:test' : (buildTool === 'gradle' ? './gradlew performanceTest' : 'ant performance-test')}\n` : ''}
-${deploymentTarget === 'kubernetes' ? `  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - name: Deploy to Kubernetes
-      run: kubectl apply -f k8s/deployment.yaml
-` : ''}`;
+    // Generate YAML based on selections
+    const yaml = generateYaml(projectType, buildTool, {
+        unitTests,
+        integrationTests,
+        e2eTests,
+        performanceTests
+    }, deploymentTarget, cicdPlatform);
     
     // Update the generated pipeline section
-    const generatedPipeline = document.getElementById('generated-pipeline');
-    if (generatedPipeline) {
-        generatedPipeline.classList.remove('hidden');
-        const codeElement = document.querySelector('#generated-pipeline .pipeline-code code');
-        if (codeElement) {
-            codeElement.textContent = yaml;
-        }
-        
-        // Generate a visual diagram
-        generateDiagram(yaml);
+    document.getElementById('generated-pipeline').classList.remove('hidden');
+    document.querySelector('#generated-pipeline .pipeline-code code').textContent = yaml;
+    
+    // If available, generate a diagram representation
+    generateDiagram(yaml);
+}
+
+/**
+ * Generates YAML configuration based on user selections
+ */
+function generateYaml(projectType, buildTool, tests, deploymentTarget, cicdPlatform) {
+    // Define platform-specific syntax
+    const platformTemplates = {
+        'github-actions': {
+            header: `name: ${projectType} CI/CD Pipeline\n\non:\n  push:\n    branches: [ main, master, develop ]\n  pull_request:\n    branches: [ main, master ]\n\njobs:`,
+            buildJob: `  build:\n    runs-on: ubuntu-latest\n    \n    steps:\n    - uses: actions/checkout@v3`,
+            javaSetup: (buildTool) => {
+                const cacheType = buildTool === 'maven' ? 'maven' : 'gradle';
+                return `    - name: Set up JDK 17\n      uses: actions/setup-java@v3\n      with:\n        java-version: '17'\n        distribution: 'temurin'\n        cache: ${cacheType}`;
+            },
+            buildStep: (buildTool) => {
+                if (buildTool === 'maven') {
+                    return `    - name: Build with Maven\n      run: mvn -B package --file pom.xml`;
+                } else if (buildTool === 'gradle') {
+                    return `    - name: Build with Gradle\n      run: ./gradlew build`;
+                } else {
+                    return `    - name: Build with Ant\n      run: ant build`;
+                }
+            },
+            testSteps: (tests) => {
+                let steps = '';
+                if (tests.unitTests) {
+                    steps += `    - name: Run unit tests\n      run: ${buildTool === 'maven' ? 'mvn test' : './gradlew test'}\n`;
+                }
+                if (tests.integrationTests) {
+                    steps += `    - name: Run integration tests\n      run: ${buildTool === 'maven' ? 'mvn verify -DskipUnitTests' : './gradlew integrationTest'}\n`;
+                }
+                if (tests.e2eTests) {
+                    steps += `    - name: Run end-to-end tests\n      run: ${buildTool === 'maven' ? 'mvn test -Pe2e' : './gradlew e2eTest'}\n`;
+                }
+                if (tests.performanceTests) {
+                    steps += `    - name: Run performance tests\n      run: ${buildTool === 'maven' ? 'mvn gatling:test' : './gradlew performanceTest'}\n`;
+                }
+                return steps;
+            },
+            deploymentSteps: (target) => {
+                if (target === 'kubernetes') {
+                    return `  deploy:\n    needs: build\n    runs-on: ubuntu-latest\n    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'\n    \n    steps:\n    - uses: actions/checkout@v3\n    \n    - name: Set up kubectl\n      uses: azure/setup-kubectl@v3\n      \n    - name: Set Kubernetes context\n      uses: azure/k8s-set-context@v3\n      with:\n        kubeconfig: \${{ secrets.KUBE_CONFIG }}\n        \n    - name: Deploy to Kubernetes\n      run: |\n        kubectl apply -f k8s/deployment.yaml\n        kubectl apply -f k8s/service.yaml`;
+                } else if (target === 'serverless') {
+                    return `  deploy:\n    needs: build\n    runs-on: ubuntu-latest\n    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'\n    \n    steps:\n    - uses: actions/checkout@v3\n    \n    - name: Deploy to AWS Lambda\n      uses: serverless/github-action@v3.1\n      with:\n        args: deploy --stage prod`;
+                } else if (target === 'vm') {
+                    return `  deploy:\n    needs: build\n    runs-on: ubuntu-latest\n    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'\n    \n    steps:\n    - uses: actions/checkout@v3\n    \n    - name: Deploy to VMs\n      uses: appleboy/ssh-action@master\n      with:\n        host: \${{ secrets.HOST }}\n        username: \${{ secrets.USERNAME }}\n        key: \${{ secrets.SSH_KEY }}\n        script: |\n          cd /opt/app\n          ./deploy.sh`;
+                } else if (target === 'paas') {
+                    return `  deploy:\n    needs: build\n    runs-on: ubuntu-latest\n    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'\n    \n    steps:\n    - uses: actions/checkout@v3\n    \n    - name: Deploy to Heroku\n      uses: akhileshns/heroku-deploy@v3.12.14\n      with:\n        heroku_api_key: \${{ secrets.HEROKU_API_KEY }}\n        heroku_app_name: "my-app"\n        heroku_email: \${{ secrets.HEROKU_EMAIL }}`;
+                }
+            }
+        },
+        'jenkins': {
+            // Jenkins pipeline format
+            header: `pipeline {\n  agent any\n\n  stages {`,
+            buildJob: `    stage('Build') {\n      steps {\n        checkout scm`,
+            javaSetup: (buildTool) => {
+                return `        tool 'jdk-17'`;
+            },
+            buildStep: (buildTool) => {
+                if (buildTool === 'maven') {
+                    return `        sh 'mvn -B package --file pom.xml'`;
+                } else if (buildTool === 'gradle') {
+                    return `        sh './gradlew build'`;
+                } else {
+                    return `        sh 'ant build'`;
+                }
+            },
+            testSteps: (tests) => {
+                let steps = '';
+                if (tests.unitTests) {
+                    steps += `    stage('Unit Tests') {\n      steps {\n        ${buildTool === 'maven' ? "sh 'mvn test'" : "sh './gradlew test'"}\n      }\n    }\n`;
+                }
+                if (tests.integrationTests) {
+                    steps += `    stage('Integration Tests') {\n      steps {\n        ${buildTool === 'maven' ? "sh 'mvn verify -DskipUnitTests'" : "sh './gradlew integrationTest'"}\n      }\n    }\n`;
+                }
+                if (tests.e2eTests) {
+                    steps += `    stage('End-to-End Tests') {\n      steps {\n        ${buildTool === 'maven' ? "sh 'mvn test -Pe2e'" : "sh './gradlew e2eTest'"}\n      }\n    }\n`;
+                }
+                if (tests.performanceTests) {
+                    steps += `    stage('Performance Tests') {\n      steps {\n        ${buildTool === 'maven' ? "sh 'mvn gatling:test'" : "sh './gradlew performanceTest'"}\n      }\n    }\n`;
+                }
+                return steps;
+            },
+            deploymentSteps: (target) => {
+                if (target === 'kubernetes') {
+                    return `    stage('Deploy') {\n      when {\n        branch 'main'\n      }\n      steps {\n        sh 'kubectl apply -f k8s/deployment.yaml'\n        sh 'kubectl apply -f k8s/service.yaml'\n      }\n    }`;
+                } else if (target === 'serverless') {
+                    return `    stage('Deploy') {\n      when {\n        branch 'main'\n      }\n      steps {\n        sh 'serverless deploy --stage prod'\n      }\n    }`;
+                } else if (target === 'vm') {
+                    return `    stage('Deploy') {\n      when {\n        branch 'main'\n      }\n      steps {\n        sshagent(['deployment-key']) {\n          sh 'ssh user@host "cd /opt/app && ./deploy.sh"'\n        }\n      }\n    }`;
+                } else if (target === 'paas') {
+                    return `    stage('Deploy') {\n      when {\n        branch 'main'\n      }\n      steps {\n        sh 'heroku container:push web -a my-app'\n        sh 'heroku container:release web -a my-app'\n      }\n    }`;
+                }
+            },
+            footer: `  }\n\n  post {\n    always {\n      junit '**/target/surefire-reports/TEST-*.xml'\n      archiveArtifacts artifacts: 'target/*.jar', fingerprint: true\n    }\n  }\n}`
+        },
+        // Add other platforms like GitLab CI and Azure DevOps
+    };
+    
+    // Get the selected platform template
+    const platformTemplate = platformTemplates[cicdPlatform];
+    
+    // Generate the YAML
+    let yaml = platformTemplate.header + '\n';
+    
+    if (cicdPlatform === 'github-actions') {
+        yaml += platformTemplate.buildJob + '\n';
+        yaml += platformTemplate.javaSetup(buildTool) + '\n';
+        yaml += platformTemplate.buildStep(buildTool) + '\n';
+        yaml += platformTemplate.testSteps({unitTests, integrationTests, e2eTests, performanceTests});
+        yaml += '  ' + '\n'; // End build job
+        yaml += platformTemplate.deploymentSteps(deploymentTarget);
+    } else if (cicdPlatform === 'jenkins') {
+        yaml += platformTemplate.buildJob + '\n';
+        yaml += platformTemplate.javaSetup(buildTool) + '\n';
+        yaml += platformTemplate.buildStep(buildTool) + '\n';
+        yaml += '      }\n    }\n'; // End build stage
+        yaml += platformTemplate.testSteps({unitTests, integrationTests, e2eTests, performanceTests});
+        yaml += platformTemplate.deploymentSteps(deploymentTarget) + '\n';
+        yaml += platformTemplate.footer;
     }
+    
+    return yaml;
 }
 
 /**
  * Generate a visual diagram of the pipeline
  */
 function generateDiagram(yaml) {
-    // This creates a simple visual representation of the pipeline
+    // This creates a visual representation of the pipeline
     const diagramDiv = document.querySelector('#generated-pipeline .pipeline-diagram');
     if (diagramDiv) {
         // Parse the pipeline stages from the YAML
@@ -814,10 +719,26 @@ function generateDiagram(yaml) {
  * Download the generated pipeline configuration
  */
 function downloadPipelineConfig() {
-    const code = document.querySelector('#generated-pipeline .pipeline-code code');
-    if (code) {
-        const yaml = code.textContent;
-        downloadYamlFile(yaml, 'custom-pipeline.yml');
+    const codeElement = document.querySelector('#generated-pipeline .pipeline-code code');
+    if (codeElement) {
+        const yaml = codeElement.textContent;
+        
+        // Get selected platform for filename
+        let platform = 'github';
+        document.querySelectorAll('input[name="platform"]').forEach(input => {
+            if (input.checked) {
+                platform = input.id.replace('-actions', '').replace('-ci', '');
+            }
+        });
+        
+        // Get project type for filename
+        const projectType = document.getElementById('project-type').value;
+        
+        // Create filename
+        const filename = `${projectType}-${platform}-pipeline.yml`;
+        
+        // Download the file
+        downloadYamlFile(yaml, filename);
     }
 }
 
@@ -837,88 +758,84 @@ function downloadYamlFile(yamlContent, filename) {
 }
 
 /**
- * Analyze the pipeline configuration entered by the user
+ * Analyze a pipeline configuration for best practices
  */
 function analyzePipeline() {
-    const configInput = document.getElementById('pipeline-config');
-    const analysisResults = document.getElementById('analysis-results');
+    // Get the pipeline config from the textarea
+    const config = document.getElementById('pipeline-config').value;
     
-    if (configInput && analysisResults) {
-        const config = configInput.value.trim();
-        
-        if (config) {
-            // Perform analysis
-            const analysis = performPipelineAnalysis(config);
-            
-            // Display results
-            analysisResults.classList.remove('hidden');
-            
-            // Update metrics summary
-            const metricsSummary = document.querySelector('#analysis-results .metrics-summary');
-            if (metricsSummary) {
-                metricsSummary.innerHTML = `
-                    <div class="metrics-container">
-                        <div class="metric">
-                            <div class="metric-title">Overall Score</div>
-                            <div class="metric-score">${analysis.overallScore}%</div>
-                            <div class="metric-bar">
-                                <div class="metric-fill" style="width: ${analysis.overallScore}%;"></div>
-                            </div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-title">Security</div>
-                            <div class="metric-score">${analysis.securityScore}%</div>
-                            <div class="metric-bar">
-                                <div class="metric-fill" style="width: ${analysis.securityScore}%;"></div>
-                            </div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-title">Efficiency</div>
-                            <div class="metric-score">${analysis.efficiencyScore}%</div>
-                            <div class="metric-bar">
-                                <div class="metric-fill" style="width: ${analysis.efficiencyScore}%;"></div>
-                            </div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-title">Maintainability</div>
-                            <div class="metric-score">${analysis.maintainabilityScore}%</div>
-                            <div class="metric-bar">
-                                <div class="metric-fill" style="width: ${analysis.maintainabilityScore}%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <p><strong>Pipeline Type:</strong> ${analysis.platform}</p>
-                `;
-            }
-            
-            // Update improvement suggestions
-            const improvementSuggestions = document.querySelector('#analysis-results .improvement-suggestions');
-            if (improvementSuggestions) {
-                let suggestionsHtml = '<h4>Improvement Suggestions</h4><ul>';
-                analysis.suggestions.forEach(suggestion => {
-                    suggestionsHtml += `<li>${suggestion}</li>`;
-                });
-                suggestionsHtml += '</ul>';
-                improvementSuggestions.innerHTML = suggestionsHtml;
-            }
-            
-            // Update security checks
-            const securityChecks = document.querySelector('#analysis-results .security-checks');
-            if (securityChecks) {
-                let checksHtml = '<h4>Security Checks</h4><ul>';
-                analysis.securityChecks.forEach(check => {
-                    checksHtml += `<li class="${check.passed ? 'passed' : 'failed'}">${check.name}: ${check.message}</li>`;
-                });
-                checksHtml += '</ul>';
-                securityChecks.innerHTML = checksHtml;
-            }
-            
-            // Add styles for the analysis results
-            addAnalysisStyles();
-        } else {
-            alert('Please enter a pipeline configuration to analyze.');
-        }
+    if (!config.trim()) {
+        alert('Please paste a pipeline configuration to analyze.');
+        return;
     }
+    
+    // Analyze the pipeline for common issues and best practices
+    const analysis = performPipelineAnalysis(config);
+    
+    // Display the analysis results
+    document.getElementById('analysis-results').classList.remove('hidden');
+    
+    // Populate metrics summary
+    const metricsSummary = document.querySelector('#analysis-results .metrics-summary');
+    metricsSummary.innerHTML = `
+        <h4>Pipeline Metrics</h4>
+        <div class="metrics-grid">
+            <div class="metric">
+                <span class="metric-name">Overall Score</span>
+                <span class="metric-value">${analysis.overallScore}/100</span>
+            </div>
+            <div class="metric">
+                <span class="metric-name">Security Practices</span>
+                <span class="metric-value">${analysis.securityScore}/100</span>
+            </div>
+            <div class="metric">
+                <span class="metric-name">Efficiency</span>
+                <span class="metric-value">${analysis.efficiencyScore}/100</span>
+            </div>
+            <div class="metric">
+                <span class="metric-name">Maintainability</span>
+                <span class="metric-value">${analysis.maintainabilityScore}/100</span>
+            </div>
+        </div>
+    `;
+    
+    // Populate improvement suggestions
+    const improvementSuggestions = document.querySelector('#analysis-results .improvement-suggestions');
+    improvementSuggestions.innerHTML = '<h4>Improvement Suggestions</h4><ul>';
+    
+    analysis.suggestions.forEach(suggestion => {
+        improvementSuggestions.innerHTML += `
+            <li class="suggestion">
+                <div class="suggestion-header">
+                    <span class="suggestion-priority ${suggestion.priority}">${suggestion.priority}</span>
+                    <span class="suggestion-title">${suggestion.title}</span>
+                </div>
+                <p class="suggestion-description">${suggestion.description}</p>
+            </li>
+        `;
+    });
+    
+    improvementSuggestions.innerHTML += '</ul>';
+    
+    // Populate security checks
+    const securityChecks = document.querySelector('#analysis-results .security-checks');
+    securityChecks.innerHTML = '<h4>Security Checks</h4><ul>';
+    
+    analysis.securityChecks.forEach(check => {
+        securityChecks.innerHTML += `
+            <li class="security-check ${check.status.toLowerCase()}">
+                <span class="check-icon"></span>
+                <span class="check-name">${check.name}</span>
+                <span class="check-status">${check.status}</span>
+                <p class="check-description">${check.description}</p>
+            </li>
+        `;
+    });
+    
+    securityChecks.innerHTML += '</ul>';
+    
+    // Add styles for the analysis results
+    addAnalysisStyles();
 }
 
 /**
@@ -929,53 +846,110 @@ function addAnalysisStyles() {
         const style = document.createElement('style');
         style.id = 'analysis-styles';
         style.textContent = `
-            .metrics-container {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 20px;
-                margin-bottom: 20px;
+            .metrics-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+                margin: 15px 0;
             }
             .metric {
-                flex: 1;
-                min-width: 200px;
                 background-color: #f5f5f5;
                 border-radius: 4px;
                 padding: 15px;
+                display: flex;
+                flex-direction: column;
             }
-            .metric-title {
+            .metric-name {
                 font-weight: bold;
                 margin-bottom: 5px;
             }
-            .metric-score {
-                font-size: 24px;
-                font-weight: bold;
+            .metric-value {
+                font-size: 1.5rem;
+                color: #3f51b5;
+            }
+            .suggestion {
+                background-color: #f5f5f5;
+                border-radius: 4px;
+                padding: 15px;
                 margin-bottom: 10px;
             }
-            .metric-bar {
-                height: 10px;
-                background-color: #ddd;
-                border-radius: 5px;
-                overflow: hidden;
+            .suggestion-header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 5px;
             }
-            .metric-fill {
-                height: 100%;
+            .suggestion-priority {
+                font-size: 0.8rem;
+                padding: 3px 8px;
+                border-radius: 4px;
+                margin-right: 10px;
+                text-transform: uppercase;
+            }
+            .suggestion-priority.high {
+                background-color: #f44336;
+                color: white;
+            }
+            .suggestion-priority.medium {
+                background-color: #ff9800;
+                color: white;
+            }
+            .suggestion-priority.low {
                 background-color: #4caf50;
-                border-radius: 5px;
+                color: white;
             }
-            .improvement-suggestions, .security-checks {
-                margin-top: 20px;
+            .suggestion-title {
+                font-weight: bold;
             }
-            .improvement-suggestions h4, .security-checks h4 {
+            .security-check {
+                display: flex;
+                align-items: center;
+                background-color: #f5f5f5;
+                border-radius: 4px;
+                padding: 15px;
                 margin-bottom: 10px;
+                flex-wrap: wrap;
             }
-            .improvement-suggestions ul, .security-checks ul {
-                padding-left: 20px;
+            .check-icon {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                margin-right: 10px;
             }
-            .security-checks .passed {
-                color: #4caf50;
+            .security-check.pass .check-icon {
+                background-color: #4caf50;
             }
-            .security-checks .failed {
-                color: #f44336;
+            .security-check.fail .check-icon {
+                background-color: #f44336;
+            }
+            .security-check.warning .check-icon {
+                background-color: #ff9800;
+            }
+            .check-name {
+                font-weight: bold;
+                margin-right: 10px;
+            }
+            .check-status {
+                font-size: 0.8rem;
+                padding: 3px 8px;
+                border-radius: 4px;
+                margin-right: 10px;
+                text-transform: uppercase;
+            }
+            .security-check.pass .check-status {
+                background-color: #4caf50;
+                color: white;
+            }
+            .security-check.fail .check-status {
+                background-color: #f44336;
+                color: white;
+            }
+            .security-check.warning .check-status {
+                background-color: #ff9800;
+                color: white;
+            }
+            .check-description {
+                flex-basis: 100%;
+                margin-top: 10px;
             }
         `;
         document.head.appendChild(style);
@@ -1004,8 +978,8 @@ function performPipelineAnalysis(config) {
                         config.includes('snyk') || 
                         config.includes('security');
     const hasEnvironmentVariables = config.includes('env:') || 
-                                   config.includes('environment') ||
-                                   config.includes('variables:');
+                                    config.includes('environment') ||
+                                    config.includes('variables:');
     const hasMultiStageDeployments = config.includes('staging') && config.includes('production');
     const hasDockerization = config.includes('docker') || config.includes('image:');
     
@@ -1082,73 +1056,4 @@ function performPipelineAnalysis(config) {
         suggestions,
         securityChecks
     };
-}
-</script>
-
-<style>
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.checkbox-group, .radio-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.pipeline-analyzer textarea {
-    width: 100%;
-    min-height: 200px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: monospace;
-    margin-bottom: 10px;
-}
-
-.template-card {
-    padding: 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    background-color: #f9f9f9;
-}
-
-.template-card h3 {
-    margin-top: 0;
-}
-
-.hidden {
-    display: none;
-}
-
-.pipeline-code {
-    margin-top: 20px;
-    background-color: #f5f5f5;
-    border-radius: 4px;
-    overflow: auto;
-}
-
-.pipeline-code pre {
-    margin: 0;
-    padding: 15px;
-}
-
-#download-pipeline {
-    margin-top: 10px;
-}
-</style>
-</rewritten_file>
+} 

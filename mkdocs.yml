@@ -41,6 +41,10 @@ extra:
       link: 'https://github.com/mshemeel'
     - icon: fontawesome/brands/linkedin
       link: 'https://linkedin.com/in/mshemeel007'
+  
+  # JavaScript files to include
+  javascript:
+    - assets/js/cicd-pipeline-visualizer.js
 
 # Extensions
 markdown_extensions:
