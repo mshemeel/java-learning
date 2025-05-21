@@ -37,6 +37,14 @@ There are several ways you can contribute to the Java Learning Platform:
    ```bash
    mkdocs serve
    ```
+5. If the above steps are not working try the below
+   ```bash
+   rm -rf venv
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   python -m mkdocs serve
+   ```
 
 ## Contribution Workflow
 
