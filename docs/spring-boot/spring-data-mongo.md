@@ -29,12 +29,13 @@ This guide explores Spring Data MongoDB, a part of the Spring Data family that m
 6. [Custom Queries](#custom-queries)
 7. [MongoDB Template](#mongodb-template)
 8. [Aggregation Framework](#aggregation-framework)
-9. [Indexing](#indexing)
-10. [Geospatial Queries](#geospatial-queries)
-11. [GridFS for Large Files](#gridfs-for-large-files)
-12. [Change Streams](#change-streams)
-13. [Transactions](#transactions)
-14. [Testing Spring Data MongoDB](#testing-spring-data-mongodb)
+9. [Collection Relationships and Joins](#collection-relationships-and-joins)
+10. [Indexing](#indexing)
+11. [Geospatial Queries](#geospatial-queries)
+12. [GridFS for Large Files](#gridfs-for-large-files)
+13. [Change Streams](#change-streams)
+14. [Transactions](#transactions)
+15. [Testing Spring Data MongoDB](#testing-spring-data-mongodb)
 
 ## Introduction to Spring Data MongoDB
 
@@ -639,6 +640,322 @@ public class CustomerInsightsService {
         
         // Getters and setters
     }
+}
+```
+
+## Collection Relationships and Joins
+
+MongoDB is a document-oriented database that does not support traditional SQL-style joins. However, Spring Data MongoDB provides several ways to work with related data across collections.
+
+### Using $lookup Aggregation (MongoDB's Left Join)
+
+The most common way to join collections in MongoDB is using the `$lookup` aggregation stage, which performs a left outer join to another collection.
+
+```java
+@Service
+public class OrderAnalyticsService {
+    
+    private final MongoTemplate mongoTemplate;
+    
+    public OrderAnalyticsService(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
+    
+    public List<OrderWithCustomer> getOrdersWithCustomerInfo() {
+        TypedAggregation<Order> aggregation = Aggregation.newAggregation(
+                Order.class,
+                // Match only processing orders (optional filter)
+                Aggregation.match(Criteria.where("status").is(OrderStatus.PROCESSING)),
+                // Join with customers collection
+                Aggregation.lookup("customers", "customerId", "_id", "customerData"),
+                // Unwind the joined array (since lookup returns an array)
+                Aggregation.unwind("customerData", true),
+                // Project the fields we want
+                Aggregation.project()
+                        .and("id").as("orderId")
+                        .and("orderNumber").as("orderNumber")
+                        .and("orderDate").as("orderDate")
+                        .and("status").as("status")
+                        .and("customerData.name").as("customerName")
+                        .and("customerData.email").as("customerEmail")
+                        .and("items").as("items")
+        );
+        
+        AggregationResults<OrderWithCustomer> results = mongoTemplate.aggregate(
+                aggregation, OrderWithCustomer.class);
+        
+        return results.getMappedResults();
+    }
+    
+    public static class OrderWithCustomer {
+        private String orderId;
+        private String orderNumber;
+        private Date orderDate;
+        private OrderStatus status;
+        private String customerName;
+        private String customerEmail;
+        private List<OrderItem> items;
+        
+        // Getters and setters
+    }
+}
+```
+
+### Using DBRef for Manual Joins
+
+Another approach is to use `@DBRef` annotations and manual fetching:
+
+```java
+@Document(collection = "orders")
+public class Order {
+    @Id
+    private String id;
+    
+    private String orderNumber;
+    
+    @DBRef
+    private Customer customer;
+    
+    private List<OrderItem> items;
+    private OrderStatus status;
+    
+    // Getters, setters, etc.
+}
+
+@Service
+public class OrderService {
+    
+    private final OrderRepository orderRepository;
+    
+    public OrderService(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
+    
+    public List<Order> findOrdersWithCustomers() {
+        // DBRef fields are lazily loaded when accessed
+        List<Order> orders = orderRepository.findAll();
+        
+        // Trigger loading of customer data
+        orders.forEach(order -> {
+            if (order.getCustomer() != null) {
+                // Access customer properties to trigger loading
+                String customerName = order.getCustomer().getName();
+            }
+        });
+        
+        return orders;
+    }
+}
+```
+
+### Multiple Collection Joins with $lookup
+
+Joining more than two collections is also possible with multiple `$lookup` stages:
+
+```java
+@Service
+public class OrderReportService {
+    
+    private final MongoTemplate mongoTemplate;
+    
+    public OrderReportService(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
+    
+    public List<CompleteOrderInfo> getCompleteOrderInfo() {
+        TypedAggregation<Order> aggregation = Aggregation.newAggregation(
+                Order.class,
+                // First lookup - join with customers
+                Aggregation.lookup("customers", "customerId", "_id", "customerData"),
+                Aggregation.unwind("customerData", true),
+                
+                // Unwind order items to work with each item separately
+                Aggregation.unwind("items"),
+                
+                // Second lookup - join with products
+                Aggregation.lookup("products", "items.productId", "_id", "productData"),
+                Aggregation.unwind("productData", true),
+                
+                // Group back to order level
+                Aggregation.group("_id")
+                        .first("orderNumber").as("orderNumber")
+                        .first("orderDate").as("orderDate")
+                        .first("status").as("status")
+                        .first("customerData").as("customer")
+                        .push(Aggregation.bind("product", "productData")
+                             .and("quantity", "items.quantity")
+                             .and("price", "items.price")
+                        ).as("orderItems"),
+                
+                // Final projection
+                Aggregation.project()
+                        .and("_id").as("orderId")
+                        .and("orderNumber").as("orderNumber")
+                        .and("orderDate").as("orderDate")
+                        .and("status").as("status")
+                        .and("customer.name").as("customerName")
+                        .and("customer.email").as("customerEmail")
+                        .and("orderItems").as("items")
+        );
+        
+        AggregationResults<CompleteOrderInfo> results = mongoTemplate.aggregate(
+                aggregation, CompleteOrderInfo.class);
+        
+        return results.getMappedResults();
+    }
+    
+    public static class CompleteOrderInfo {
+        private String orderId;
+        private String orderNumber;
+        private Date orderDate;
+        private OrderStatus status;
+        private String customerName;
+        private String customerEmail;
+        private List<EnrichedOrderItem> items;
+        
+        // Getters and setters
+    }
+    
+    public static class EnrichedOrderItem {
+        private Product product;
+        private int quantity;
+        private BigDecimal price;
+        
+        // Getters and setters
+    }
+}
+```
+
+### Programmatic Collection Joins
+
+For more control, you can join collections programmatically:
+
+```java
+@Service
+public class ProductCategoryService {
+    
+    private final MongoTemplate mongoTemplate;
+    
+    public ProductCategoryService(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
+    
+    public List<ProductWithCategory> getProductsWithCategories() {
+        // Step 1: Get all products
+        List<Product> products = mongoTemplate.findAll(Product.class);
+        
+        // Step 2: Extract all category IDs
+        Set<String> categoryIds = products.stream()
+                .map(Product::getCategoryId)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toSet());
+        
+        // Step 3: Find all relevant categories
+        List<Category> categories = mongoTemplate.find(
+                Query.query(Criteria.where("_id").in(categoryIds)), 
+                Category.class);
+        
+        // Step 4: Create lookup map for efficient joining
+        Map<String, Category> categoryMap = categories.stream()
+                .collect(Collectors.toMap(Category::getId, Function.identity()));
+        
+        // Step 5: Join the data
+        return products.stream()
+                .map(product -> {
+                    ProductWithCategory result = new ProductWithCategory();
+                    result.setId(product.getId());
+                    result.setName(product.getName());
+                    result.setPrice(product.getPrice());
+                    
+                    // Join with category
+                    if (product.getCategoryId() != null) {
+                        Category category = categoryMap.get(product.getCategoryId());
+                        if (category != null) {
+                            result.setCategoryName(category.getName());
+                            result.setCategoryDescription(category.getDescription());
+                        }
+                    }
+                    
+                    return result;
+                })
+                .collect(Collectors.toList());
+    }
+    
+    public static class ProductWithCategory {
+        private String id;
+        private String name;
+        private BigDecimal price;
+        private String categoryName;
+        private String categoryDescription;
+        
+        // Getters and setters
+    }
+}
+```
+
+### Embedding vs. Referencing in MongoDB
+
+When designing MongoDB data models, consider these relationship patterns:
+
+1. **Embedding (Denormalization)**: Include related data in the same document
+   - Best for one-to-few relationships
+   - Good for data that is queried together frequently
+   - Example: Order with embedded line items
+
+2. **Referencing (Normalization)**: Store references between documents
+   - Best for one-to-many or many-to-many relationships
+   - Good when related data is large or changes frequently
+   - Example: Order referencing a Customer by ID
+
+```java
+// Example of embedding approach
+@Document(collection = "orders")
+public class Order {
+    @Id
+    private String id;
+    private String orderNumber;
+    private Date orderDate;
+    
+    // Embedded customer information
+    private CustomerInfo customer;
+    
+    // Embedded order items
+    private List<OrderItem> items;
+    
+    // Other fields...
+}
+
+public class CustomerInfo {
+    private String name;
+    private String email;
+    private String phone;
+    
+    // Getters, setters, etc.
+}
+
+// Example of referencing approach
+@Document(collection = "orders")
+public class Order {
+    @Id
+    private String id;
+    private String orderNumber;
+    private Date orderDate;
+    
+    // Reference to customer
+    private String customerId;
+    
+    // References to products in order items
+    private List<OrderItem> items;
+    
+    // Other fields...
+}
+
+public class OrderItem {
+    private String productId;  // Reference to product
+    private int quantity;
+    private BigDecimal price;
+    
+    // Getters, setters, etc.
 }
 ```
 
