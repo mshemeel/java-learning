@@ -71,6 +71,14 @@ plugins:
   - mermaid2
   - search:
       lang: en
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          name: English
+          default: true
+        - locale: id
+          name: Bahasa Indonesia
   # - macros  # Disabling macros plugin to fix template errors
 
 # Navigation
