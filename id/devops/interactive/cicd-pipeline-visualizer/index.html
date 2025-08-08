@@ -1,0 +1,5371 @@
+
+<!doctype html>
+<html lang="id" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A comprehensive resource for Java developers covering core concepts to advanced microservices architecture">
+      
+      
+        <meta name="author" content="Muhammed Shemeel">
+      
+      
+        <link rel="canonical" href="https://mshemeel.github.io/java-learning/id/devops/interactive/cicd-pipeline-visualizer/">
+      
+      
+        <link rel="prev" href="../devops-workflows/">
+      
+      
+        <link rel="next" href="../iac-templates/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>CI/CD Pipeline Visualizer - Java Learning Platform</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cicd-pipeline-visualization-tool" class="md-skip">
+          Lewati ke isi
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../" title="Java Learning Platform" class="md-header__button md-logo" aria-label="Java Learning Platform" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Learning Platform
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CI/CD Pipeline Visualizer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Pilih bahasa">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../../devops/interactive/cicd-pipeline-visualizer/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="id" class="md-select__link">
+              Bahasa Indonesia
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cari" placeholder="Cari" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cari">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Kosongkan" aria-label="Kosongkan" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Mempersiapkan pencarian
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mshemeel/java-learning" title="Ke repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mshemeel/java-learning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tab" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../java/java-basics/" class="md-tabs__link">
+          
+  
+    
+  
+  Java Core
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../java-sample-problems/" class="md-tabs__link">
+          
+  
+    
+  
+  Java Sample Problems
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../spring-boot/spring-boot-core-concepts/" class="md-tabs__link">
+          
+  
+    
+  
+  Spring Boot
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../microservices/microservices-basics/" class="md-tabs__link">
+          
+  
+    
+  
+  Microservices
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../kubernetes/kubernetes-basics/" class="md-tabs__link">
+          
+  
+    
+  
+  Kubernetes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../design-patterns/design-patterns-principles/" class="md-tabs__link">
+          
+  
+    
+  
+  Design Patterns
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../deployment-guide/" class="md-tabs__link">
+          
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../feedback/" class="md-tabs__link">
+          
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigasi" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../" title="Java Learning Platform" class="md-nav__button md-logo" aria-label="Java Learning Platform" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Java Learning Platform
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mshemeel/java-learning" title="Ke repositori" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mshemeel/java-learning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Java Core
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java Core
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/java-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/java-oop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OOP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/java-collections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/java-exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exceptions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/java-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/java-multithreading/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multithreading
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/java-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/java-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/java-streams-lambdas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams & Lambdas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/java-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/java-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java/java-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../java-sample-problems/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Java Sample Problems
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Java Sample Problems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java-sample-problems/basic-problems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Problems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Arrays and Strings
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Arrays and Strings
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java-sample-problems/arrays-and-strings/TwoSum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Two Sum
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java-sample-problems/arrays-and-strings/ThreeSum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Three Sum
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java-sample-problems/arrays-and-strings/Anagrams/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anagrams
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java-sample-problems/arrays-and-strings/BinarySearch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Binary Search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java-sample-problems/arrays-and-strings/StringPalindrome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String Palindrome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Linked List
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Linked List
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java-sample-problems/linked-list/LinkedListOperations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linked List Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Sorting
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Sorting
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java-sample-problems/sorting/SortingAlgorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sorting Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Trees
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Trees
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java-sample-problems/trees/TreeTraversal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tree Traversal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Graphs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Graphs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java-sample-problems/graphs/GraphAlgorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Dynamic Programming
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Dynamic Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../java-sample-problems/dynamic-programming/DynamicProgramming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dynamic Programming Problems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../java-sample-problems/data-structures.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../java-sample-problems/algorithms.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../java-sample-problems/oop-problems.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OOP Problems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../java-sample-problems/design-patterns-problems.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../java-sample-problems/spring-boot-problems.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Boot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../java-sample-problems/microservices-problems.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Microservices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Spring Boot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Spring Boot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-boot-core-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-boot-starter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Starter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-boot-rest-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    REST API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-boot-data-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Access
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-boot-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-boot-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-boot-actuator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actuator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-boot-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-boot-aop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AOP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-boot-configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-data-jpa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Data JPA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-data-mongo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Data MongoDB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-kafka-integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring-boot/spring-boot-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Microservices
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Microservices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microservices/microservices-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microservices/microservices-communication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Communication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microservices/microservices-discovery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Service Discovery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microservices/microservices-resilience/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resilience
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microservices/microservices-api-gateway/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Gateway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microservices/microservices-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microservices/microservices-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microservices/microservices-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microservices/microservices-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microservices/microservices-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microservices/saga-pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Saga Pattern
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microservices/cqrs-pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CQRS Pattern
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../microservices/platform-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Platform Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kubernetes/kubernetes-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kubernetes/kubernetes-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kubernetes/kubernetes-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kubernetes/kubernetes-config-secrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config & Secrets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kubernetes/kubernetes-storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kubernetes/kubernetes-scaling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scaling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kubernetes/kubernetes-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kubernetes/kubernetes-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kubernetes/kubernetes-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kubernetes/kubernetes-troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kubernetes/kubernetes-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    DevOps
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            DevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DevOps Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ci-cd-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../infrastructure-as-code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Infrastructure as Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring & Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops-tools-overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DevOps Tools Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Java-Specific DevOps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_8">
+            <span class="md-nav__icon md-icon"></span>
+            Java-Specific DevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java-cicd-pipelines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java CI/CD Pipelines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java-containerization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Containerization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java-app-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java App Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jenkins-for-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jenkins for Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java-deployment-strategies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Deployment Strategies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_9" id="__nav_7_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Advanced Topics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_9">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gitops-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitOps Practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devsecops-for-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DevSecOps for Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance-testing-automation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chaos-engineering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chaos Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DevOps Best Practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_10" id="__nav_7_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Sample Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_10">
+            <span class="md-nav__icon md-icon"></span>
+            Sample Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/cicd-java-project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD Java Project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/containerizing-spring-app/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containerizing Spring App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/monitoring-java-microservices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring Java Microservices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/iac-for-java-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IaC for Java Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_11" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_11" id="__nav_7_11_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Interactive Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_11">
+            <span class="md-nav__icon md-icon"></span>
+            Interactive Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-workflows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DevOps Workflow Diagrams
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CI/CD Pipeline Visualizer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD Pipeline Visualizer
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Daftar isi">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-visualizer" class="md-nav__link">
+    Pipeline Visualizer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-made-pipeline-templates" class="md-nav__link">
+    Pre-made Pipeline Templates
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-made Pipeline Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spring-boot-application-pipeline" class="md-nav__link">
+    Spring Boot Application Pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microservices-pipeline" class="md-nav__link">
+    Microservices Pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android-app-pipeline" class="md-nav__link">
+    Android App Pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enterprise-java-pipeline" class="md-nav__link">
+    Enterprise Java Pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-pipeline-generator" class="md-nav__link">
+    Custom Pipeline Generator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-analyzer" class="md-nav__link">
+    Pipeline Analyzer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-tool" class="md-nav__link">
+    About This Tool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-instructions" class="md-nav__link">
+    Usage Instructions
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-pipeline" class="md-nav__link">
+    Creating a New Pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyzing-existing-pipelines" class="md-nav__link">
+    Analyzing Existing Pipelines
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#javascript-implementation" class="md-nav__link">
+    JavaScript Implementation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iac-templates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IaC Templates Repository
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-dashboards/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring Dashboards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-maturity-assessment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DevOps Maturity Assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Design Patterns
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Design Patterns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../design-patterns/design-patterns-principles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../design-patterns/design-patterns-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../design-patterns/design-patterns-j2ee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    J2EE Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../design-patterns/design-patterns-behavioral/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Behavioral Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../design-patterns/design-patterns-structural/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Structural Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../design-patterns/design-patterns-creational/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creational Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deployment-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../search-implementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Search Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            About
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CONTRIBUTING/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LICENSE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Daftar isi">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-visualizer" class="md-nav__link">
+    Pipeline Visualizer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-made-pipeline-templates" class="md-nav__link">
+    Pre-made Pipeline Templates
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-made Pipeline Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spring-boot-application-pipeline" class="md-nav__link">
+    Spring Boot Application Pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microservices-pipeline" class="md-nav__link">
+    Microservices Pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android-app-pipeline" class="md-nav__link">
+    Android App Pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enterprise-java-pipeline" class="md-nav__link">
+    Enterprise Java Pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-pipeline-generator" class="md-nav__link">
+    Custom Pipeline Generator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-analyzer" class="md-nav__link">
+    Pipeline Analyzer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-tool" class="md-nav__link">
+    About This Tool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-instructions" class="md-nav__link">
+    Usage Instructions
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-pipeline" class="md-nav__link">
+    Creating a New Pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyzing-existing-pipelines" class="md-nav__link">
+    Analyzing Existing Pipelines
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#javascript-implementation" class="md-nav__link">
+    JavaScript Implementation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="cicd-pipeline-visualization-tool">CI/CD Pipeline Visualization Tool<a class="headerlink" href="#cicd-pipeline-visualization-tool" title="Permanent link">&para;</a></h1>
+<p>This interactive tool helps you visualize and design CI/CD pipelines for Java applications.</p>
+<h2 id="pipeline-visualizer">Pipeline Visualizer<a class="headerlink" href="#pipeline-visualizer" title="Permanent link">&para;</a></h2>
+<div class="pipeline-visualizer">
+    <iframe src="https://excalidraw.com/" width="100%" height="600px" frameborder="0" allow="clipboard-write"></iframe>
+</div>
+
+<div class="admonition note">
+<p class="admonition-title">About the Embedded Tool</p>
+<p>The embedded Excalidraw tool above allows you to create, save, and share pipeline diagrams. You can also use our pre-made templates below.</p>
+</div>
+<h2 id="pre-made-pipeline-templates">Pre-made Pipeline Templates<a class="headerlink" href="#pre-made-pipeline-templates" title="Permanent link">&para;</a></h2>
+<p>Below are several pre-made CI/CD pipeline templates for common Java application scenarios. Click on any template to open it in the editor.</p>
+<h3 id="spring-boot-application-pipeline">Spring Boot Application Pipeline<a class="headerlink" href="#spring-boot-application-pipeline" title="Permanent link">&para;</a></h3>
+<div class="template-card" data-template="spring-boot">
+    <h3>Spring Boot Pipeline</h3>
+    <p>A complete CI/CD pipeline for Spring Boot applications, including build, test, containerization, and deployment stages.</p>
+    <ul>
+        <li>Maven/Gradle build with caching</li>
+        <li>Unit and integration testing</li>
+        <li>Docker image building</li>
+        <li>Deployment to Kubernetes</li>
+    </ul>
+    <button class="md-button md-button--primary">Open Template</button>
+</div>
+
+<h3 id="microservices-pipeline">Microservices Pipeline<a class="headerlink" href="#microservices-pipeline" title="Permanent link">&para;</a></h3>
+<div class="template-card" data-template="microservices">
+    <h3>Microservices Pipeline</h3>
+    <p>A CI/CD pipeline designed for Java microservices architecture with service mesh integration.</p>
+    <ul>
+        <li>Parallel service builds</li>
+        <li>Contract testing</li>
+        <li>Canary deployments</li>
+        <li>Service mesh configuration</li>
+    </ul>
+    <button class="md-button md-button--primary">Open Template</button>
+</div>
+
+<h3 id="android-app-pipeline">Android App Pipeline<a class="headerlink" href="#android-app-pipeline" title="Permanent link">&para;</a></h3>
+<div class="template-card" data-template="android">
+    <h3>Android App Pipeline</h3>
+    <p>CI/CD pipeline for Android applications developed with Java/Kotlin.</p>
+    <ul>
+        <li>Android SDK builds</li>
+        <li>Emulator testing</li>
+        <li>UI testing</li>
+        <li>Play Store delivery</li>
+    </ul>
+    <button class="md-button md-button--primary">Open Template</button>
+</div>
+
+<h3 id="enterprise-java-pipeline">Enterprise Java Pipeline<a class="headerlink" href="#enterprise-java-pipeline" title="Permanent link">&para;</a></h3>
+<div class="template-card" data-template="enterprise">
+    <h3>Enterprise Java Pipeline</h3>
+    <p>A comprehensive pipeline for enterprise Java applications with advanced security scanning.</p>
+    <ul>
+        <li>Multi-module builds</li>
+        <li>OWASP dependency checks</li>
+        <li>SAST/DAST scanning</li>
+        <li>Compliance verification</li>
+    </ul>
+    <button class="md-button md-button--primary">Open Template</button>
+</div>
+
+<h2 id="custom-pipeline-generator">Custom Pipeline Generator<a class="headerlink" href="#custom-pipeline-generator" title="Permanent link">&para;</a></h2>
+<p>Use our interactive form to generate a custom CI/CD pipeline based on your specific requirements.</p>
+<div class="pipeline-generator">
+    <form id="pipeline-generator-form">
+        <div class="form-group">
+            <label for="project-type">Project Type:</label>
+            <select id="project-type">
+                <option value="spring-boot">Spring Boot</option>
+                <option value="microservices">Microservices</option>
+                <option value="jakarta-ee">Jakarta EE</option>
+                <option value="android">Android</option>
+                <option value="desktop">Desktop Java</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="build-tool">Build Tool:</label>
+            <select id="build-tool">
+                <option value="maven">Maven</option>
+                <option value="gradle">Gradle</option>
+                <option value="ant">Ant</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Testing Requirements:</label>
+            <div class="checkbox-group">
+                <input type="checkbox" id="unit-tests" checked>
+                <label for="unit-tests">Unit Tests</label>
+
+                <input type="checkbox" id="integration-tests" checked>
+                <label for="integration-tests">Integration Tests</label>
+
+                <input type="checkbox" id="e2e-tests">
+                <label for="e2e-tests">End-to-End Tests</label>
+
+                <input type="checkbox" id="performance-tests">
+                <label for="performance-tests">Performance Tests</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Deployment Target:</label>
+            <div class="radio-group">
+                <input type="radio" name="deployment" id="kubernetes" checked>
+                <label for="kubernetes">Kubernetes</label>
+
+                <input type="radio" name="deployment" id="vm">
+                <label for="vm">Virtual Machines</label>
+
+                <input type="radio" name="deployment" id="serverless">
+                <label for="serverless">Serverless</label>
+
+                <input type="radio" name="deployment" id="paas">
+                <label for="paas">PaaS</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>CI/CD Platform:</label>
+            <div class="radio-group">
+                <input type="radio" name="platform" id="github-actions" checked>
+                <label for="github-actions">GitHub Actions</label>
+
+                <input type="radio" name="platform" id="jenkins">
+                <label for="jenkins">Jenkins</label>
+
+                <input type="radio" name="platform" id="gitlab-ci">
+                <label for="gitlab-ci">GitLab CI</label>
+
+                <input type="radio" name="platform" id="azure-devops">
+                <label for="azure-devops">Azure DevOps</label>
+            </div>
+        </div>
+
+        <button type="submit" class="md-button md-button--primary">Generate Pipeline</button>
+    </form>
+
+    <div id="generated-pipeline" class="hidden">
+        <h3>Your Custom Pipeline</h3>
+        <div class="pipeline-diagram"></div>
+        <div class="pipeline-code">
+            <pre><code class="yaml"></code></pre>
+        </div>
+        <button id="download-pipeline" class="md-button">Download Pipeline Configuration</button>
+    </div>
+</div>
+
+<h2 id="pipeline-analyzer">Pipeline Analyzer<a class="headerlink" href="#pipeline-analyzer" title="Permanent link">&para;</a></h2>
+<p>Already have a CI/CD pipeline configuration? Paste it below to analyze it for best practices and improvement opportunities.</p>
+<div class="pipeline-analyzer">
+    <textarea id="pipeline-config" placeholder="Paste your pipeline configuration here (YAML, Jenkinsfile, etc.)"></textarea>
+    <button id="analyze-pipeline" class="md-button md-button--primary">Analyze Pipeline</button>
+
+    <div id="analysis-results" class="hidden">
+        <h3>Analysis Results</h3>
+        <div class="metrics-summary"></div>
+        <div class="improvement-suggestions"></div>
+        <div class="security-checks"></div>
+    </div>
+</div>
+
+<h2 id="about-this-tool">About This Tool<a class="headerlink" href="#about-this-tool" title="Permanent link">&para;</a></h2>
+<p>This CI/CD Pipeline Visualization Tool helps Java developers and DevOps engineers:</p>
+<ol>
+<li><strong>Design pipelines</strong> using an intuitive visual interface</li>
+<li><strong>Learn best practices</strong> through pre-made templates</li>
+<li><strong>Generate configuration</strong> for popular CI/CD platforms</li>
+<li><strong>Analyze existing pipelines</strong> for improvements</li>
+</ol>
+<p>While the embedded tool provides basic functionality, we also offer a more advanced standalone version that includes:</p>
+<ul>
+<li>Integration with actual CI/CD platforms via API</li>
+<li>Real-time pipeline execution visualization</li>
+<li>Historical performance analytics</li>
+<li>Team collaboration features</li>
+</ul>
+<p><a href="https://example.com/advanced-cicd-tool">Visit Advanced Tool Site</a>{ .md-button .md-button--primary }</p>
+<h2 id="usage-instructions">Usage Instructions<a class="headerlink" href="#usage-instructions" title="Permanent link">&para;</a></h2>
+<h3 id="creating-a-new-pipeline">Creating a New Pipeline<a class="headerlink" href="#creating-a-new-pipeline" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Use the embedded Excalidraw tool or select a pre-made template</li>
+<li>Customize the pipeline stages to match your requirements</li>
+<li>Add or remove elements as needed</li>
+<li>Export or download your pipeline configuration</li>
+</ol>
+<h3 id="analyzing-existing-pipelines">Analyzing Existing Pipelines<a class="headerlink" href="#analyzing-existing-pipelines" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Paste your pipeline configuration in the analyzer</li>
+<li>Click "Analyze Pipeline"</li>
+<li>Review the suggestions and metrics</li>
+<li>Apply recommended improvements to your configuration</li>
+</ol>
+<h2 id="javascript-implementation">JavaScript Implementation<a class="headerlink" href="#javascript-implementation" title="Permanent link">&para;</a></h2>
+<script id="pipeline-visualizer-script">
+// This specific ID helps ensure our script isn't replaced during navigation
+(function() {
+    // Flag to track if we've already initialized on this page
+    let initialized = false;
+
+    // Function to check if visualizer elements exist and need initialization
+    function checkAndInitialize() {
+        // Check if we're on the correct page by looking for specific elements
+        const hasTemplateCards = document.querySelectorAll('.template-card').length > 0;
+        const hasGenerator = document.getElementById('pipeline-generator-form');
+        const hasAnalyzer = document.getElementById('analyze-pipeline');
+
+        if ((hasTemplateCards || hasGenerator || hasAnalyzer) && !initialized) {
+            console.log('CI/CD Pipeline Visualizer: Initializing from checkAndInitialize');
+            initializePipelineVisualizer();
+            initialized = true;
+            return true;
+        }
+        return false;
+    }
+
+    // Main initialization function
+    function initializePipelineVisualizer() {
+        console.log('CI/CD Pipeline Visualizer: Running initialization');
+
+        // Pipeline template loader
+        document.querySelectorAll('.template-card button').forEach(button => {
+            button.onclick = function() {
+                const template = this.parentElement.dataset.template;
+                loadTemplate(template);
+                return false;
+            };
+        });
+
+        // Custom pipeline generator
+        const generatorForm = document.getElementById('pipeline-generator-form');
+        if (generatorForm) {
+            generatorForm.onsubmit = function(e) {
+                e.preventDefault();
+                generateCustomPipeline();
+                return false;
+            };
+        }
+
+        // Pipeline analyzer
+        const analyzeBtn = document.getElementById('analyze-pipeline');
+        if (analyzeBtn) {
+            analyzeBtn.onclick = function() {
+                analyzePipeline();
+                return false;
+            };
+        }
+
+        // Pipeline download
+        const downloadBtn = document.getElementById('download-pipeline');
+        if (downloadBtn) {
+            downloadBtn.onclick = function() {
+                downloadPipelineConfig();
+                return false;
+            };
+        }
+    }
+
+    // Multiple ways to detect navigation/loading
+
+    // 1. Standard DOM ready event
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        setTimeout(checkAndInitialize, 100);
+    } else {
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(checkAndInitialize, 100);
+        });
+    }
+
+    // 2. Set up MutationObserver to detect when our elements are added to the DOM
+    const observer = new MutationObserver(function(mutations) {
+        if (checkAndInitialize()) {
+            // If we successfully initialized, no need to keep observing
+            observer.disconnect();
+        }
+    });
+
+    // Observe the entire document for child modifications
+    observer.observe(document.documentElement, { 
+        childList: true,
+        subtree: true 
+    });
+
+    // 3. Material for MkDocs specific navigation event
+    if (typeof window.navigation !== 'undefined') {
+        window.navigation.addEventListener('navigate', function() {
+            // Reset initialized flag when navigating
+            initialized = false;
+            setTimeout(checkAndInitialize, 200);
+        });
+    }
+
+    // 4. More aggressive polling as a fallback
+    setInterval(function() {
+        // If we find any pipeline visualizer elements but we're not initialized, initialize
+        const hasElements = document.querySelectorAll('.template-card, #pipeline-generator-form, #analyze-pipeline').length > 0;
+        if (hasElements && !initialized) {
+            initialized = false; // Force reinitialization
+            checkAndInitialize();
+        }
+    }, 1000);
+
+    // 5. Hash change event (sometimes used for navigation)
+    window.addEventListener('hashchange', function() {
+        initialized = false;
+        setTimeout(checkAndInitialize, 200);
+    });
+
+    // 6. History API
+    const originalPushState = history.pushState;
+    history.pushState = function() {
+        originalPushState.apply(this, arguments);
+        initialized = false;
+        setTimeout(checkAndInitialize, 200);
+    };
+})();
+
+// Template data for each pipeline type
+const templateData = {
+    'spring-boot': `name: Spring Boot CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    - name: Run unit tests
+      run: mvn test
+
+    - name: Run integration tests
+      run: mvn verify -DskipUnitTests
+
+    - name: Build Docker image
+      run: |
+        docker build -t my-spring-app:\${{ github.sha }} .
+
+    - name: Login to DockerHub
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      uses: docker/login-action@v2
+      with:
+        username: \${{ secrets.DOCKER_USERNAME }}
+        password: \${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Push Docker image
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      run: |
+        docker tag my-spring-app:\${{ github.sha }} username/my-spring-app:latest
+        docker push username/my-spring-app:latest`,
+
+    'microservices': `name: Java Microservices CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml`,
+
+    'android': `name: Android App CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'`,
+
+    'enterprise': `name: Enterprise Java CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: OWASP Dependency Check
+      uses: dependency-check/Dependency-Check_Action@main
+      with:
+        project: 'Enterprise Java App'
+        path: '.'
+        format: 'HTML'
+        out: 'reports'`
+};
+
+/**
+ * Loads a predefined pipeline template and displays it in a modal
+ */
+function loadTemplate(templateName) {
+    // Instead of fetching from a file, use the hardcoded template data
+    const yamlContent = templateData[templateName];
+
+    if (yamlContent) {
+        // Show the template in a modal
+        showTemplateModal(templateName, yamlContent);
+    } else {
+        alert(`Template "${templateName}" not found!`);
+    }
+}
+
+/**
+ * Displays a modal with the template content and options to use it
+ */
+function showTemplateModal(templateName, yamlContent) {
+    // Create modal elements
+    const modal = document.createElement('div');
+    modal.className = 'pipeline-template-modal';
+
+    const modalContent = document.createElement('div');
+    modalContent.className = 'modal-content';
+
+    // Create header
+    const header = document.createElement('div');
+    header.className = 'modal-header';
+
+    const title = document.createElement('h3');
+    title.textContent = `${templateName.charAt(0).toUpperCase() + templateName.slice(1)} Pipeline Template`;
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'close-button';
+    closeBtn.textContent = '×';
+    closeBtn.onclick = function() {
+        document.body.removeChild(modal);
+    };
+
+    header.appendChild(title);
+    header.appendChild(closeBtn);
+
+    // Create body with code display
+    const body = document.createElement('div');
+    body.className = 'modal-body';
+
+    const pre = document.createElement('pre');
+    const code = document.createElement('code');
+    code.className = 'yaml';
+    code.textContent = yamlContent;
+    pre.appendChild(code);
+    body.appendChild(pre);
+
+    // Create footer with actions
+    const footer = document.createElement('div');
+    footer.className = 'modal-footer';
+
+    const useTemplateBtn = document.createElement('button');
+    useTemplateBtn.className = 'md-button md-button--primary';
+    useTemplateBtn.textContent = 'Use This Template';
+    useTemplateBtn.onclick = function() {
+        // In a full implementation, this would load the template into the editor
+        alert('Template would be loaded into the editor');
+        document.body.removeChild(modal);
+    };
+
+    const downloadBtn = document.createElement('button');
+    downloadBtn.className = 'md-button';
+    downloadBtn.textContent = 'Download Template';
+    downloadBtn.onclick = function() {
+        downloadYamlFile(yamlContent, `${templateName}-pipeline.yml`);
+        document.body.removeChild(modal);
+    };
+
+    footer.appendChild(useTemplateBtn);
+    footer.appendChild(downloadBtn);
+
+    // Assemble modal
+    modalContent.appendChild(header);
+    modalContent.appendChild(body);
+    modalContent.appendChild(footer);
+    modal.appendChild(modalContent);
+
+    // Add modal to document
+    document.body.appendChild(modal);
+
+    // Add modal styles
+    addModalStyles();
+}
+
+/**
+ * Adds required modal styles
+ */
+function addModalStyles() {
+    if (!document.getElementById('pipeline-modal-styles')) {
+        const style = document.createElement('style');
+        style.id = 'pipeline-modal-styles';
+        style.textContent = `
+            .pipeline-template-modal {
+                position: fixed;
+                z-index: 1000;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .modal-content {
+                background-color: #fff;
+                border-radius: 4px;
+                max-width: 80%;
+                max-height: 80%;
+                display: flex;
+                flex-direction: column;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+            .modal-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px;
+                border-bottom: 1px solid #eee;
+            }
+            .modal-header h3 {
+                margin: 0;
+            }
+            .close-button {
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            .modal-body {
+                padding: 15px;
+                overflow: auto;
+                flex-grow: 1;
+            }
+            .modal-body pre {
+                margin: 0;
+                overflow: auto;
+                background-color: #f5f5f5;
+                padding: 10px;
+                border-radius: 4px;
+            }
+            .modal-footer {
+                padding: 15px;
+                border-top: 1px solid #eee;
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
+            }
+            .hidden {
+                display: none;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+/**
+ * Generates a custom pipeline based on the form inputs
+ */
+function generateCustomPipeline() {
+    // Get form values
+    const projectType = document.getElementById('project-type').value;
+    const buildTool = document.getElementById('build-tool').value;
+    const unitTests = document.getElementById('unit-tests').checked;
+    const integrationTests = document.getElementById('integration-tests').checked;
+    const e2eTests = document.getElementById('e2e-tests').checked;
+    const performanceTests = document.getElementById('performance-tests').checked;
+
+    // Get deployment target
+    let deploymentTarget = '';
+    document.querySelectorAll('input[name="deployment"]').forEach(input => {
+        if (input.checked) {
+            deploymentTarget = input.id;
+        }
+    });
+
+    // Get CI/CD platform
+    let cicdPlatform = '';
+    document.querySelectorAll('input[name="platform"]').forEach(input => {
+        if (input.checked) {
+            cicdPlatform = input.id;
+        }
+    });
+
+    // Generate a simple YAML based on selections
+    // In a full implementation, this would be more sophisticated
+    const yaml = `# Generated ${projectType} pipeline for ${cicdPlatform}
+name: ${projectType.charAt(0).toUpperCase() + projectType.slice(1)} CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: ${buildTool}
+
+    - name: Build with ${buildTool}
+      run: ${buildTool === 'maven' ? 'mvn -B package --file pom.xml' : (buildTool === 'gradle' ? './gradlew build' : 'ant build')}
+
+${unitTests ? `    - name: Run unit tests
+      run: ${buildTool === 'maven' ? 'mvn test' : (buildTool === 'gradle' ? './gradlew test' : 'ant test')}\n` : ''}
+${integrationTests ? `    - name: Run integration tests
+      run: ${buildTool === 'maven' ? 'mvn verify -DskipUnitTests' : (buildTool === 'gradle' ? './gradlew integrationTest' : 'ant integration-test')}\n` : ''}
+${e2eTests ? `    - name: Run end-to-end tests
+      run: ${buildTool === 'maven' ? 'mvn test -Pe2e' : (buildTool === 'gradle' ? './gradlew e2eTest' : 'ant e2e-test')}\n` : ''}
+${performanceTests ? `    - name: Run performance tests
+      run: ${buildTool === 'maven' ? 'mvn gatling:test' : (buildTool === 'gradle' ? './gradlew performanceTest' : 'ant performance-test')}\n` : ''}
+${deploymentTarget === 'kubernetes' ? `  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to Kubernetes
+      run: kubectl apply -f k8s/deployment.yaml
+` : ''}`;
+
+    // Update the generated pipeline section
+    const generatedPipeline = document.getElementById('generated-pipeline');
+    if (generatedPipeline) {
+        generatedPipeline.classList.remove('hidden');
+        const codeElement = document.querySelector('#generated-pipeline .pipeline-code code');
+        if (codeElement) {
+            codeElement.textContent = yaml;
+        }
+
+        // Generate a visual diagram
+        generateDiagram(yaml);
+    }
+}
+
+/**
+ * Generate a visual diagram of the pipeline
+ */
+function generateDiagram(yaml) {
+    // This creates a visual representation of the pipeline
+    const diagramDiv = document.querySelector('#generated-pipeline .pipeline-diagram');
+    if (diagramDiv) {
+        // Parse the pipeline stages from the YAML
+        const stages = [];
+
+        // Add the build stage
+        stages.push({ name: 'Build', steps: ['Checkout', 'Setup JDK', 'Compile'] });
+
+        // Add testing stages based on the YAML content
+        const testSteps = [];
+        if (yaml.includes('unit tests') || yaml.includes('mvn test') || yaml.includes('./gradlew test')) {
+            testSteps.push('Unit Tests');
+        }
+        if (yaml.includes('integration tests') || yaml.includes('verify -DskipUnitTests') || yaml.includes('integrationTest')) {
+            testSteps.push('Integration Tests');
+        }
+        if (yaml.includes('e2e tests') || yaml.includes('-Pe2e') || yaml.includes('e2eTest')) {
+            testSteps.push('E2E Tests');
+        }
+        if (yaml.includes('performance tests') || yaml.includes('gatling:test') || yaml.includes('performanceTest')) {
+            testSteps.push('Performance Tests');
+        }
+
+        if (testSteps.length > 0) {
+            stages.push({ name: 'Test', steps: testSteps });
+        }
+
+        // Add packaging/containerization stage if present
+        if (yaml.includes('docker build') || yaml.includes('package') || yaml.includes('jar') || yaml.includes('war')) {
+            stages.push({ name: 'Package', steps: ['Build Artifact', 'Create Container Image'] });
+        }
+
+        // Add deployment stage if present
+        if (yaml.includes('deploy') || yaml.includes('kubernetes') || yaml.includes('kubectl') || 
+            yaml.includes('heroku') || yaml.includes('serverless')) {
+            const deploySteps = [];
+
+            if (yaml.includes('kubernetes') || yaml.includes('kubectl')) {
+                deploySteps.push('Deploy to Kubernetes');
+            } else if (yaml.includes('heroku')) {
+                deploySteps.push('Deploy to Heroku');
+            } else if (yaml.includes('serverless')) {
+                deploySteps.push('Deploy to Serverless');
+            } else if (yaml.includes('vm')) {
+                deploySteps.push('Deploy to VM');
+            } else {
+                deploySteps.push('Deploy to Target');
+            }
+
+            stages.push({ name: 'Deploy', steps: deploySteps });
+        }
+
+        // Create the flow diagram HTML
+        let diagramHtml = '<div class="pipeline-flow-diagram">';
+
+        // Add the stages
+        for (let i = 0; i < stages.length; i++) {
+            const stage = stages[i];
+
+            // Start stage block
+            diagramHtml += `<div class="pipeline-stage">
+                <div class="stage-header">${stage.name}</div>
+                <div class="stage-steps">`;
+
+            // Add steps
+            stage.steps.forEach(step => {
+                diagramHtml += `<div class="stage-step">${step}</div>`;
+            });
+
+            // Close stage block
+            diagramHtml += `</div></div>`;
+
+            // Add arrow if not the last stage
+            if (i < stages.length - 1) {
+                diagramHtml += '<div class="pipeline-arrow">→</div>';
+            }
+        }
+
+        // Close the diagram
+        diagramHtml += '</div>';
+
+        // Add the diagram to the page
+        diagramDiv.innerHTML = diagramHtml;
+
+        // Add the CSS for the diagram
+        const style = document.createElement('style');
+        style.textContent = `
+            .pipeline-flow-diagram {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                margin: 20px 0;
+                gap: 15px;
+            }
+
+            .pipeline-stage {
+                border: 2px solid #3f51b5;
+                border-radius: 8px;
+                overflow: hidden;
+                width: 180px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                background-color: white;
+            }
+
+            .stage-header {
+                background-color: #3f51b5;
+                color: white;
+                padding: 10px;
+                text-align: center;
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+            .pipeline-stage:nth-child(4n+1) {
+                border-color: #3f51b5;
+            }
+
+            .pipeline-stage:nth-child(4n+1) .stage-header {
+                background-color: #3f51b5;
+            }
+
+            .pipeline-stage:nth-child(4n+3) {
+                border-color: #e91e63;
+            }
+
+            .pipeline-stage:nth-child(4n+3) .stage-header {
+                background-color: #e91e63;
+            }
+
+            .pipeline-stage:nth-child(4n+5) {
+                border-color: #009688;
+            }
+
+            .pipeline-stage:nth-child(4n+5) .stage-header {
+                background-color: #009688;
+            }
+
+            .pipeline-stage:nth-child(4n+7) {
+                border-color: #ff9800;
+            }
+
+            .pipeline-stage:nth-child(4n+7) .stage-header {
+                background-color: #ff9800;
+            }
+
+            .stage-steps {
+                padding: 10px;
+            }
+
+            .stage-step {
+                padding: 8px;
+                margin: 5px 0;
+                background-color: #f5f5f5;
+                border-radius: 4px;
+                font-size: 14px;
+                text-align: center;
+            }
+
+            .pipeline-arrow {
+                font-size: 24px;
+                color: #555;
+                display: flex;
+                align-items: center;
+            }
+
+            @media (max-width: 768px) {
+                .pipeline-flow-diagram {
+                    flex-direction: column;
+                }
+
+                .pipeline-arrow {
+                    transform: rotate(90deg);
+                    margin: 10px 0;
+                }
+
+                .pipeline-stage {
+                    width: 100%;
+                    max-width: 250px;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+/**
+ * Download the generated pipeline configuration
+ */
+function downloadPipelineConfig() {
+    const code = document.querySelector('#generated-pipeline .pipeline-code code');
+    if (code) {
+        const yaml = code.textContent;
+        downloadYamlFile(yaml, 'custom-pipeline.yml');
+    }
+}
+
+/**
+ * Utility function to download a YAML file
+ */
+function downloadYamlFile(yamlContent, filename) {
+    const blob = new Blob([yamlContent], { type: 'text/yaml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+/**
+ * Analyze the pipeline configuration entered by the user
+ */
+function analyzePipeline() {
+    const configInput = document.getElementById('pipeline-config');
+    const analysisResults = document.getElementById('analysis-results');
+
+    if (configInput && analysisResults) {
+        const config = configInput.value.trim();
+
+        if (config) {
+            // Perform analysis
+            const analysis = performPipelineAnalysis(config);
+
+            // Display results
+            analysisResults.classList.remove('hidden');
+
+            // Update metrics summary
+            const metricsSummary = document.querySelector('#analysis-results .metrics-summary');
+            if (metricsSummary) {
+                metricsSummary.innerHTML = `
+                    <div class="metrics-container">
+                        <div class="metric">
+                            <div class="metric-title">Overall Score</div>
+                            <div class="metric-score">${analysis.overallScore}%</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" style="width: ${analysis.overallScore}%;"></div>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-title">Security</div>
+                            <div class="metric-score">${analysis.securityScore}%</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" style="width: ${analysis.securityScore}%;"></div>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-title">Efficiency</div>
+                            <div class="metric-score">${analysis.efficiencyScore}%</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" style="width: ${analysis.efficiencyScore}%;"></div>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-title">Maintainability</div>
+                            <div class="metric-score">${analysis.maintainabilityScore}%</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" style="width: ${analysis.maintainabilityScore}%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p><strong>Pipeline Type:</strong> ${analysis.platform}</p>
+                `;
+            }
+
+            // Update improvement suggestions
+            const improvementSuggestions = document.querySelector('#analysis-results .improvement-suggestions');
+            if (improvementSuggestions) {
+                let suggestionsHtml = '<h4>Improvement Suggestions</h4><ul>';
+                analysis.suggestions.forEach(suggestion => {
+                    suggestionsHtml += `<li>${suggestion}</li>`;
+                });
+                suggestionsHtml += '</ul>';
+                improvementSuggestions.innerHTML = suggestionsHtml;
+            }
+
+            // Update security checks
+            const securityChecks = document.querySelector('#analysis-results .security-checks');
+            if (securityChecks) {
+                let checksHtml = '<h4>Security Checks</h4><ul>';
+                analysis.securityChecks.forEach(check => {
+                    checksHtml += `<li class="${check.passed ? 'passed' : 'failed'}">${check.name}: ${check.message}</li>`;
+                });
+                checksHtml += '</ul>';
+                securityChecks.innerHTML = checksHtml;
+            }
+
+            // Add styles for the analysis results
+            addAnalysisStyles();
+        } else {
+            alert('Please enter a pipeline configuration to analyze.');
+        }
+    }
+}
+
+/**
+ * Add styles for the analysis results
+ */
+function addAnalysisStyles() {
+    if (!document.getElementById('analysis-styles')) {
+        const style = document.createElement('style');
+        style.id = 'analysis-styles';
+        style.textContent = `
+            .metrics-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                margin-bottom: 20px;
+            }
+            .metric {
+                flex: 1;
+                min-width: 200px;
+                background-color: #f5f5f5;
+                border-radius: 4px;
+                padding: 15px;
+            }
+            .metric-title {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            .metric-score {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            .metric-bar {
+                height: 10px;
+                background-color: #ddd;
+                border-radius: 5px;
+                overflow: hidden;
+            }
+            .metric-fill {
+                height: 100%;
+                background-color: #4caf50;
+                border-radius: 5px;
+            }
+            .improvement-suggestions, .security-checks {
+                margin-top: 20px;
+            }
+            .improvement-suggestions h4, .security-checks h4 {
+                margin-bottom: 10px;
+            }
+            .improvement-suggestions ul, .security-checks ul {
+                padding-left: 20px;
+            }
+            .security-checks .passed {
+                color: #4caf50;
+            }
+            .security-checks .failed {
+                color: #f44336;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+/**
+ * Analyze pipeline configuration for best practices and issues
+ */
+function performPipelineAnalysis(config) {
+    // Detect if it's GitHub Actions, Jenkins, GitLab CI, etc.
+    let platform = 'unknown';
+    if (config.includes('jobs:') && config.includes('runs-on:')) {
+        platform = 'GitHub Actions';
+    } else if (config.includes('pipeline {') && config.includes('agent')) {
+        platform = 'Jenkins';
+    } else if (config.includes('stages:') && config.includes('- script:')) {
+        platform = 'GitLab CI';
+    }
+
+    // Check for various practices
+    const hasCaching = config.includes('cache:') || config.includes('caching');
+    const hasTests = config.includes('test') || config.includes('Test');
+    const hasSecurity = config.includes('dependency-check') || 
+                        config.includes('OWASP') || 
+                        config.includes('snyk') || 
+                        config.includes('security');
+    const hasEnvironmentVariables = config.includes('env:') || 
+                                   config.includes('environment') ||
+                                   config.includes('variables:');
+    const hasMultiStageDeployments = config.includes('staging') && config.includes('production');
+    const hasDockerization = config.includes('docker') || config.includes('image:');
+
+    // Security score (40% of total)
+    const securityScore = hasSecurity ? 85 : 40;
+
+    // Efficiency score (30% of total)
+    let efficiencyScore = 50;
+    if (hasCaching) efficiencyScore += 20;
+    if (config.includes('matrix') || config.includes('parallel')) efficiencyScore += 15;
+    efficiencyScore = Math.min(efficiencyScore, 100);
+
+    // Maintainability score (30% of total)
+    let maintainabilityScore = 60;
+    if (hasEnvironmentVariables) maintainabilityScore += 20;
+    if (config.includes('stages:') || config.includes('stages {')) maintainabilityScore += 10;
+    maintainabilityScore = Math.min(maintainabilityScore, 100);
+
+    // Overall score is weighted average
+    const overallScore = Math.round((securityScore * 0.4) + (efficiencyScore * 0.3) + (maintainabilityScore * 0.3));
+
+    // Generate improvement suggestions
+    const suggestions = [];
+    if (!hasCaching) {
+        suggestions.push('Implement dependency caching to improve build speed');
+    }
+    if (!hasTests) {
+        suggestions.push('Add automated tests to validate your code');
+    }
+    if (!hasSecurity) {
+        suggestions.push('Integrate security scanning tools like OWASP dependency check');
+    }
+    if (!hasEnvironmentVariables) {
+        suggestions.push('Use environment variables for configuration to improve maintainability');
+    }
+    if (!hasMultiStageDeployments) {
+        suggestions.push('Consider implementing staged deployments (e.g., staging/production)');
+    }
+    if (!hasDockerization) {
+        suggestions.push('Containerize your application for consistent environments');
+    }
+
+    // Generate security checks
+    const securityChecks = [
+        {
+            name: 'Dependency Scanning',
+            passed: hasSecurity,
+            message: hasSecurity 
+                ? 'Security scanning is implemented' 
+                : 'No dependency scanning found'
+        },
+        {
+            name: 'Secrets Management',
+            passed: config.includes('secrets') || config.includes('vault'),
+            message: config.includes('secrets') || config.includes('vault')
+                ? 'Secrets management is implemented'
+                : 'No secrets management found'
+        },
+        {
+            name: 'Image Scanning',
+            passed: config.includes('trivy') || config.includes('image scan'),
+            message: config.includes('trivy') || config.includes('image scan')
+                ? 'Container image scanning is implemented'
+                : 'No container image scanning found'
+        }
+    ];
+
+    return {
+        platform,
+        overallScore,
+        securityScore,
+        efficiencyScore,
+        maintainabilityScore,
+        suggestions,
+        securityChecks
+    };
+}
+</script>
+
+<style>
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.checkbox-group, .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.pipeline-analyzer textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: monospace;
+    margin-bottom: 10px;
+}
+
+.template-card {
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.template-card h3 {
+    margin-top: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.pipeline-code {
+    margin-top: 20px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    overflow: auto;
+}
+
+.pipeline-code pre {
+    margin: 0;
+    padding: 15px;
+}
+
+#download-pipeline {
+    margin-top: 10px;
+}
+</style>
+<p></rewritten_file></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Kembali ke atas
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Muhammed Shemeel
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mshemeel" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/mshemeel007" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Tersalin ke clipboard", "clipboard.copy": "Salin ke clipboard", "search.result.more.one": "1 lagi di halaman ini", "search.result.more.other": "# lagi di halaman ini", "search.result.none": "Tidak ada dokumen yang sesuai", "search.result.one": "1 dokumen ditemukan", "search.result.other": "# dokumen ditemukan", "search.result.placeholder": "Ketik untuk mulai pencarian", "search.result.term.missing": "Tidak ada", "select.version": "Pilih versi"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+    
+  </body>
+</html>

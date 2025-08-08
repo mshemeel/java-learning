@@ -1,0 +1,2303 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="A comprehensive resource for Java developers covering core concepts to advanced microservices architecture" name="description"/>
+<meta content="Muhammed Shemeel" name="author"/>
+<link href="https://mshemeel.github.io/java-learning/id/microservices/platform-architecture/" rel="canonical"/>
+<link href="../cqrs-pattern/" rel="prev"/>
+<link href="../../kubernetes/kubernetes-basics/" rel="next"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.4.6" name="generator"/>
+<title>Platform Architecture - Java Learning Platform</title>
+<link href="../../../assets/stylesheets/main.35e1ed30.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.356b1318.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="blue" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#kubernetes-api-request-flow-architecture">
+          Lewati ke isi
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Java Learning Platform" class="md-header__button md-logo" data-md-component="logo" href="../../" title="Java Learning Platform">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Java Learning Platform
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Platform Architecture
+            
+          </span>
+</div>
+</div>
+</div>
+<div class="md-header__option">
+<div class="md-select">
+<button aria-label="Pilih bahasa" class="md-header__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"></path></svg>
+</button>
+<div class="md-select__inner">
+<ul class="md-select__list">
+<li class="md-select__item">
+<a class="md-select__link" href="../../../microservices/platform-architecture/" hreflang="en">
+              English
+            </a>
+</li>
+<li class="md-select__item">
+<a class="md-select__link" href="./" hreflang="id">
+              Bahasa Indonesia
+            </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Cari" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Cari" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Cari" class="md-search__options">
+<button aria-label="Kosongkan" class="md-search__icon md-icon" tabindex="-1" title="Kosongkan" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Mempersiapkan pencarian
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/mshemeel/java-learning" title="Ke repositori">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    mshemeel/java-learning
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tab" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../">
+        
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../java/java-basics/">
+          
+  
+    
+  
+  Java Core
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../java-sample-problems/">
+          
+  
+    
+  
+  Java Sample Problems
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../spring-boot/spring-boot-core-concepts/">
+          
+  
+    
+  
+  Spring Boot
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../microservices-basics/">
+          
+  
+    
+  
+  Microservices
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../kubernetes/kubernetes-basics/">
+          
+  
+    
+  
+  Kubernetes
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../devops/">
+          
+  
+    
+  
+  DevOps
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../design-patterns/design-patterns-principles/">
+          
+  
+    
+  
+  Design Patterns
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../deployment-guide/">
+          
+  
+    
+  
+  Reference
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../feedback/">
+          
+  
+    
+  
+  About
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigasi" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Java Learning Platform" class="md-nav__button md-logo" data-md-component="logo" href="../../" title="Java Learning Platform">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Java Learning Platform
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/mshemeel/java-learning" title="Ke repositori">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    mshemeel/java-learning
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    Java Core
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Java Core
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java/java-basics/">
+<span class="md-ellipsis">
+    Basics
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java/java-oop/">
+<span class="md-ellipsis">
+    OOP
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java/java-collections/">
+<span class="md-ellipsis">
+    Collections
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java/java-exceptions/">
+<span class="md-ellipsis">
+    Exceptions
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java/java-exception-handling/">
+<span class="md-ellipsis">
+    Exception Handling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java/java-multithreading/">
+<span class="md-ellipsis">
+    Multithreading
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java/java-concurrency/">
+<span class="md-ellipsis">
+    Concurrency
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java/java-io/">
+<span class="md-ellipsis">
+    I/O
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java/java-streams-lambdas/">
+<span class="md-ellipsis">
+    Streams &amp; Lambdas
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java/java-generics/">
+<span class="md-ellipsis">
+    Generics
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java/java-memory-management/">
+<span class="md-ellipsis">
+    Memory Management
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java/java-testing/">
+<span class="md-ellipsis">
+    Testing
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../java-sample-problems/">
+<span class="md-ellipsis">
+    Java Sample Problems
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Java Sample Problems
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java-sample-problems/basic-problems/">
+<span class="md-ellipsis">
+    Basic Problems
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+<span class="md-ellipsis">
+    Arrays and Strings
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Arrays and Strings
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java-sample-problems/arrays-and-strings/TwoSum/">
+<span class="md-ellipsis">
+    Two Sum
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java-sample-problems/arrays-and-strings/ThreeSum/">
+<span class="md-ellipsis">
+    Three Sum
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java-sample-problems/arrays-and-strings/Anagrams/">
+<span class="md-ellipsis">
+    Anagrams
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java-sample-problems/arrays-and-strings/BinarySearch/">
+<span class="md-ellipsis">
+    Binary Search
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java-sample-problems/arrays-and-strings/StringPalindrome/">
+<span class="md-ellipsis">
+    String Palindrome
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+<span class="md-ellipsis">
+    Linked List
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+            Linked List
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java-sample-problems/linked-list/LinkedListOperations/">
+<span class="md-ellipsis">
+    Linked List Operations
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+<span class="md-ellipsis">
+    Sorting
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+            Sorting
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java-sample-problems/sorting/SortingAlgorithms/">
+<span class="md-ellipsis">
+    Sorting Algorithms
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+<span class="md-ellipsis">
+    Trees
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_6">
+<span class="md-nav__icon md-icon"></span>
+            Trees
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java-sample-problems/trees/TreeTraversal/">
+<span class="md-ellipsis">
+    Tree Traversal
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+<span class="md-ellipsis">
+    Graphs
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_7">
+<span class="md-nav__icon md-icon"></span>
+            Graphs
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java-sample-problems/graphs/GraphAlgorithms/">
+<span class="md-ellipsis">
+    Graph Algorithms
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="">
+<span class="md-ellipsis">
+    Dynamic Programming
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_8">
+<span class="md-nav__icon md-icon"></span>
+            Dynamic Programming
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java-sample-problems/dynamic-programming/DynamicProgramming/">
+<span class="md-ellipsis">
+    Dynamic Programming Problems
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../java-sample-problems/data-structures.md">
+<span class="md-ellipsis">
+    Data Structures
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../java-sample-problems/algorithms.md">
+<span class="md-ellipsis">
+    Algorithms
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../java-sample-problems/oop-problems.md">
+<span class="md-ellipsis">
+    OOP Problems
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../java-sample-problems/design-patterns-problems.md">
+<span class="md-ellipsis">
+    Design Patterns
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../java-sample-problems/spring-boot-problems.md">
+<span class="md-ellipsis">
+    Spring Boot
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../java-sample-problems/microservices-problems.md">
+<span class="md-ellipsis">
+    Microservices
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
+    Spring Boot
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Spring Boot
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-boot-core-concepts/">
+<span class="md-ellipsis">
+    Core Concepts
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-boot-starter/">
+<span class="md-ellipsis">
+    Starter
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-boot-rest-api/">
+<span class="md-ellipsis">
+    REST API
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-boot-data-access/">
+<span class="md-ellipsis">
+    Data Access
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-boot-security/">
+<span class="md-ellipsis">
+    Security
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-boot-testing/">
+<span class="md-ellipsis">
+    Testing
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-boot-actuator/">
+<span class="md-ellipsis">
+    Actuator
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-boot-deployment/">
+<span class="md-ellipsis">
+    Deployment
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-boot-aop/">
+<span class="md-ellipsis">
+    AOP
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-boot-configuration/">
+<span class="md-ellipsis">
+    Configuration
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-data-jpa/">
+<span class="md-ellipsis">
+    Spring Data JPA
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-data-mongo/">
+<span class="md-ellipsis">
+    Spring Data MongoDB
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-kafka-integration/">
+<span class="md-ellipsis">
+    Kafka Integration
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-ai/">
+<span class="md-ellipsis">
+    Spring AI
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../spring-boot/spring-boot-best-practices/">
+<span class="md-ellipsis">
+    Best Practices
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+<span class="md-ellipsis">
+    Microservices
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Microservices
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../microservices-basics/">
+<span class="md-ellipsis">
+    Basics
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../microservices-communication/">
+<span class="md-ellipsis">
+    Communication
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../microservices-discovery/">
+<span class="md-ellipsis">
+    Service Discovery
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../microservices-resilience/">
+<span class="md-ellipsis">
+    Resilience
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../microservices-api-gateway/">
+<span class="md-ellipsis">
+    API Gateway
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../microservices-security/">
+<span class="md-ellipsis">
+    Security
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../microservices-monitoring/">
+<span class="md-ellipsis">
+    Monitoring
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../microservices-deployment/">
+<span class="md-ellipsis">
+    Deployment
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../microservices-testing/">
+<span class="md-ellipsis">
+    Testing
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../microservices-best-practices/">
+<span class="md-ellipsis">
+    Best Practices
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../saga-pattern/">
+<span class="md-ellipsis">
+    Saga Pattern
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cqrs-pattern/">
+<span class="md-ellipsis">
+    CQRS Pattern
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Platform Architecture
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Platform Architecture
+  </span>
+</a>
+<nav aria-label="Daftar isi" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#table-of-contents">
+    Table of Contents
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+    Overview
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#architecture-components">
+    Architecture Components
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#request-flow-sequence-diagram">
+    Request Flow Sequence Diagram
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#component-roles-and-responsibilities">
+    Component Roles and Responsibilities
+  </a>
+<nav aria-label="Component Roles and Responsibilities" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#client-application">
+    Client Application
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#akamai-cdnedge-protection">
+    Akamai CDN/Edge Protection
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nginx-ingress-controller">
+    NGINX Ingress Controller
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetes-ingress-resources">
+    Kubernetes Ingress Resources
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetes-services">
+    Kubernetes Services
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetes-pods">
+    Kubernetes Pods
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tlsssl-certificate-configurations">
+    TLS/SSL Certificate Configurations
+  </a>
+<nav aria-label="TLS/SSL Certificate Configurations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#akamai-edge-certificates-customer-facing">
+    Akamai Edge Certificates (Customer-Facing)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#akamai-to-origin-certificates">
+    Akamai-to-Origin Certificates
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nginx-ingress-controller-certificates">
+    NGINX Ingress Controller Certificates
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#internal-service-mesh-certificates-optional">
+    Internal Service Mesh Certificates (Optional)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#certificate-renewal-and-management-processes">
+    Certificate Renewal and Management Processes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#security-and-performance-considerations">
+    Security and Performance Considerations
+  </a>
+<nav aria-label="Security and Performance Considerations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tls-termination-points-and-re-encryption">
+    TLS Termination Points and Re-encryption
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#network-security-controls">
+    Network Security Controls
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#headers-and-metadata-transformation">
+    Headers and Metadata Transformation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#authentication-and-authorization-enforcement">
+    Authentication and Authorization Enforcement
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-considerations-and-bottlenecks">
+    Performance Considerations and Bottlenecks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#common-failure-points-and-resilience-strategies">
+    Common Failure Points and Resilience Strategies
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#best-practices-and-recommendations">
+    Best Practices and Recommendations
+  </a>
+<nav aria-label="Best Practices and Recommendations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#certificate-management">
+    Certificate Management
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#security-hardening">
+    Security Hardening
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-optimization">
+    Performance Optimization
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#monitoring-and-observability">
+    Monitoring and Observability
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+<span class="md-ellipsis">
+    Kubernetes
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Kubernetes
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kubernetes/kubernetes-basics/">
+<span class="md-ellipsis">
+    Basics
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kubernetes/kubernetes-deployment/">
+<span class="md-ellipsis">
+    Deployment
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kubernetes/kubernetes-services/">
+<span class="md-ellipsis">
+    Services
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kubernetes/kubernetes-config-secrets/">
+<span class="md-ellipsis">
+    Config &amp; Secrets
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kubernetes/kubernetes-storage/">
+<span class="md-ellipsis">
+    Storage
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kubernetes/kubernetes-scaling/">
+<span class="md-ellipsis">
+    Scaling
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kubernetes/kubernetes-monitoring/">
+<span class="md-ellipsis">
+    Monitoring
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kubernetes/kubernetes-security/">
+<span class="md-ellipsis">
+    Security
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kubernetes/kubernetes-networking/">
+<span class="md-ellipsis">
+    Networking
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kubernetes/kubernetes-troubleshooting/">
+<span class="md-ellipsis">
+    Troubleshooting
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../kubernetes/kubernetes-best-practices/">
+<span class="md-ellipsis">
+    Best Practices
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../devops/">
+<span class="md-ellipsis">
+    DevOps
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            DevOps
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/devops-basics/">
+<span class="md-ellipsis">
+    DevOps Basics
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/ci-cd-fundamentals/">
+<span class="md-ellipsis">
+    CI/CD Fundamentals
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/infrastructure-as-code/">
+<span class="md-ellipsis">
+    Infrastructure as Code
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/docker-fundamentals/">
+<span class="md-ellipsis">
+    Docker Fundamentals
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/monitoring-logging/">
+<span class="md-ellipsis">
+    Monitoring &amp; Logging
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/devops-tools-overview/">
+<span class="md-ellipsis">
+    DevOps Tools Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="">
+<span class="md-ellipsis">
+    Java-Specific DevOps
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_8">
+<span class="md-nav__icon md-icon"></span>
+            Java-Specific DevOps
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/java-cicd-pipelines/">
+<span class="md-ellipsis">
+    Java CI/CD Pipelines
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/java-containerization/">
+<span class="md-ellipsis">
+    Java Containerization
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/java-app-monitoring/">
+<span class="md-ellipsis">
+    Java App Monitoring
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/jenkins-for-java/">
+<span class="md-ellipsis">
+    Jenkins for Java
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/java-deployment-strategies/">
+<span class="md-ellipsis">
+    Java Deployment Strategies
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_9" id="__nav_7_9_label" tabindex="">
+<span class="md-ellipsis">
+    Advanced Topics
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_9">
+<span class="md-nav__icon md-icon"></span>
+            Advanced Topics
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/gitops-practices/">
+<span class="md-ellipsis">
+    GitOps Practices
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/devsecops-for-java/">
+<span class="md-ellipsis">
+    DevSecOps for Java
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/performance-testing-automation/">
+<span class="md-ellipsis">
+    Performance Testing
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/chaos-engineering/">
+<span class="md-ellipsis">
+    Chaos Engineering
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/devops-best-practices/">
+<span class="md-ellipsis">
+    DevOps Best Practices
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_10" id="__nav_7_10_label" tabindex="">
+<span class="md-ellipsis">
+    Sample Projects
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_10_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_10">
+<span class="md-nav__icon md-icon"></span>
+            Sample Projects
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/projects/cicd-java-project/">
+<span class="md-ellipsis">
+    CI/CD Java Project
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/projects/containerizing-spring-app/">
+<span class="md-ellipsis">
+    Containerizing Spring App
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/projects/monitoring-java-microservices/">
+<span class="md-ellipsis">
+    Monitoring Java Microservices
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/projects/iac-for-java-deployment/">
+<span class="md-ellipsis">
+    IaC for Java Deployment
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7_11" id="__nav_7_11_label" tabindex="">
+<span class="md-ellipsis">
+    Interactive Tools
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_11_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_11">
+<span class="md-nav__icon md-icon"></span>
+            Interactive Tools
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/interactive/devops-workflows/">
+<span class="md-ellipsis">
+    DevOps Workflow Diagrams
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/interactive/cicd-pipeline-visualizer/">
+<span class="md-ellipsis">
+    CI/CD Pipeline Visualizer
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/interactive/iac-templates/">
+<span class="md-ellipsis">
+    IaC Templates Repository
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/interactive/monitoring-dashboards/">
+<span class="md-ellipsis">
+    Monitoring Dashboards
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devops/interactive/devops-maturity-assessment/">
+<span class="md-ellipsis">
+    DevOps Maturity Assessment
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+<span class="md-ellipsis">
+    Design Patterns
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            Design Patterns
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../design-patterns/design-patterns-principles/">
+<span class="md-ellipsis">
+    Principles
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../design-patterns/design-patterns-best-practices/">
+<span class="md-ellipsis">
+    Best Practices
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../design-patterns/design-patterns-j2ee/">
+<span class="md-ellipsis">
+    J2EE Patterns
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../design-patterns/design-patterns-behavioral/">
+<span class="md-ellipsis">
+    Behavioral Patterns
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../design-patterns/design-patterns-structural/">
+<span class="md-ellipsis">
+    Structural Patterns
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../design-patterns/design-patterns-creational/">
+<span class="md-ellipsis">
+    Creational Patterns
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+<span class="md-ellipsis">
+    Reference
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_9_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_9">
+<span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../deployment-guide/">
+<span class="md-ellipsis">
+    Deployment Guide
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../search-implementation/">
+<span class="md-ellipsis">
+    Search Implementation
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+<span class="md-ellipsis">
+    About
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_10_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_10">
+<span class="md-nav__icon md-icon"></span>
+            About
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../feedback/">
+<span class="md-ellipsis">
+    Feedback
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../CONTRIBUTING/">
+<span class="md-ellipsis">
+    Contributing
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../LICENSE/">
+<span class="md-ellipsis">
+    License
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Daftar isi" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#table-of-contents">
+    Table of Contents
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+    Overview
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#architecture-components">
+    Architecture Components
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#request-flow-sequence-diagram">
+    Request Flow Sequence Diagram
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#component-roles-and-responsibilities">
+    Component Roles and Responsibilities
+  </a>
+<nav aria-label="Component Roles and Responsibilities" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#client-application">
+    Client Application
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#akamai-cdnedge-protection">
+    Akamai CDN/Edge Protection
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nginx-ingress-controller">
+    NGINX Ingress Controller
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetes-ingress-resources">
+    Kubernetes Ingress Resources
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetes-services">
+    Kubernetes Services
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetes-pods">
+    Kubernetes Pods
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tlsssl-certificate-configurations">
+    TLS/SSL Certificate Configurations
+  </a>
+<nav aria-label="TLS/SSL Certificate Configurations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#akamai-edge-certificates-customer-facing">
+    Akamai Edge Certificates (Customer-Facing)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#akamai-to-origin-certificates">
+    Akamai-to-Origin Certificates
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nginx-ingress-controller-certificates">
+    NGINX Ingress Controller Certificates
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#internal-service-mesh-certificates-optional">
+    Internal Service Mesh Certificates (Optional)
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#certificate-renewal-and-management-processes">
+    Certificate Renewal and Management Processes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#security-and-performance-considerations">
+    Security and Performance Considerations
+  </a>
+<nav aria-label="Security and Performance Considerations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tls-termination-points-and-re-encryption">
+    TLS Termination Points and Re-encryption
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#network-security-controls">
+    Network Security Controls
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#headers-and-metadata-transformation">
+    Headers and Metadata Transformation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#authentication-and-authorization-enforcement">
+    Authentication and Authorization Enforcement
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-considerations-and-bottlenecks">
+    Performance Considerations and Bottlenecks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#common-failure-points-and-resilience-strategies">
+    Common Failure Points and Resilience Strategies
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#best-practices-and-recommendations">
+    Best Practices and Recommendations
+  </a>
+<nav aria-label="Best Practices and Recommendations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#certificate-management">
+    Certificate Management
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#security-hardening">
+    Security Hardening
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-optimization">
+    Performance Optimization
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#monitoring-and-observability">
+    Monitoring and Observability
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="kubernetes-api-request-flow-architecture">Kubernetes API Request Flow Architecture<a class="headerlink" href="#kubernetes-api-request-flow-architecture" title="Permanent link">¶</a></h1>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#architecture-components">Architecture Components</a></li>
+<li><a href="#request-flow-sequence-diagram">Request Flow Sequence Diagram</a></li>
+<li><a href="#component-roles-and-responsibilities">Component Roles and Responsibilities</a></li>
+<li><a href="#tlsssl-certificate-configurations">TLS/SSL Certificate Configurations</a></li>
+<li><a href="#security-and-performance-considerations">Security and Performance Considerations</a></li>
+<li><a href="#best-practices-and-recommendations">Best Practices and Recommendations</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p>This document outlines the comprehensive journey of an API request in a production Kubernetes environment, from the initial client request to response delivery. The architecture follows industry best practices for security, performance, and reliability, implementing a multi-layered approach to protect and efficiently deliver API services.</p>
+<p>The document details how requests flow through each architectural component, focusing on security aspects, performance considerations, and potential failure points. It provides infrastructure teams and technical architects with an in-depth understanding of the platform's request handling mechanisms.</p>
+<h2 id="architecture-components">Architecture Components<a class="headerlink" href="#architecture-components" title="Permanent link">¶</a></h2>
+<p>The key components in our Kubernetes API request flow architecture include:</p>
+<ol>
+<li><strong>Client Application</strong>: The source of API requests (mobile app, web application, or third-party service)</li>
+<li><strong>Akamai CDN/Edge Protection</strong>: Global content delivery network and edge protection layer</li>
+<li><strong>NGINX Ingress Controller</strong>: Kubernetes entry point for external HTTP/HTTPS traffic</li>
+<li><strong>Kubernetes Ingress Resources</strong>: Kubernetes objects defining routing rules</li>
+<li><strong>Kubernetes Services</strong>: Internal load balancing and service discovery mechanism</li>
+<li><strong>Kubernetes Pods</strong>: Running application containers that process requests</li>
+<li><strong>Service Backends</strong>: Databases, caches, and other backing services</li>
+</ol>
+<h2 id="request-flow-sequence-diagram">Request Flow Sequence Diagram<a class="headerlink" href="#request-flow-sequence-diagram" title="Permanent link">¶</a></h2>
+<p><pre class="mermaid"><code>sequenceDiagram
+    participant Client
+    participant Akamai as Akamai CDN/Edge
+    participant NGINX as NGINX Ingress Controller
+    participant KIngress as Kubernetes Ingress
+    participant KService as Kubernetes Service
+    participant Pod as Application Pod
+    participant Backend as Backend Services
+
+    Note over Client,Backend: Request Flow
+
+    Client-&gt;&gt;Akamai: HTTPS Request
+    Note right of Akamai: TLS Termination&lt;br/&gt;WAF Processing&lt;br/&gt;DDoS Protection&lt;br/&gt;Edge Caching Check
+
+    alt Cached Response Available
+        Akamai--&gt;&gt;Client: Return Cached Response
+    else Cache Miss
+        Akamai-&gt;&gt;NGINX: Re-encrypted HTTPS Request
+        Note right of NGINX: TLS Termination&lt;br/&gt;Request Routing&lt;br/&gt;Rate Limiting
+
+        NGINX-&gt;&gt;KIngress: HTTP Request
+        Note right of KIngress: Routing Rule&lt;br/&gt;Application
+
+        KIngress-&gt;&gt;KService: Routed Request
+        Note right of KService: Load Balancing&lt;br/&gt;Service Discovery
+
+        KService-&gt;&gt;Pod: Request to Selected Pod
+        Note right of Pod: Request Processing&lt;br/&gt;Business Logic&lt;br/&gt;Authentication
+
+        alt External Data Required
+            Pod-&gt;&gt;Backend: Backend Service Request
+            Backend--&gt;&gt;Pod: Backend Response
+        end
+
+        Pod--&gt;&gt;KService: Response
+        KService--&gt;&gt;KIngress: Response
+        KIngress--&gt;&gt;NGINX: Response
+
+        Note right of NGINX: Response&lt;br/&gt;Processing&lt;br/&gt;Compression
+
+        NGINX--&gt;&gt;Akamai: HTTPS Response
+
+        Note right of Akamai: Response Caching&lt;br/&gt;Edge Optimization
+
+        Akamai--&gt;&gt;Client: HTTPS Response
+    end
+
+    Note over Client,Backend: Response Flow Complete</code></pre>
+<img alt="System Diagram" src="application-sequence-flow.png"/></p>
+<h2 id="component-roles-and-responsibilities">Component Roles and Responsibilities<a class="headerlink" href="#component-roles-and-responsibilities" title="Permanent link">¶</a></h2>
+<h3 id="client-application">Client Application<a class="headerlink" href="#client-application" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Role</strong>: Originates API requests to the platform</li>
+<li><strong>Responsibilities</strong>:</li>
+<li>Forms properly structured API requests</li>
+<li>Handles authentication tokens/credentials</li>
+<li>Processes responses</li>
+<li>Implements retry logic and circuit breaking</li>
+<li>Maintains secure TLS connections</li>
+</ul>
+<h3 id="akamai-cdnedge-protection">Akamai CDN/Edge Protection<a class="headerlink" href="#akamai-cdnedge-protection" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Role</strong>: Provides edge protection, global distribution, and performance optimization</li>
+<li><strong>Responsibilities</strong>:</li>
+<li><strong>DDoS Mitigation</strong>: Protection against volumetric and application-layer attacks</li>
+<li><strong>Web Application Firewall (WAF)</strong>: Blocks common exploitation techniques and attacks</li>
+<li><strong>TLS Termination</strong>: Handles initial client SSL/TLS connections</li>
+<li><strong>Content Caching</strong>: Stores and serves cacheable API responses</li>
+<li><strong>Request Filtering</strong>: Blocks malicious traffic based on signatures and behavior</li>
+<li><strong>Geographic Distribution</strong>: Routes requests to nearest data centers</li>
+<li><strong>Rate Limiting</strong>: Enforces global rate limits to protect backend services</li>
+<li><strong>Bot Detection</strong>: Identifies and manages automated traffic</li>
+<li><strong>Edge Computing</strong>: May execute simple transformations at the edge</li>
+</ul>
+<h3 id="nginx-ingress-controller">NGINX Ingress Controller<a class="headerlink" href="#nginx-ingress-controller" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Role</strong>: Acts as the entry point for external traffic into the Kubernetes cluster</li>
+<li><strong>Responsibilities</strong>:</li>
+<li><strong>TLS Termination</strong>: Handles HTTPS connections from Akamai</li>
+<li><strong>Request Routing</strong>: Directs traffic to appropriate services based on URL paths</li>
+<li><strong>Load Balancing</strong>: Distributes traffic across multiple service instances</li>
+<li><strong>Rate Limiting</strong>: Provides service-specific rate controls</li>
+<li><strong>SSL/TLS Management</strong>: Manages certificates for secure communication</li>
+<li><strong>Request/Response Manipulation</strong>: Modifies headers, performs redirects</li>
+<li><strong>Authentication</strong>: Optional integration with auth services</li>
+<li><strong>Health Checks</strong>: Monitors backend services</li>
+<li><strong>Metrics Collection</strong>: Captures detailed request metrics</li>
+</ul>
+<h3 id="kubernetes-ingress-resources">Kubernetes Ingress Resources<a class="headerlink" href="#kubernetes-ingress-resources" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Role</strong>: Declarative definition of how external HTTP traffic should be routed</li>
+<li><strong>Responsibilities</strong>:</li>
+<li><strong>Path-based Routing</strong>: Maps URL paths to specific services</li>
+<li><strong>Host-based Routing</strong>: Routes traffic based on domain names</li>
+<li><strong>TLS Configuration</strong>: Specifies certificate resources for secure connections</li>
+<li><strong>Traffic Splitting</strong>: Can be used for canary deployments</li>
+<li><strong>Rewrite Rules</strong>: Modifies request URLs before forwarding</li>
+<li><strong>Annotation Support</strong>: Provides controller-specific configurations</li>
+</ul>
+<h3 id="kubernetes-services">Kubernetes Services<a class="headerlink" href="#kubernetes-services" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Role</strong>: Provides stable network identity and load balancing for pods</li>
+<li><strong>Responsibilities</strong>:</li>
+<li><strong>Service Discovery</strong>: Provides DNS names for sets of pods</li>
+<li><strong>Load Balancing</strong>: Distributes traffic among available pods</li>
+<li><strong>IP Management</strong>: Assigns stable virtual IPs to services</li>
+<li><strong>Port Mapping</strong>: Maps service ports to container ports</li>
+<li><strong>Session Affinity</strong>: Optional support for sticky sessions</li>
+<li><strong>Headless Services</strong>: Allows direct DNS lookup of pod IPs when needed</li>
+<li><strong>External Services</strong>: Can represent external endpoints when needed</li>
+</ul>
+<h3 id="kubernetes-pods">Kubernetes Pods<a class="headerlink" href="#kubernetes-pods" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Role</strong>: Houses application containers that process requests</li>
+<li><strong>Responsibilities</strong>:</li>
+<li><strong>Application Execution</strong>: Runs application code in containers</li>
+<li><strong>Request Processing</strong>: Handles business logic for API requests</li>
+<li><strong>Data Validation</strong>: Validates incoming request data</li>
+<li><strong>Authentication/Authorization</strong>: Verifies user permissions</li>
+<li><strong>Backend Integration</strong>: Communicates with databases and other services</li>
+<li><strong>Response Formation</strong>: Generates API responses</li>
+<li><strong>Resource Management</strong>: Works within allocated CPU/memory constraints</li>
+<li><strong>Health Reporting</strong>: Exposes health status to the cluster</li>
+</ul>
+<h2 id="tlsssl-certificate-configurations">TLS/SSL Certificate Configurations<a class="headerlink" href="#tlsssl-certificate-configurations" title="Permanent link">¶</a></h2>
+<h3 id="akamai-edge-certificates-customer-facing">Akamai Edge Certificates (Customer-Facing)<a class="headerlink" href="#akamai-edge-certificates-customer-facing" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Type</strong>: Public CA-issued certificates (DigiCert, Let's Encrypt)</li>
+<li><strong>Purpose</strong>: Secures communication between clients and Akamai edge</li>
+<li><strong>Configuration</strong>:</li>
+<li><strong>Certificate Type</strong>: Usually wildcard or SAN certificates</li>
+<li><strong>Key Size</strong>: 2048-bit RSA or ECC P-256</li>
+<li><strong>Validity Period</strong>: Typically 1 year</li>
+<li><strong>Management</strong>: Automated through Akamai Certificate Manager</li>
+<li><strong>TLS Version</strong>: TLS 1.2/1.3 only</li>
+<li><strong>Cipher Suites</strong>: Modern, strong cipher suites only</li>
+<li><strong>OCSP Stapling</strong>: Enabled</li>
+<li><strong>HTTP Strict Transport Security (HSTS)</strong>: Enabled</li>
+</ul>
+<h3 id="akamai-to-origin-certificates">Akamai-to-Origin Certificates<a class="headerlink" href="#akamai-to-origin-certificates" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Type</strong>: Public or Private CA certificates</li>
+<li><strong>Purpose</strong>: Secures communication between Akamai and NGINX Ingress</li>
+<li><strong>Configuration</strong>:</li>
+<li><strong>Certificate Type</strong>: Domain-specific certificate</li>
+<li><strong>Validation</strong>: Mutual TLS optional for additional security</li>
+<li><strong>Management</strong>: Automated with monitoring and alerts</li>
+<li><strong>Rotation</strong>: Regularly scheduled rotation (quarterly)</li>
+<li><strong>Key Storage</strong>: Secure key storage with restricted access</li>
+<li><strong>IP Restrictions</strong>: Typically limited to Akamai IP ranges</li>
+</ul>
+<h3 id="nginx-ingress-controller-certificates">NGINX Ingress Controller Certificates<a class="headerlink" href="#nginx-ingress-controller-certificates" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Type</strong>: Kubernetes-managed certificates via cert-manager</li>
+<li><strong>Purpose</strong>: Terminates TLS connections from Akamai and secures traffic</li>
+<li><strong>Configuration</strong>:</li>
+<li><strong>Certificate Source</strong>: Let's Encrypt or private CA</li>
+<li><strong>Validation</strong>: Domain validation automated</li>
+<li><strong>Storage</strong>: Kubernetes secrets</li>
+<li><strong>Rotation</strong>: Automated renewal before expiration</li>
+<li><strong>Key Size</strong>: 2048-bit RSA or ECC P-256</li>
+<li><strong>TLS Settings</strong>: Configured via ingress annotations</li>
+<li><strong>Secret References</strong>: Referenced in Ingress resources</li>
+</ul>
+<h3 id="internal-service-mesh-certificates-optional">Internal Service Mesh Certificates (Optional)<a class="headerlink" href="#internal-service-mesh-certificates-optional" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Type</strong>: Service mesh CA-issued certificates (e.g., Istio, Linkerd)</li>
+<li><strong>Purpose</strong>: Enables mTLS between services inside the cluster</li>
+<li><strong>Configuration</strong>:</li>
+<li><strong>Certificate Authority</strong>: Self-signed or intermediate CA</li>
+<li><strong>Workload Identity</strong>: Pod-specific certificates</li>
+<li><strong>Certificate Lifetime</strong>: Short-lived (24 hours typical)</li>
+<li><strong>Rotation</strong>: Automatic rotation before expiration</li>
+<li><strong>Key Generation</strong>: Generated on pod startup</li>
+<li><strong>Trust Chain</strong>: Managed by service mesh control plane</li>
+</ul>
+<h3 id="certificate-renewal-and-management-processes">Certificate Renewal and Management Processes<a class="headerlink" href="#certificate-renewal-and-management-processes" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Monitoring</strong>:</li>
+<li>Automated certificate expiration monitoring</li>
+<li>Alerting at multiple thresholds (30, 14, 7, 3, 1 days)</li>
+<li>
+<p>Certificate inventory database</p>
+</li>
+<li>
+<p><strong>Automation</strong>:</p>
+</li>
+<li>cert-manager for Kubernetes certificates</li>
+<li>Akamai certificate automation for edge certificates</li>
+<li>
+<p>API-based renewal processes</p>
+</li>
+<li>
+<p><strong>Emergency Procedures</strong>:</p>
+</li>
+<li>Certificate revocation protocol</li>
+<li>Emergency replacement process</li>
+<li>Fallback certificates for critical services</li>
+<li>
+<p>On-call rotation for certificate issues</p>
+</li>
+<li>
+<p><strong>Audit and Compliance</strong>:</p>
+</li>
+<li>Regular certificate inventory audits</li>
+<li>Compliance verification (key strength, algorithms)</li>
+<li>Certificate transparency monitoring</li>
+</ol>
+<h2 id="security-and-performance-considerations">Security and Performance Considerations<a class="headerlink" href="#security-and-performance-considerations" title="Permanent link">¶</a></h2>
+<h3 id="tls-termination-points-and-re-encryption">TLS Termination Points and Re-encryption<a class="headerlink" href="#tls-termination-points-and-re-encryption" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Client to Akamai Edge</strong>:</li>
+<li>First TLS termination at Akamai edge</li>
+<li>Modern TLS protocol and cipher suites</li>
+<li>
+<p>Complete validation of client certificates if used</p>
+</li>
+<li>
+<p><strong>Akamai to NGINX Ingress</strong>:</p>
+</li>
+<li>Re-encrypted connection with separate certificate</li>
+<li>Potential for mutual TLS authentication</li>
+<li>IP-restricted access (Akamai edge IP ranges only)</li>
+<li>
+<p>Private network path where possible</p>
+</li>
+<li>
+<p><strong>Service Mesh Communication (Optional)</strong>:</p>
+</li>
+<li>Automatic mTLS between services</li>
+<li>Certificate-based service identity</li>
+<li>Encrypted east-west traffic within cluster</li>
+</ol>
+<h3 id="network-security-controls">Network Security Controls<a class="headerlink" href="#network-security-controls" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Edge Security</strong>:</li>
+<li>IP reputation filtering</li>
+<li>Bot management</li>
+<li>DDoS protection</li>
+<li>API rate limiting</li>
+<li>Geo-blocking capabilities</li>
+<li>
+<p>Custom WAF rules</p>
+</li>
+<li>
+<p><strong>Cluster Network Security</strong>:</p>
+</li>
+<li>Network policies for pod isolation</li>
+<li>Ingress/egress restrictions</li>
+<li>Service mesh traffic policies</li>
+<li>Namespace isolation</li>
+<li>
+<p>Container network security</p>
+</li>
+<li>
+<p><strong>Pod Security</strong>:</p>
+</li>
+<li>Pod Security Policies/Standards</li>
+<li>Read-only file systems</li>
+<li>Non-root containers</li>
+<li>Dropped capabilities</li>
+<li>Resource limits</li>
+</ol>
+<h3 id="headers-and-metadata-transformation">Headers and Metadata Transformation<a class="headerlink" href="#headers-and-metadata-transformation" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Client to Akamai</strong>:</li>
+<li>Client headers preserved</li>
+<li>Addition of request ID headers</li>
+<li>
+<p>Security headers validation</p>
+</li>
+<li>
+<p><strong>Akamai to Ingress</strong>:</p>
+</li>
+<li>True-Client-IP headers added</li>
+<li>Client certificates translated to headers if used</li>
+<li>
+<p>Custom security headers added</p>
+</li>
+<li>
+<p><strong>Ingress to Service</strong>:</p>
+</li>
+<li>Request transformation based on annotations</li>
+<li>Path rewriting if configured</li>
+<li>
+<p>Additional application headers</p>
+</li>
+<li>
+<p><strong>Service to Pod</strong>:</p>
+</li>
+<li>Kubernetes service information</li>
+<li>Load balancer source preservation</li>
+<li>
+<p>Original request metadata</p>
+</li>
+<li>
+<p><strong>Response Path</strong>:</p>
+</li>
+<li>Response headers added at each layer</li>
+<li>CORS headers managed</li>
+<li>Security headers enforced</li>
+<li>Cache control headers processed</li>
+</ol>
+<h3 id="authentication-and-authorization-enforcement">Authentication and Authorization Enforcement<a class="headerlink" href="#authentication-and-authorization-enforcement" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Edge Authentication (Akamai)</strong>:</li>
+<li>API key validation</li>
+<li>OAuth token pre-validation</li>
+<li>JWT signature verification</li>
+<li>
+<p>Basic request authentication</p>
+</li>
+<li>
+<p><strong>Ingress Authentication</strong>:</p>
+</li>
+<li>External authentication service integration</li>
+<li>
+<p>API gateway token validation</p>
+</li>
+<li>
+<p><strong>Service-level Authentication</strong>:</p>
+</li>
+<li>Service account tokens</li>
+<li>
+<p>Internal service authentication</p>
+</li>
+<li>
+<p><strong>Application Authentication</strong>:</p>
+</li>
+<li>Detailed token validation</li>
+<li>Authorization policy enforcement</li>
+<li>Role-based access control</li>
+<li>Multi-tenancy enforcement</li>
+</ol>
+<h3 id="performance-considerations-and-bottlenecks">Performance Considerations and Bottlenecks<a class="headerlink" href="#performance-considerations-and-bottlenecks" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Edge Performance</strong>:</li>
+<li>Global Akamai distribution</li>
+<li>Edge caching for appropriate responses</li>
+<li>Connection keep-alive</li>
+<li>
+<p>Content compression</p>
+</li>
+<li>
+<p><strong>Ingress Controller Performance</strong>:</p>
+</li>
+<li>Controller scaling and redundancy</li>
+<li>Efficient routing algorithms</li>
+<li>Connection pooling</li>
+<li>
+<p>Worker process optimization</p>
+</li>
+<li>
+<p><strong>Service Routing Performance</strong>:</p>
+</li>
+<li>Efficient service discovery</li>
+<li>Optimized iptables rules</li>
+<li>Kernel parameter tuning</li>
+<li>
+<p>IPVS mode for kube-proxy</p>
+</li>
+<li>
+<p><strong>Pod Performance</strong>:</p>
+</li>
+<li>Proper resource allocation</li>
+<li>Horizontal scaling capability</li>
+<li>Efficient container images</li>
+<li>JVM/runtime optimization</li>
+</ol>
+<h3 id="common-failure-points-and-resilience-strategies">Common Failure Points and Resilience Strategies<a class="headerlink" href="#common-failure-points-and-resilience-strategies" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Edge Failures</strong>:</li>
+<li>Multiple edge regions</li>
+<li>Failover configurations</li>
+<li>Health-based routing</li>
+<li>
+<p>Origin shields</p>
+</li>
+<li>
+<p><strong>Ingress Controller Failures</strong>:</p>
+</li>
+<li>Controller redundancy</li>
+<li>Anti-affinity scheduling</li>
+<li>Failover configurations</li>
+<li>
+<p>Health-based removal</p>
+</li>
+<li>
+<p><strong>Service Discovery Failures</strong>:</p>
+</li>
+<li>DNS caching strategies</li>
+<li>Short TTLs for critical services</li>
+<li>Direct endpoint access fallback</li>
+<li>
+<p>Headless services when appropriate</p>
+</li>
+<li>
+<p><strong>Pod Failures</strong>:</p>
+</li>
+<li>Readiness/liveness probes</li>
+<li>Graceful shutdown handling</li>
+<li>PodDisruptionBudgets</li>
+<li>Topology spread constraints</li>
+<li>
+<p>Horizontal Pod Autoscaling</p>
+</li>
+<li>
+<p><strong>Backend Service Failures</strong>:</p>
+</li>
+<li>Circuit breaking</li>
+<li>Retry budgets</li>
+<li>Fallback responses</li>
+<li>Cache-based resilience</li>
+</ol>
+<h2 id="best-practices-and-recommendations">Best Practices and Recommendations<a class="headerlink" href="#best-practices-and-recommendations" title="Permanent link">¶</a></h2>
+<h3 id="certificate-management">Certificate Management<a class="headerlink" href="#certificate-management" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Automated Lifecycle</strong>:</li>
+<li>Use cert-manager for Kubernetes certificates</li>
+<li>Implement automated renewal processes</li>
+<li>Monitor certificate expiration</li>
+<li>
+<p>Maintain certificate inventory</p>
+</li>
+<li>
+<p><strong>Security Best Practices</strong>:</p>
+</li>
+<li>Use appropriate key lengths (RSA 2048+, ECC P-256+)</li>
+<li>Maintain secure private key storage</li>
+<li>Implement certificate pinning for critical services</li>
+<li>
+<p>Regularly rotate certificates</p>
+</li>
+<li>
+<p><strong>Operational Recommendations</strong>:</p>
+</li>
+<li>Standardize on preferred CAs</li>
+<li>Document emergency certificate procedures</li>
+<li>Perform regular rotation drills</li>
+<li>Maintain certificate hierarchy diagram</li>
+</ol>
+<h3 id="security-hardening">Security Hardening<a class="headerlink" href="#security-hardening" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Infrastructure Security</strong>:</li>
+<li>Keep Kubernetes version updated</li>
+<li>Apply security patches promptly</li>
+<li>Implement cluster hardening guidelines</li>
+<li>Use private networks where possible</li>
+<li>
+<p>Enforce least privilege principles</p>
+</li>
+<li>
+<p><strong>Application Security</strong>:</p>
+</li>
+<li>Implement container security scanning</li>
+<li>Use distroless or minimal base images</li>
+<li>Perform regular vulnerability scanning</li>
+<li>
+<p>Implement runtime threat detection</p>
+</li>
+<li>
+<p><strong>Network Security</strong>:</p>
+</li>
+<li>Default-deny network policies</li>
+<li>Implement microsegmentation</li>
+<li>Encrypt all traffic (east-west and north-south)</li>
+<li>Protect pod-to-pod communication</li>
+</ol>
+<h3 id="performance-optimization">Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Edge Optimization</strong>:</li>
+<li>Configure appropriate caching rules</li>
+<li>Implement content compression</li>
+<li>Use edge computing for simple transformations</li>
+<li>
+<p>Configure connection pooling</p>
+</li>
+<li>
+<p><strong>Kubernetes Optimization</strong>:</p>
+</li>
+<li>Right-size pod resources</li>
+<li>Implement horizontal pod autoscaling</li>
+<li>Configure pod disruption budgets</li>
+<li>Optimize etcd performance</li>
+<li>
+<p>Use node anti-affinity for critical services</p>
+</li>
+<li>
+<p><strong>Application Optimization</strong>:</p>
+</li>
+<li>Optimize container images</li>
+<li>Implement efficient API designs</li>
+<li>Use appropriate database indexes</li>
+<li>Optimize JVM settings for Java applications</li>
+<li>Implement response compression</li>
+</ol>
+<h3 id="monitoring-and-observability">Monitoring and Observability<a class="headerlink" href="#monitoring-and-observability" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Infrastructure Monitoring</strong>:</li>
+<li>Kubernetes cluster monitoring</li>
+<li>Node and pod metrics</li>
+<li>Network traffic analysis</li>
+<li>
+<p>Certificate expiration monitoring</p>
+</li>
+<li>
+<p><strong>Application Monitoring</strong>:</p>
+</li>
+<li>Request/response metrics</li>
+<li>Latency tracking</li>
+<li>Error rate monitoring</li>
+<li>
+<p>Dependency health checks</p>
+</li>
+<li>
+<p><strong>Request Tracing</strong>:</p>
+</li>
+<li>Implement distributed tracing</li>
+<li>Maintain request IDs throughout the chain</li>
+<li>Trace context propagation</li>
+<li>
+<p>Service dependency mapping</p>
+</li>
+<li>
+<p><strong>Logging Strategy</strong>:</p>
+</li>
+<li>Structured logging</li>
+<li>Centralized log aggregation</li>
+<li>Log level management</li>
+<li>
+<p>Audit logging for security events</p>
+</li>
+<li>
+<p><strong>Alerting and Dashboards</strong>:</p>
+</li>
+<li>SLO-based alerting</li>
+<li>Multi-level alerting strategy</li>
+<li>Custom dashboards for different user roles</li>
+<li>Automated runbooks for common issues</li>
+</ol>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/">Kubernetes Documentation - Ingress</a></li>
+<li><a href="https://kubernetes.github.io/ingress-nginx/">NGINX Ingress Controller Documentation</a></li>
+<li><a href="https://www.akamai.com/solutions/security">Akamai Security Best Practices</a></li>
+<li><a href="https://cert-manager.io/docs/">cert-manager Documentation</a></li>
+<li><a href="https://github.com/cncf/tag-security/blob/main/security-whitepaper/CNCF_cloud-native-security-whitepaper-Nov2020.pdf">CNCF Cloud Native Security Whitepaper</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/">Kubernetes Network Policies</a></li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/TLS_Cipher_String_Cheat_Sheet.html">TLS Best Practices</a> </li>
+</ul>
+</article>
+</div>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+  Kembali ke atas
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2025 Muhammed Shemeel
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/mshemeel" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+<a class="md-social__link" href="https://linkedin.com/in/mshemeel007" rel="noopener" target="_blank" title="linkedin.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Tersalin ke clipboard", "clipboard.copy": "Salin ke clipboard", "search.result.more.one": "1 lagi di halaman ini", "search.result.more.other": "# lagi di halaman ini", "search.result.none": "Tidak ada dokumen yang sesuai", "search.result.one": "1 dokumen ditemukan", "search.result.other": "# dokumen ditemukan", "search.result.placeholder": "Ketik untuk mulai pencarian", "search.result.term.missing": "Tidak ada", "select.version": "Pilih versi"}}</script>
+<script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+</body>
+</html>

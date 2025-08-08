@@ -1,518 +1,1445 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
-         <loc>https://mshemeel.github.io/java-learning/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/CONTRIBUTING/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/CONTRIBUTING/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/CONTRIBUTING/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/CONTRIBUTING/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/LICENSE/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/LICENSE/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/LICENSE/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/LICENSE/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/deployment-guide/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/deployment-guide/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/deployment-guide/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/deployment-guide/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/feedback/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/feedback/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/feedback/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/feedback/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/search-implementation/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/search-implementation/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/search-implementation/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/search-implementation/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/assets/js/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/assets/js/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/assets/js/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/assets/js/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/design-patterns/design-patterns-behavioral/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/design-patterns/design-patterns-behavioral/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/design-patterns/design-patterns-behavioral/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-behavioral/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/design-patterns/design-patterns-best-practices/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/design-patterns/design-patterns-best-practices/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/design-patterns/design-patterns-best-practices/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-best-practices/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/design-patterns/design-patterns-creational/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/design-patterns/design-patterns-creational/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/design-patterns/design-patterns-creational/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-creational/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/design-patterns/design-patterns-j2ee/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/design-patterns/design-patterns-j2ee/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/design-patterns/design-patterns-j2ee/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-j2ee/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/design-patterns/design-patterns-principles/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/design-patterns/design-patterns-principles/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/design-patterns/design-patterns-principles/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-principles/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/design-patterns/design-patterns-structural/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/design-patterns/design-patterns-structural/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/design-patterns/design-patterns-structural/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-structural/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/chaos-engineering/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/chaos-engineering/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/chaos-engineering/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/chaos-engineering/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/ci-cd-fundamentals/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/ci-cd-fundamentals/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/ci-cd-fundamentals/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/ci-cd-fundamentals/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/devops-basics/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/devops-basics/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/devops-basics/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/devops-basics/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/devops-best-practices/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/devops-best-practices/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/devops-best-practices/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/devops-best-practices/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/devops-tools-overview/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/devops-tools-overview/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/devops-tools-overview/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/devops-tools-overview/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/devsecops-for-java/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/devsecops-for-java/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/devsecops-for-java/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/devsecops-for-java/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/docker-fundamentals/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/docker-fundamentals/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/docker-fundamentals/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/docker-fundamentals/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/gitops-practices/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/gitops-practices/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/gitops-practices/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/gitops-practices/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/infrastructure-as-code/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/infrastructure-as-code/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/infrastructure-as-code/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/infrastructure-as-code/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/java-app-monitoring/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/java-app-monitoring/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/java-app-monitoring/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/java-app-monitoring/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/java-cicd-pipelines/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/java-cicd-pipelines/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/java-cicd-pipelines/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/java-cicd-pipelines/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/java-containerization/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/java-containerization/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/java-containerization/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/java-containerization/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/java-deployment-strategies/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/java-deployment-strategies/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/java-deployment-strategies/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/java-deployment-strategies/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/jenkins-for-java/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/jenkins-for-java/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/jenkins-for-java/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/jenkins-for-java/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/monitoring-logging/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/monitoring-logging/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/monitoring-logging/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/monitoring-logging/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/performance-testing-automation/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/performance-testing-automation/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/performance-testing-automation/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/performance-testing-automation/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/interactive/cicd-pipeline-visualizer/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/interactive/cicd-pipeline-visualizer/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/interactive/cicd-pipeline-visualizer/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/interactive/cicd-pipeline-visualizer/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/interactive/devops-maturity-assessment/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/interactive/devops-maturity-assessment/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/interactive/devops-maturity-assessment/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/interactive/devops-maturity-assessment/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/interactive/devops-workflows/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/interactive/devops-workflows/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/interactive/devops-workflows/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/interactive/devops-workflows/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/interactive/iac-templates/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/interactive/iac-templates/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/interactive/iac-templates/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/interactive/iac-templates/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/interactive/monitoring-dashboards/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/interactive/monitoring-dashboards/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/interactive/monitoring-dashboards/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/interactive/monitoring-dashboards/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/projects/cicd-java-project/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/projects/cicd-java-project/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/projects/cicd-java-project/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/projects/cicd-java-project/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/projects/containerizing-spring-app/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/projects/containerizing-spring-app/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/projects/containerizing-spring-app/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/projects/containerizing-spring-app/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/projects/iac-for-java-deployment/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/projects/iac-for-java-deployment/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/projects/iac-for-java-deployment/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/projects/iac-for-java-deployment/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/devops/projects/monitoring-java-microservices/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/devops/projects/monitoring-java-microservices/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/projects/monitoring-java-microservices/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/projects/monitoring-java-microservices/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java/basic-concepts/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java/basic-concepts/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/basic-concepts/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/basic-concepts/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java/java-basics/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java/java-basics/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-basics/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-basics/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java/java-collections/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java/java-collections/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-collections/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-collections/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java/java-concurrency/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java/java-concurrency/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-concurrency/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-concurrency/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java/java-exception-handling/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java/java-exception-handling/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-exception-handling/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-exception-handling/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java/java-exceptions/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java/java-exceptions/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-exceptions/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-exceptions/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java/java-generics/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java/java-generics/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-generics/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-generics/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java/java-io/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java/java-io/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-io/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-io/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java/java-memory-management/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java/java-memory-management/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-memory-management/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-memory-management/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java/java-multithreading/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java/java-multithreading/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-multithreading/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-multithreading/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java/java-oop/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java/java-oop/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-oop/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-oop/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java/java-streams-lambdas/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java/java-streams-lambdas/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-streams-lambdas/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-streams-lambdas/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java/java-testing/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java/java-testing/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-testing/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-testing/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java-sample-problems/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java-sample-problems/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java-sample-problems/basic-problems/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java-sample-problems/basic-problems/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/basic-problems/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/basic-problems/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/Anagrams/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/Anagrams/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/Anagrams/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/Anagrams/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/BinarySearch/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/BinarySearch/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/BinarySearch/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/BinarySearch/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/StringPalindrome/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/StringPalindrome/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/StringPalindrome/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/StringPalindrome/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/ThreeSum/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/ThreeSum/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/ThreeSum/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/ThreeSum/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/TwoSum/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/TwoSum/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/TwoSum/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/TwoSum/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java-sample-problems/dynamic-programming/DynamicProgramming/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java-sample-problems/dynamic-programming/DynamicProgramming/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/dynamic-programming/DynamicProgramming/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/dynamic-programming/DynamicProgramming/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java-sample-problems/graphs/GraphAlgorithms/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java-sample-problems/graphs/GraphAlgorithms/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/graphs/GraphAlgorithms/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/graphs/GraphAlgorithms/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java-sample-problems/linked-list/LinkedListOperations/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java-sample-problems/linked-list/LinkedListOperations/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/linked-list/LinkedListOperations/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/linked-list/LinkedListOperations/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java-sample-problems/sorting/SortingAlgorithms/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java-sample-problems/sorting/SortingAlgorithms/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/sorting/SortingAlgorithms/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/sorting/SortingAlgorithms/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/java-sample-problems/trees/TreeTraversal/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/java-sample-problems/trees/TreeTraversal/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/trees/TreeTraversal/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/trees/TreeTraversal/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-basics/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-basics/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-basics/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-basics/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-best-practices/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-best-practices/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-best-practices/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-best-practices/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-config-secrets/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-config-secrets/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-config-secrets/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-config-secrets/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-deployment/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-deployment/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-deployment/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-deployment/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-monitoring/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-monitoring/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-monitoring/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-monitoring/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-networking/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-networking/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-networking/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-networking/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-scaling/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-scaling/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-scaling/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-scaling/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-security/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-security/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-security/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-security/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-services/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-services/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-services/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-services/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-storage/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-storage/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-storage/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-storage/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-troubleshooting/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/kubernetes/kubernetes-troubleshooting/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-troubleshooting/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-troubleshooting/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/microservices/cqrs-pattern/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/microservices/cqrs-pattern/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/cqrs-pattern/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/cqrs-pattern/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/microservices/microservices-api-gateway/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/microservices/microservices-api-gateway/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-api-gateway/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-api-gateway/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/microservices/microservices-basics/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/microservices/microservices-basics/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-basics/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-basics/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/microservices/microservices-best-practices/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/microservices/microservices-best-practices/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-best-practices/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-best-practices/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/microservices/microservices-communication/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/microservices/microservices-communication/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-communication/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-communication/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/microservices/microservices-deployment/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/microservices/microservices-deployment/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-deployment/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-deployment/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/microservices/microservices-discovery/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/microservices/microservices-discovery/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-discovery/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-discovery/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/microservices/microservices-monitoring/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/microservices/microservices-monitoring/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-monitoring/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-monitoring/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/microservices/microservices-resilience/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/microservices/microservices-resilience/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-resilience/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-resilience/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/microservices/microservices-security/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/microservices/microservices-security/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-security/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-security/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/microservices/microservices-testing/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/microservices/microservices-testing/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-testing/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-testing/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/microservices/platform-architecture/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/microservices/platform-architecture/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/platform-architecture/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/platform-architecture/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/microservices/saga-pattern/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/microservices/saga-pattern/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/saga-pattern/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/saga-pattern/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-ai/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-ai/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-ai/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-ai/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-actuator/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-actuator/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-actuator/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-actuator/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-aop/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-aop/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-aop/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-aop/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-best-practices/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-best-practices/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-best-practices/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-best-practices/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-configuration/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-configuration/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-configuration/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-core-concepts/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-core-concepts/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-core-concepts/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-core-concepts/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-data-access/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-data-access/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-data-access/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-data-access/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-deployment/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-deployment/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-deployment/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-deployment/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-rest-api/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-rest-api/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-rest-api/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-rest-api/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-security/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-security/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-security/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-security/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-starter/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-starter/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-starter/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-starter/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-testing/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-boot-testing/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-testing/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-testing/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-data-jpa/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-data-jpa/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-data-jpa/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-data-jpa/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-data-mongo/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-data-mongo/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-data-mongo/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-data-mongo/"/>
     </url>
     <url>
-         <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-kafka-integration/</loc>
-         <lastmod>2025-05-21</lastmod>
-         <changefreq>daily</changefreq>
+        <loc>https://mshemeel.github.io/java-learning/spring-boot/spring-kafka-integration/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-kafka-integration/"/>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-kafka-integration/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/CONTRIBUTING/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/CONTRIBUTING/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/CONTRIBUTING/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/LICENSE/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/LICENSE/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/LICENSE/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/deployment-guide/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/deployment-guide/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/deployment-guide/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/feedback/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/feedback/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/feedback/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/search-implementation/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/search-implementation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/search-implementation/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/assets/js/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/assets/js/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/assets/js/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-behavioral/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-behavioral/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/design-patterns/design-patterns-behavioral/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-best-practices/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-best-practices/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/design-patterns/design-patterns-best-practices/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-creational/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-creational/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/design-patterns/design-patterns-creational/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-j2ee/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-j2ee/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/design-patterns/design-patterns-j2ee/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-principles/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-principles/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/design-patterns/design-patterns-principles/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-structural/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/design-patterns/design-patterns-structural/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/design-patterns/design-patterns-structural/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/chaos-engineering/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/chaos-engineering/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/chaos-engineering/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/ci-cd-fundamentals/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/ci-cd-fundamentals/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/ci-cd-fundamentals/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/devops-basics/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/devops-basics/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/devops-basics/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/devops-best-practices/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/devops-best-practices/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/devops-best-practices/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/devops-tools-overview/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/devops-tools-overview/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/devops-tools-overview/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/devsecops-for-java/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/devsecops-for-java/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/devsecops-for-java/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/docker-fundamentals/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/docker-fundamentals/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/docker-fundamentals/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/gitops-practices/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/gitops-practices/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/gitops-practices/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/infrastructure-as-code/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/infrastructure-as-code/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/infrastructure-as-code/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/java-app-monitoring/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/java-app-monitoring/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/java-app-monitoring/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/java-cicd-pipelines/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/java-cicd-pipelines/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/java-cicd-pipelines/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/java-containerization/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/java-containerization/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/java-containerization/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/java-deployment-strategies/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/java-deployment-strategies/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/java-deployment-strategies/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/jenkins-for-java/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/jenkins-for-java/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/jenkins-for-java/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/monitoring-logging/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/monitoring-logging/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/monitoring-logging/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/performance-testing-automation/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/performance-testing-automation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/performance-testing-automation/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/interactive/cicd-pipeline-visualizer/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/interactive/cicd-pipeline-visualizer/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/interactive/cicd-pipeline-visualizer/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/interactive/devops-maturity-assessment/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/interactive/devops-maturity-assessment/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/interactive/devops-maturity-assessment/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/interactive/devops-workflows/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/interactive/devops-workflows/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/interactive/devops-workflows/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/interactive/iac-templates/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/interactive/iac-templates/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/interactive/iac-templates/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/interactive/monitoring-dashboards/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/interactive/monitoring-dashboards/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/interactive/monitoring-dashboards/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/projects/cicd-java-project/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/projects/cicd-java-project/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/projects/cicd-java-project/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/projects/containerizing-spring-app/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/projects/containerizing-spring-app/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/projects/containerizing-spring-app/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/projects/iac-for-java-deployment/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/projects/iac-for-java-deployment/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/projects/iac-for-java-deployment/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/devops/projects/monitoring-java-microservices/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/devops/projects/monitoring-java-microservices/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/devops/projects/monitoring-java-microservices/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java/basic-concepts/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/basic-concepts/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/basic-concepts/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java/java-basics/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-basics/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-basics/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java/java-collections/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-collections/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-collections/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java/java-concurrency/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-concurrency/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-concurrency/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java/java-exception-handling/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-exception-handling/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-exception-handling/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java/java-exceptions/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-exceptions/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-exceptions/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java/java-generics/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-generics/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-generics/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java/java-io/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-io/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-io/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java/java-memory-management/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-memory-management/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-memory-management/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java/java-multithreading/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-multithreading/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-multithreading/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java/java-oop/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-oop/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-oop/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java/java-streams-lambdas/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-streams-lambdas/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-streams-lambdas/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java/java-testing/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java/java-testing/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java/java-testing/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java-sample-problems/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java-sample-problems/basic-problems/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/basic-problems/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/basic-problems/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/Anagrams/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/Anagrams/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/Anagrams/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/BinarySearch/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/BinarySearch/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/BinarySearch/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/StringPalindrome/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/StringPalindrome/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/StringPalindrome/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/ThreeSum/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/ThreeSum/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/ThreeSum/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/TwoSum/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/arrays-and-strings/TwoSum/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/arrays-and-strings/TwoSum/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java-sample-problems/dynamic-programming/DynamicProgramming/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/dynamic-programming/DynamicProgramming/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/dynamic-programming/DynamicProgramming/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java-sample-problems/graphs/GraphAlgorithms/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/graphs/GraphAlgorithms/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/graphs/GraphAlgorithms/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java-sample-problems/linked-list/LinkedListOperations/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/linked-list/LinkedListOperations/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/linked-list/LinkedListOperations/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java-sample-problems/sorting/SortingAlgorithms/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/sorting/SortingAlgorithms/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/sorting/SortingAlgorithms/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/java-sample-problems/trees/TreeTraversal/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/java-sample-problems/trees/TreeTraversal/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/java-sample-problems/trees/TreeTraversal/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-basics/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-basics/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-basics/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-best-practices/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-best-practices/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-best-practices/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-config-secrets/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-config-secrets/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-config-secrets/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-deployment/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-deployment/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-deployment/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-monitoring/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-monitoring/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-monitoring/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-networking/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-networking/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-networking/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-scaling/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-scaling/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-scaling/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-security/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-security/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-security/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-services/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-services/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-services/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-storage/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-storage/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-storage/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-troubleshooting/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/kubernetes/kubernetes-troubleshooting/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/kubernetes/kubernetes-troubleshooting/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/microservices/cqrs-pattern/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/cqrs-pattern/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/cqrs-pattern/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/microservices/microservices-api-gateway/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-api-gateway/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-api-gateway/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/microservices/microservices-basics/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-basics/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-basics/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/microservices/microservices-best-practices/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-best-practices/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-best-practices/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/microservices/microservices-communication/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-communication/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-communication/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/microservices/microservices-deployment/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-deployment/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-deployment/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/microservices/microservices-discovery/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-discovery/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-discovery/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/microservices/microservices-monitoring/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-monitoring/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-monitoring/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/microservices/microservices-resilience/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-resilience/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-resilience/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/microservices/microservices-security/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-security/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-security/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/microservices/microservices-testing/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/microservices-testing/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/microservices-testing/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/microservices/platform-architecture/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/platform-architecture/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/platform-architecture/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/microservices/saga-pattern/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/microservices/saga-pattern/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/microservices/saga-pattern/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-ai/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-ai/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-ai/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-actuator/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-actuator/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-actuator/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-aop/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-aop/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-aop/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-best-practices/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-best-practices/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-best-practices/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-configuration/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-core-concepts/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-core-concepts/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-core-concepts/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-data-access/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-data-access/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-data-access/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-deployment/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-deployment/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-deployment/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-rest-api/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-rest-api/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-rest-api/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-security/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-security/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-security/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-starter/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-starter/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-starter/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-testing/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-boot-testing/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-boot-testing/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-data-jpa/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-data-jpa/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-data-jpa/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-data-mongo/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-data-mongo/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-data-mongo/"/>
+    </url>
+    <url>
+        <loc>https://mshemeel.github.io/java-learning/id/spring-boot/spring-kafka-integration/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="id" href="https://mshemeel.github.io/java-learning/id/spring-boot/spring-kafka-integration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mshemeel.github.io/java-learning/spring-boot/spring-kafka-integration/"/>
     </url>
 </urlset>
